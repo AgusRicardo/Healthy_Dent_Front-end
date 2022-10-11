@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Layout from '../components/Layout'
+import { selectUser } from '../redux/slices/userSlice'
 
 export const Perfil = () => {
-  const { isAuth } = useSelector((state) => state.authh)
+  const item = useSelector(selectUser)
+
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState()
 
   
   useEffect(() => {
-    fetch(`http://localhost:4000/user/${isAuth.values.payload.id}`)
+    fetch(`http://localhost:4000/user/${item[0].id}`)
     // fetch(`https://healthydent-production.up.railway.app/user/${isAuth.values.payload.id}`)
     .then((response) => response.json())
     .then((res) => {

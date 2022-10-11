@@ -3,22 +3,31 @@ import { NavLink } from 'react-router-dom'
 import { unauthenticateUser } from '../redux/slices/authSlice'
 import { useDispatch } from 'react-redux'
 import { onLogout } from '../api/auth'
+import { deleteItem, selectUser } from '../redux/slices/userSlice'
 
 
 const Navbar = () => {
   const { isAuth } = useSelector((state) => state.authh)
+  
   const dispatch = useDispatch()
   const logout = async () => {
     try {
       await onLogout()
 
       dispatch(unauthenticateUser())
+      dispatch(deleteItem())
       localStorage.removeItem('isAuth')
+      localStorage.removeItem('email')
+      localStorage.removeItem('name')
+      localStorage.removeItem('last_name')
+      localStorage.removeItem('password')
     } catch (error) {
       console.log(error.response)
     }
   }
-  
+  const name = localStorage.getItem('name')
+  const last_name = localStorage.getItem('last_name')
+
   return (
     <nav className='navbar navbar-light bg-dark'>
       <div className='container'>
@@ -28,7 +37,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        {isAuth.status ? (
+        {isAuth ? (
           <div style={{color: 'grey'}}>
             <NavLink to='/register/professional' className='mx-3' style={{color: 'grey', textDecoration: 'none'}}>
               <span>Registrate como profesional</span>
@@ -39,7 +48,7 @@ const Navbar = () => {
             <div className="btn-group" role="group">
               <button id="btnGroupDrop1" type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <img src="https://icongr.am/material/account-circle-outline.svg?size=128&color=ffffff" alt="" height="30px" width="35px" />
-                {isAuth.values.payload.name} {isAuth.values.payload.last_name }
+                {name} {last_name}
               </button>
               <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <li>

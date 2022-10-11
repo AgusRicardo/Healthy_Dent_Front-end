@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import Layout from '../components/Layout';
+import { selectUser } from '../redux/slices/userSlice';
 
-export const Turno = (props) => {
+export const Turno = () => {
+  const item = useSelector(selectUser)
   const [success, setSuccess] = useState(false)
+
   const [values, setValues] = useState({
-    user_id: "",
-    prof_id: "",
-    prepaid_id: "",
+    user_id: `${item[0].id}`,
+    prof_id: "2",
+    prepaid_id: `${item[0].prepaid}`,
     place_id: "",
     payment_id: "",
     hour: "",
@@ -32,7 +36,6 @@ export const Turno = (props) => {
     }
   }
 
-  // Tengo que traerme user_id, prof_id
   
   return (
     <Layout>
@@ -41,16 +44,23 @@ export const Turno = (props) => {
         <h1 style={{ textAlign: 'center' }} >Sacá tu turno</h1>
         <br />
         <div className='row g-2 mb-3'>
-          <div className="col-md">
+        <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="prepaid_id" onChange={(e) => onChange(e)}>
-                <option selected value="DEFAULT" disabled>Seleccione su obra social ...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-              <label htmlFor="floatingSelectGrid">Obra social</label>
+              <input
+                onChange={(e) => onChange(e)}
+                type='text'
+                value={values.prepaid_id}
+                className='form-control'
+                id='prepaid_id'
+                name='prepaid_id'
+                placeholder='Prepaid'
+                autoComplete='off'
+                disabled
+                required
+              />
+              <label htmlFor="floatingInputGrid" className='form-label'>
+                Obra social
+              </label>
             </div>
           </div>
           <div className="col-md">

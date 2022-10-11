@@ -9,7 +9,7 @@ export const Home = () => {
       <section className="carousel">
         <div
           id="carouselExampleControls"
-          class="carousel slide"
+          className="carousel slide"
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">

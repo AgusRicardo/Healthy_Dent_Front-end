@@ -4,8 +4,6 @@ import Layout from '../components/Layout'
 
 
 
-
-
 export const Search = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [state, setState] = useState()
@@ -27,6 +25,9 @@ export const Search = () => {
         </div>
       </Layout>
     );
+  }
+  const handleSendProps = (id) =>{
+    console.log(id);
   }
   return (
       <Layout className="container">
@@ -73,7 +74,9 @@ export const Search = () => {
                         <p className="card-title">{prof.specialization}</p>
                         <p className="card-text">HORARIOS</p>
                         <NavLink to='/turn' style={{textDecoration: 'none'}}>
-                            <button className='btn btn-primary'>Solicitar Turno</button>
+                            <button className='btn btn-primary' onClick={() => handleSendProps(prof.prof_id)}>
+                              Solicitar Turno
+                              </button>
                         </NavLink>
                       </div>
                     </div>

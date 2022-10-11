@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { registerProfessional } from '../api/auth'
 import Layout from '../components/Layout'
+import { selectUser } from '../redux/slices/userSlice'
 
 const RegisterProfessional = () => {
-  const { isAuth } = useSelector((state) => state.authh)
+  const item = useSelector(selectUser)
+
   const [values, setValues] = useState({
-    user_id: `${isAuth.values.payload.id}`,
+    user_id: `${item[0].id}`,
     n_matric: "",
     specialization: "",
   })
@@ -25,7 +27,7 @@ const RegisterProfessional = () => {
       setError('')
       setSuccess(data.message)
       setValues({
-        user_id: `${isAuth.values.payload.id}`,
+        user_id: `${item[0].id}`,
         n_matric: "",
         specialization: "",
       })

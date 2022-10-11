@@ -4,10 +4,10 @@ const UserAuthFromLocalStorage = () => {
   const isAuth = localStorage.getItem('isAuth')
 
   if (isAuth && JSON.parse(isAuth) === true) {
-      localStorage.removeItem('isAuth') // Cuando tiras F5 no te vuelve a loguear, por el momento lo dejo asi
-  }else {
-    return false
+    return true 
   }
+  
+  return false
 }
 
 const initialState = {
@@ -18,16 +18,11 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    authenticateUser: (state, values) => {
-      state.isAuth = {
-        status: true,
-        values
-      }
+    authenticateUser: (state) => {
+      state.isAuth = true
     },
     unauthenticateUser: (state) => {
-      state.isAuth = {
-        status: false
-      }
+      state.isAuth = false
     },
   },
 })

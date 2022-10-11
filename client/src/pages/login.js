@@ -3,6 +3,7 @@ import { onLogin } from '../api/auth'
 import Layout from '../components/Layout'
 import { useDispatch } from 'react-redux'
 import { authenticateUser } from '../redux/slices/authSlice'
+import { addItem } from '../redux/slices/userSlice'
 
 
 
@@ -24,12 +25,14 @@ export const Login = () => {
 
     try {
       const {data} = await onLogin(values)
-      dispatch(authenticateUser(data.payload))
-      // let user = {
-      //   status: true,
-      //   values
-      // }
+      dispatch(authenticateUser())
+      dispatch(addItem(data.payload))
+
       localStorage.setItem('isAuth', 'true')
+      localStorage.setItem('email', `${data.payload.email}`)
+      localStorage.setItem('name', `${data.payload.name}`)
+      localStorage.setItem('last_name', `${data.payload.last_name}`)
+      localStorage.setItem('password', `${data.payload.password}`)
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
