@@ -28,4 +28,8 @@ export async function registerProfessional(registerData){
   return await axios.post(`${url}/register/professional`, registerData)
 }
 
+export async function createTurn(turnData){
+  return await axios.post(`${url}/turn`, turnData)
+}
+
 

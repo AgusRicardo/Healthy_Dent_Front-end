@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Layout from '../components/Layout'
+import { addTurn } from '../redux/slices/turnSlice';
 
 
 
 export const Search = () => {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [state, setState] = useState()
+  const [searchName, setSearchName] = useState("")
   
+  const onChange = (e) => {
+    setSearchName(e.target.value)
+  }
+
   useEffect(() => {
     fetch("http://localhost:4000/search")
       .then((response) => response.json())
@@ -27,7 +35,7 @@ export const Search = () => {
     );
   }
   const handleSendProps = (id) =>{
-    console.log(id);
+    dispatch(addTurn(id))
   }
   return (
       <Layout className="container">
@@ -36,7 +44,7 @@ export const Search = () => {
             <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" aria-describedby="button-addon2"/>
           </div>
           <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
-            <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+            <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChange(e)}aria-describedby="button-addon2"/>
           </div>
           <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
             <input type="search" className="form-control" placeholder="Obra social" aria-label="Recipient's username" aria-describedby="button-addon2"/>

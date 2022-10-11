@@ -1,15 +1,20 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { createTurn } from '../api/auth';
 import Layout from '../components/Layout';
+import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
 import { selectUser } from '../redux/slices/userSlice';
 
 export const Turno = () => {
   const item = useSelector(selectUser)
+  const turn = useSelector(selectTurn)
+  const dispatch = useDispatch();
+
   const [success, setSuccess] = useState(false)
 
   const [values, setValues] = useState({
     user_id: `${item[0].id}`,
-    prof_id: "2",
+    prof_id: `${turn[0]}`,
     prepaid_id: `${item[0].prepaid}`,
     place_id: "",
     payment_id: "",
@@ -27,10 +32,21 @@ export const Turno = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    console.log(values);
     try {
-      setSuccess(true)
+      const { data } = await createTurn(values)
       setError("")
+      setSuccess(data.message)
+      setValues({
+        user_id: `${item[0].id}`,
+        prof_id: `${turn[0]}`,
+        prepaid_id: `${item[0].prepaid}`,
+        place_id: "",
+        payment_id: "",
+        hour: "",
+        date: "",
+        treatment: "",
+      })
+      dispatch(deleteTurn())
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
