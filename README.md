@@ -9,10 +9,10 @@ Proyecto del 2do año de "Desarrollo de Software". El mismo consta de una aplica
 
 BD: PostgreSQL
 <br/>
-Server: ElephantSQL
+Server: <a href="https://www.elephantsql.com/">ElephantSQL</a>
 <br/>
-Hosting API: <a href="https://fly.io/"/>
+Hosting API: <a href="https://fly.io/">Fly.io</a>
 <br/>
-Hosting App: <a href="https://vercel.com/"/>
+Hosting App: <a href="https://vercel.com/">Vercel</a>
 <br/>
 <b>Integrantes: Agustín Ricardo, Nehuen Bovyn, Ariadna Garcia, Marcos Aguero</b>
