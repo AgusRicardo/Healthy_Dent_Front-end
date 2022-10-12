@@ -15,13 +15,10 @@ export const Search = () => {
   const [searchName, setSearchName] = useState("")
   const [searchSpec, setSearchSpec] = useState("")
   
-  // STATE = USUARIOS
-  // SEARCH = BUSQUEDA
-
 
   useEffect(() => {
-    fetch("http://localhost:4000/search")
-    // fetch("https://healthy-dent-back-end.fly.dev/search")
+    // fetch("http://localhost:4000/search")
+    fetch("https://healthy-dent-back-end.fly.dev/search")
       .then((response) => response.json())
       .then((res) => {
         setState(res); 
