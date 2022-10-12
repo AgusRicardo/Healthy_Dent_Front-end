@@ -7,12 +7,14 @@ Proyecto del 2do año de "Desarrollo de Software". El mismo consta de una aplica
 2nd year "Software Development" project. It consists of an application for dentists, in which it currently allows you to register, log in and make an appointment with a professional.
 
 
-BD: PostgreSQL
+<ul>
+<li> BD: PostgreSQL </li>
 <br/>
-Server: <a href="https://www.elephantsql.com/">ElephantSQL</a>
+<li> Server: <a href="https://www.elephantsql.com/">ElephantSQL</a></li>
 <br/>
-Hosting API: <a href="https://fly.io/">Fly.io</a>
+<li> Hosting API: <a href="https://fly.io/">Fly.io</a></li>
 <br/>
-Hosting App: <a href="https://vercel.com/">Vercel</a>
+<li> Hosting App: <a href="https://vercel.com/">Vercel</a></li>
 <br/>
+</ul>
 <b>Integrantes: Agustín Ricardo, Nehuen Bovyn, Ariadna Garcia, Marcos Aguero</b>
