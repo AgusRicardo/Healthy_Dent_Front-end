@@ -11,4 +11,8 @@ BD: PostgreSQL
 <br/>
 Server: ElephantSQL
 <br/>
+Hosting API: <a href="https://fly.io/"/>
+<br/>
+Hosting App: <a href="https://vercel.com/"/>
+<br/>
 <b>Integrantes: Agustín Ricardo, Nehuen Bovyn, Ariadna Garcia, Marcos Aguero</b>
