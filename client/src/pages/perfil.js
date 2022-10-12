@@ -13,8 +13,8 @@ export const Perfil = () => {
 
   
   useEffect(() => {
-    fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
-    // fetch(`http://localhost:4000/user/${item[0].id}`)
+    // fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
+    fetch(`http://localhost:4000/user/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setUser(res);

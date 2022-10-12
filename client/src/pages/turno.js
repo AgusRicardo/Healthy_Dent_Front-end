@@ -9,8 +9,7 @@ export const Turno = () => {
   const item = useSelector(selectUser)
   const turn = useSelector(selectTurn)
   const dispatch = useDispatch();
-  console.log(item);
-  console.log(turn);
+
 
   const [success, setSuccess] = useState(false)
 

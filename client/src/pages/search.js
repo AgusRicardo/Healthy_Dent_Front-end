@@ -11,22 +11,54 @@ export const Search = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [state, setState] = useState()
+  const [tablaUsuarios, setTablaUsuarios]= useState([]);
   const [searchName, setSearchName] = useState("")
+  const [searchSpec, setSearchSpec] = useState("")
   
-  const onChange = (e) => {
-    setSearchName(e.target.value)
-  }
+  // STATE = USUARIOS
+  // SEARCH = BUSQUEDA
+
 
   useEffect(() => {
-    // fetch("http://localhost:4000/search")
-    fetch("https://healthy-dent-back-end.fly.dev/search")
+    fetch("http://localhost:4000/search")
+    // fetch("https://healthy-dent-back-end.fly.dev/search")
       .then((response) => response.json())
       .then((res) => {
         setState(res); 
+        setTablaUsuarios(res); 
         setIsLoading(false); 
       });
   }, [isLoading]);
   
+  const onChangeName = (e) => {
+    setSearchName(e.target.value)
+    filtrarName(e.target.value)
+  }
+
+  const onChangeSpec = (e) => {
+    setSearchSpec(e.target.value)
+    filtrarSpec(e.target.value)
+  }
+  
+  const filtrarName=(terminoBusqueda)=>{
+    var resultadosBusqueda=tablaUsuarios.filter((elemento) =>{
+      if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+        return elemento;
+      }
+    });
+    setState(resultadosBusqueda);
+  }
+
+  const filtrarSpec=(terminoBusqueda)=>{
+    var resultSpec=tablaUsuarios.filter((elemento) =>{
+      if (elemento.specialization.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+        return elemento;
+      }
+    });
+    setState(resultSpec);
+  }
+  
+
   if (isLoading) { 
     return (
       <Layout>
@@ -39,20 +71,17 @@ export const Search = () => {
   }
   return (
       <Layout className="container">
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-          <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
-            <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
+              <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
+            </div>
+            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
+              <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
+            </div>
+            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
+              <input type="search" className="form-control" placeholder="Obra social" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+            </div>
           </div>
-          <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
-            <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChange(e)}aria-describedby="button-addon2"/>
-          </div>
-          <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
-            <input type="search" className="form-control" placeholder="Obra social" aria-label="Recipient's username" aria-describedby="button-addon2"/>
-          </div>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-            <button className="btn btn-primary" type="button" style={{padding: '12px 40px'}}>Buscar</button>
-          </div>
-        </div>
         <section style={{display: "flex", flexDirection: 'row'}}>
           <ul className="nav flex-column">
             <h5>Filtrar</h5>
