@@ -84,10 +84,10 @@ export const Turno = () => {
             <div className="form-floating">
               <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="place_id" onChange={(e) => onChange(e)}>
                 <option selected value="DEFAULT" disabled>Seleccione un lugar de atención...</option>
-                <option value="1">1</option>
+                {/* <option value="1">1</option> */}
                 <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                {/* <option value="3">3</option> */}
+                {/* <option value="4">4</option> */}
               </select>
               <label htmlFor="floatingSelectGrid">Lugar de atención</label>
             </div>
