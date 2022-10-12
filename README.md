@@ -1,4 +1,4 @@
-# Healthy_Dent_Front-end
+# Healthy Dent Front-end
 
 Proyecto del 2do año de "Desarrollo de Software". El mismo consta de una aplicación para odontólogos, en la cual actualmente permite registrarte, iniciar sesión y sacar un turno con un profesional.
 
