@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { createTurn } from '../api/auth';
 import Layout from '../components/Layout';
+import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
 import { selectUser } from '../redux/slices/userSlice';
 

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { unauthenticateUser } from '../redux/slices/authSlice'
 import { useDispatch } from 'react-redux'
 import { onLogout } from '../api/auth'
-import { deleteItem, selectUser } from '../redux/slices/userSlice'
+import { deleteItem } from '../redux/slices/userSlice'
 
 
 const Navbar = () => {
@@ -17,10 +17,8 @@ const Navbar = () => {
       dispatch(unauthenticateUser())
       dispatch(deleteItem())
       localStorage.removeItem('isAuth')
-      localStorage.removeItem('email')
       localStorage.removeItem('name')
       localStorage.removeItem('last_name')
-      localStorage.removeItem('password')
     } catch (error) {
       console.log(error.response)
     }

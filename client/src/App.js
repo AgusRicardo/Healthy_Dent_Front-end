@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Routes, Route, Outlet, useParams } from 'react-router-dom'
+import { BrowserRouter, Navigate, Routes, Route, Outlet } from 'react-router-dom'
 import { Home } from './pages/home'
 import { Login } from './pages/login'
 import { Register } from './pages/register'
@@ -19,6 +19,7 @@ const RestrictedRoutes = () => {
   
   return <>{!isAuth ? <Outlet/> : <Navigate to='/search' />}</>
 }
+
 
 const App = () => {
   return (

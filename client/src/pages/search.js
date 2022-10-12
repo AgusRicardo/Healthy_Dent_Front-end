@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Layout from '../components/Layout'
 import { addTurn } from '../redux/slices/turnSlice';
+import { Loading } from '../components/Loading';
 
 
 
@@ -17,7 +18,8 @@ export const Search = () => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:4000/search")
+    // fetch("http://localhost:4000/search")
+    fetch("https://healthy-dent-back-end.fly.dev/search")
       .then((response) => response.json())
       .then((res) => {
         setState(res); 
@@ -28,9 +30,7 @@ export const Search = () => {
   if (isLoading) { 
     return (
       <Layout>
-        <div>
-          <h1>Cargando...</h1>
-        </div>
+        <Loading/>
       </Layout>
     );
   }

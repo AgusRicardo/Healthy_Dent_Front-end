@@ -1,8 +1,9 @@
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
-// const url = 'https://healthydent-production.up.railway.app';
-const url = 'http://localhost:4000';
+
+// const url = 'http://localhost:4000';
+const url = 'https://healthy-dent-back-end.fly.dev';
 
 
 export async function onRegistration(registrationData) {

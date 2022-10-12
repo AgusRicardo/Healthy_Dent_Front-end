@@ -2,10 +2,15 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { registerProfessional } from '../api/auth'
 import Layout from '../components/Layout'
+import { Loading } from '../components/Loading'
 import { selectUser } from '../redux/slices/userSlice'
 
 const RegisterProfessional = () => {
   const item = useSelector(selectUser)
+
+  if (!item) {
+    <Loading/>
+  }
 
   const [values, setValues] = useState({
     user_id: `${item[0].id}`,
@@ -13,6 +18,7 @@ const RegisterProfessional = () => {
     specialization: "",
   })
   const [error, setError] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false)
   
 
@@ -26,6 +32,7 @@ const RegisterProfessional = () => {
       const { data } = await registerProfessional(values)
       setError('')
       setSuccess(data.message)
+      setIsLoading(true);
       setValues({
         user_id: `${item[0].id}`,
         n_matric: "",
@@ -35,6 +42,13 @@ const RegisterProfessional = () => {
       setError(error.response.data.errors[0].msg);
       setSuccess('')
     }
+  }
+  if (isLoading) {
+    return (
+      <Layout>
+        <Loading/>
+      </Layout>
+    );
   }
   return (
     <Layout>

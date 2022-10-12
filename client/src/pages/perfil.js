@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import Layout from '../components/Layout'
+import { Loading } from '../components/Loading'
 import { selectUser } from '../redux/slices/userSlice'
+
 
 export const Perfil = () => {
   const item = useSelector(selectUser)
@@ -11,8 +13,8 @@ export const Perfil = () => {
 
   
   useEffect(() => {
-    fetch(`http://localhost:4000/user/${item[0].id}`)
-    // fetch(`https://healthydent-production.up.railway.app/user/${isAuth.values.payload.id}`)
+    fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
+    // fetch(`http://localhost:4000/user/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setUser(res);
@@ -23,9 +25,7 @@ export const Perfil = () => {
   if (isLoading) { 
     return (
       <Layout>
-        <div>
-          <h1>Cargando...</h1>
-        </div>
+        <Loading/>
       </Layout>
     );
   }
@@ -51,8 +51,6 @@ export const Perfil = () => {
               <li className="list-group-item"><b>Dirección:</b> {user.address_user}</li>
               <li className="list-group-item"><b>Teléfono:</b> {user.telephone}</li>
             </ul>
-          <button className="btn btn-outline-info">Editar</button>
-          <button className="btn btn-outline-danger">Eliminar cuenta</button>
           </div>
         </div>
       )}
