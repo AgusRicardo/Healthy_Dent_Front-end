@@ -15,21 +15,21 @@ export const Home = () => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="https://cloudfront-us-east-1.images.arcpublishing.com/infobae/QPGXNPZS5VF7BONGXXBD5ZNELY.JPG"
+                src=""
                 className="d-block w-100"
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="https://e00-ar-marca.uecdn.es/claro/assets/multimedia/imagenes/2022/06/10/16548689505890.jpg"
+                src=""
                 className="d-block w-100"
                 alt="..."
               />
             </div>
             <div className="carousel-item">
               <img
-                src="https://media.minutouno.com/p/a7eccb52057765763b52768a438f1c33/adjuntos/150/imagenes/040/209/0040209965/rosario-central-defensa-y-justicia.jpg"
+                src=""
                 className="d-block w-100"
                 alt="..."
               />
