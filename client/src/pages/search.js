@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import Layout from '../components/Layout'
 import { addTurn } from '../redux/slices/turnSlice';
 import { Loading } from '../components/Loading';
+import '../styles/search.css'
+
 
 
 
@@ -67,52 +69,68 @@ export const Search = () => {
     dispatch(addTurn(id))
   }
   return (
-      <Layout className="container">
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
+      <Layout className="container" style={{backgroundColor: '#fafafa'}}>
+          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
+            <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
+              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
             </div>
-            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
+            <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
-            </div>
-            <div className="input-group-lg" style={{margin: '10px', padding: '10px'}}>
-              <input type="search" className="form-control" placeholder="Obra social" aria-label="Recipient's username" aria-describedby="button-addon2"/>
+              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
             </div>
           </div>
-        <section style={{display: "flex", flexDirection: 'row'}}>
-          <ul className="nav flex-column">
+        <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">
+          <ul className="nav flex-column" style={{padding: "20px"}}>
             <h5>Filtrar</h5>
             <li className="nav-item">
-              <p className="nav-link" aria-current="page">Filtro 1</p>
+              <p className="" aria-current="page">Filtro 1</p>
             </li>
             <li className="nav-item">
-              <p className="nav-link">Filtro 2</p>
+              <p className="">Filtro 2</p>
             </li>
             <li className="nav-item">
-              <p className="nav-link">Filtro 3</p>
+              <p className="">Filtro 3</p>
             </li>
           </ul>
-          <div style={{display: "flex", flexDirection: 'column'}}>
+          <div style={{display: "flex", flexDirection: 'column', width: '100%'}}>
             {
               state.map(prof => (
-                <div key={prof.prof_id} style={{padding: "0px 50px 0px 50px", marginTop: "30px"}}>
-                <div className="card mb-3 bg-light">
+                <div key={prof.prof_id} style={{padding: "0px 50px 0px 50px", marginTop: "15px"}}>
+                <div className="card mb-3 bg-light card_container">
                   <div className="row g-0">
-                    <div className="col-md-3">
-                      <img src="https://m9p8e5u6.rocketcdn.me/wp-content/uploads/2019/04/shutterstock_Nestor-Rizhniak.jpg" className="img-fluid rounded-start" alt="..."/>
+                    <div className="col-md-3" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                      <img src="https://vividpathology.com/wp-content/uploads/2016/04/DoctorIcon.png" className="img-fluid rounded-start" alt="..." style={{borderRadius:"50%"}}/>
                     </div>
                     <div className="col-md-8">
-                      <div className="card-body">
-                        <h5 className="card-title">{prof.name} {prof.last_name}</h5>
-                        <p className="card-title">Mat. {prof.n_matric}</p>
-                        <p className="card-title">{prof.specialization}</p>
-                        <p className="card-text">HORARIOS</p>
-                        <NavLink to='/turn' style={{textDecoration: 'none'}}>
-                            <button className='btn btn-primary' onClick={() => handleSendProps(prof.prof_id)}>
-                              Solicitar Turno
-                              </button>
-                        </NavLink>
+                      <div className="card-body" style={{display: "flex", justifyContent: "space-between" ,flexFlow: "row", textAlign:"start"}}>
+                        <div className='column_card'>
+                          <h4 className="card-title">Dr. {prof.name} {prof.last_name}</h4>
+                          <p className="card-title">Mat. {prof.n_matric}</p>
+                          <div>
+                            <h5 className='h5_specialization'>Especialidad </h5>
+                            <span className="card-title card_specialization">{prof.specialization}</span>
+                          </div>
+                          <div className='items_card'>
+                            <i className="fa-solid fa-phone color_items items_pointer"></i>
+                            <i className="fa-regular fa-heart color_items items_pointer"></i>
+                            <i className="fa-brands fa-linkedin color_items items_pointer"></i>
+                          </div>
+                        </div>
+                        <div className='column_card'>
+                          <p className="card-text"><i className="fa-regular fa-clock color_items"></i>HORARIOS Lun/Vie</p>
+                        </div>
+                        <div className='column_card'>
+                          <p className="card-text"><i className="fa-regular fa-calendar-check color_items"></i>Turnos presenciales</p>
+                        </div>
                       </div>
+                        <div className='btn_turn'>
+                          <NavLink to='/turn' style={{textDecoration: 'none'}}>
+                              <button className='btn btn-primary' onClick={() => handleSendProps(prof.prof_id)}>
+                                Solicitar Turno
+                              </button>
+                          </NavLink>
+                        </div>
                     </div>
                   </div>
                 </div>

@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 import { unauthenticateUser } from "../redux/slices/authSlice";
 import { useDispatch } from "react-redux";
 import { onLogout } from "../api/auth";
-import { deleteItem, selectUser } from "../redux/slices/userSlice";
+import { deleteItem } from "../redux/slices/userSlice";
 import logonav from "../img/logo.png";
-import navcss from "..//styles/navbar.css";
+import "../styles/navbar.css";
 
 
 const Navbar = () => {
@@ -42,9 +42,11 @@ const Navbar = () => {
               <img src={logonav} className="logonav" width={"140px"} />
             </NavLink>
           </div>
-          <div className="nombremarca  s-auto">
-            <h1>Healthy Dent</h1>
-          </div>
+          <NavLink to="/" style={{textDecoration: "none"}}>
+            <div className="nombremarca  s-auto">
+              <h1>Healthy Dent</h1>
+            </div>
+          </NavLink>
         </div>
 
         {isAuth ? (
@@ -63,12 +65,20 @@ const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+              <i className="fa-regular fa-circle-user"></i>
                 {name} {last_name}
               </button>
               <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <li>
                   <NavLink to="/profile" style={{ textDecoration: "none" }}>
                     <button className="dropdown-item">Perfil</button>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/list/turn" style={{ textDecoration: "none" }}>
+                    <button className="dropdown-item">
+                      Mis turnos
+                    </button>
                   </NavLink>
                 </li>
                 <li>
@@ -81,12 +91,16 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
-            <NavLink to='/login' style={{textDecoration: 'none', color: 'grey'}}>
-              <span>Login</span>
+            <NavLink to='/login'>
+              <button type="button" className="btn btn-primary homebutton">
+                    Iniciar sesion
+              </button>
             </NavLink>
 
-            <NavLink to='/register' className='mx-3' style={{border: '1px solid black', borderRadius: '7px', padding: '5px', textDecoration: 'none', backgroundColor: 'white', color: 'black'}}>
-              <span >Register</span>
+            <NavLink to='/register'>
+              <button type="button" className="btn btn-primary homebutton">
+                  Registrate
+              </button>
             </NavLink>
           </div>
         )}

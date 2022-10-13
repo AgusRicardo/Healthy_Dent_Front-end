@@ -6,7 +6,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Navbar />
-      <div className="container-fluid no-wrapper">{children}</div>
+      <div className="container-fluid no-wrapper" style={{backgroundColor: '#fafafa'}}>{children}</div>
       <Footer />
     </div>
   );

@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.c9ad5de2.css","mappings":"AAMA,eACE,YAEF,CACA,MACE,WAAY,CAEZ,YAAa,CADb,iBAEF","sources":["styles/home.css"],"sourcesContent":["\r\n/* Carousel */\r\n\r\n\r\n\r\n/* Acerca De */\r\n.acercaDe_home {\r\n  padding: 40px;\r\n  \r\n}\r\n.card {\r\n  border: none;\r\n  text-align: center;\r\n  padding: 20px;\r\n}\r\n\r\n"],"names":[],"sourceRoot":""}

@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import RegisterProfessional from './pages/registerProfessional'
 import { Perfil } from './pages/perfil'
 import { Turno } from './pages/turno'
+import { MyTurns } from './pages/myTurns'
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.authh)
@@ -39,6 +40,7 @@ const App = () => {
             <Route path='/search' element={<Search/>} />
             <Route path='/profile' element={<Perfil/>} />
             <Route path='/turn' element={<Turno/>} />
+            <Route path='/list/turn' element={<MyTurns/>} />
             <Route path='/register/professional' element={<RegisterProfessional/>} />
           </Route>
       </Routes>

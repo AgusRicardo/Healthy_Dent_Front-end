@@ -141,6 +141,8 @@ export const Register = () => {
                 name='dni'
                 placeholder='DNI'
                 autoComplete='off'
+                pattern="[0-9]{8}"
+                title="Debe poner 8 números"
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>
@@ -153,10 +155,16 @@ export const Register = () => {
               <div className="form-floating">
                 <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="prepaid_id" onChange={(e) => onChange(e)}>
                   <option selected value="DEFAULT" disabled>Seleccione su obra social ...</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
+                  <option value="1">Particular</option>
+                  <option value="2">IAPOS</option>
+                  <option value="3">OMINT</option>
+                  <option value="4">MEDICINA ESENCIAL</option>
+                  <option value="5">OSCHOCA</option>
+                  <option value="6">OSPRERA</option>
+                  <option value="7">OSPE</option>
+                  <option value="8">Unión Personal</option>
+                  <option value="9">FEMEBA</option>
+                  <option value="10">OSMEDICA</option>
                 </select>
                 <label htmlFor="floatingSelectGrid">Obra social</label>
               </div>
@@ -174,6 +182,7 @@ export const Register = () => {
               name='date_birth'
               placeholder='date_birth'
               autoComplete='off'
+              min="1920-01-01" max="2022-10-1"
               required
             />
             <label className='form-label' htmlFor="floatingSelectGrid">
