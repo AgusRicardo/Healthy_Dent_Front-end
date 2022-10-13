@@ -1,4 +1,7 @@
-
+.no-wrapper{
+  margin: 0px !important;
+  padding: 0px !important;
+}
 /* Carousel */
 
 
@@ -6,11 +9,31 @@
 /* Acerca De */
 .acercaDe_home {
   padding: 40px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   
 }
 .card {
-  border: none;
   text-align: center;
   padding: 20px;
 }
 
+.title-acercade{
+  color:#f20775 ;
+}
+.info1{
+  border-right: 7px solid #f20775;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+}
+.info2{
+  border-right: 7px solid #f20775;
+  border-top: none;
+  border-left: none;
+  border-bottom: none;
+}
+.info3{
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+}

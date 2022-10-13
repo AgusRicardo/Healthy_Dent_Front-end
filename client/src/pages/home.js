@@ -1,38 +1,30 @@
 import React from "react";
-import { Footer } from "../components/Footer";
 import Layout from "../components/Layout";
-import '../styles/home.css'
+import "../styles/home.css";
+import img from "../img/img1.jpg";
+import img2 from "../img/img2.jpg";
+import img3 from "../img/img3.jpg";
 
 export const Home = () => {
   return (
     <Layout>
-      <section className="carousel">
+      <section className="carousel container-fluid no-wrapper">
         <div
           id="carouselExampleControls"
           className="carousel slide"
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
-            <div className="carousel-item active">
-              <img
-                src=""
-                className="d-block w-100"
-                alt="..."
-              />
+
+            <div className="carousel-item active ">
+              <img src={img} className="d-block w-100" alt="..." />
             </div>
             <div className="carousel-item">
-              <img
-                src=""
-                className="d-block w-100"
-                alt="..."
-              />
+              <img src={img2} className="d-block w-100" alt="..." />
             </div>
             <div className="carousel-item">
-              <img
-                src=""
-                className="d-block w-100"
-                alt="..."
-              />
+              <img src={img3} className="d-block w-100" alt="..." />
+
             </div>
           </div>
           <button
@@ -61,41 +53,46 @@ export const Home = () => {
           </button>
         </div>
       </section>
-      <section className="acercaDe">
-        <div className="card-group container acercaDe_home">
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title">¿Quienes somos?</h2>
+      <section className="acercaDe ">
+        <div className="card-group acercaDe_home">
+          <div className="card info1">
+            <div className="card-body ">
+              <h2 className="card-title title-acercade">¿Quienes somos?</h2>
               <p className="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                Somos una empresa con la misión de facilitar la búsqueda y
+                confirmación de turnos entre pacientes y profesionales de la
+                salud bucal.
               </p>
             </div>
           </div>
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title">¿Qué hacemos?</h2>
+          <div className="card info2">
+            <div className="card-body ">
+              <h2 className="card-title title-acercade">¿Qué hacemos?</h2>
               <p className="card-text">
-                This card has supporting text below as a natural lead-in to
-                additional content.
+                Nos centramos en agilizar una búsqueda personalizada más simple
+                y práctica que se adapte a los intereses y comodidades de los
+                pacientes. Al mismo tiempo, asistimos a los profesionales con la
+                organización de sus turnos a través de una interfaz intuitiva y
+                más cómoda.
               </p>
             </div>
           </div>
-          <div className="card">
-            <div className="card-body">
-              <h2 className="card-title">¿Por qué nos necesitas?</h2>
+          <div className="card info3">
+            <div className="card-body ">
+              <h2 className="card-title title-acercade">
+                ¿Por qué nos necesitas?
+              </h2>
               <p className="card-text">
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
+                Muchas veces nos encontramos con el problema de no encontrar un
+                profesional acorde a nuestras necesidades específicas
+                (odontopediatría, prótesis, implantes, ortodoncista, etc) o a
+                nuestra ubicación. HealthyDent simplifica todos estos problemas
+                a partir de filtros de búsqueda que ayuden acordes a tus
+                necesidades.
               </p>
             </div>
           </div>
         </div>
-      </section>
-      <section className="footer">
-        <Footer/>
       </section>
     </Layout>
   );
