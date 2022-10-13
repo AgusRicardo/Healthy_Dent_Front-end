@@ -63,7 +63,7 @@ const Navbar = () => {
             <NavLink to='/login' style={{textDecoration: 'none', color: 'grey'}}>
               <span>Login</span>
             </NavLink>
-
+          
             <NavLink to='/register' className='mx-3' style={{border: '1px solid black', borderRadius: '7px', padding: '5px', textDecoration: 'none', backgroundColor: 'white', color: 'black'}}>
               <span >Register</span>
             </NavLink>

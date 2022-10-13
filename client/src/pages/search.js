@@ -96,7 +96,7 @@ export const Search = () => {
             {
               state.map(prof => (
                 <div key={prof.prof_id} style={{padding: "0px 50px 0px 50px", marginTop: "30px"}}>
-                <div className="card mb-3">
+                <div className="card mb-3 bg-light">
                   <div className="row g-0">
                     <div className="col-md-3">
                       <img src="https://m9p8e5u6.rocketcdn.me/wp-content/uploads/2019/04/shutterstock_Nestor-Rizhniak.jpg" className="img-fluid rounded-start" alt="..."/>
@@ -118,7 +118,7 @@ export const Search = () => {
                 </div>
               </div>
             ))
-          } 
+          }  
           </div>
           </section>
       </Layout>
