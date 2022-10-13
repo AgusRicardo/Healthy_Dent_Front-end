@@ -15,6 +15,7 @@ export const Home = () => {
           data-bs-ride="carousel"
         >
           <div className="carousel-inner">
+
             <div className="carousel-item active ">
               <img src={img} className="d-block w-100" alt="..." />
             </div>
@@ -23,6 +24,7 @@ export const Home = () => {
             </div>
             <div className="carousel-item">
               <img src={img3} className="d-block w-100" alt="..." />
+
             </div>
           </div>
           <button

@@ -4,7 +4,9 @@ const UserAuthFromLocalStorage = () => {
   const isAuth = localStorage.getItem('isAuth')
 
   if (isAuth && JSON.parse(isAuth) === true) {
-    return true 
+    localStorage.removeItem('isAuth')
+    localStorage.removeItem('name')
+    localStorage.removeItem('last_name')
   }
   
   return false

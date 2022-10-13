@@ -1,9 +1,11 @@
 import axios from 'axios'
 axios.defaults.withCredentials = true
 
-// const url = 'https://healthydent-production.up.railway.app';
-//const url = 'http://localhost:4000';
-const url =  'https://healthy-dent-back-end.fly.dev'
+
+// const url = 'http://localhost:4000';
+const url = 'https://healthy-dent-back-end.fly.dev';
+
+
 
 export async function onRegistration(registrationData) {
   return await axios.post(
@@ -26,6 +28,10 @@ export async function getProfessional(){
 
 export async function registerProfessional(registerData){
   return await axios.post(`${url}/register/professional`, registerData)
+}
+
+export async function createTurn(turnData){
+  return await axios.post(`${url}/turn`, turnData)
 }
 
 

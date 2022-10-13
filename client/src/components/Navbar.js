@@ -1,3 +1,4 @@
+
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { unauthenticateUser } from "../redux/slices/authSlice";
@@ -7,6 +8,7 @@ import { deleteItem, selectUser } from "../redux/slices/userSlice";
 import logonav from "../img/logo.png";
 import navcss from "..//styles/navbar.css";
 
+
 const Navbar = () => {
   const { isAuth } = useSelector((state) => state.authh);
 
@@ -15,6 +17,7 @@ const Navbar = () => {
     try {
       await onLogout();
 
+
       dispatch(unauthenticateUser());
       dispatch(deleteItem());
       localStorage.removeItem("isAuth");
@@ -22,6 +25,7 @@ const Navbar = () => {
       localStorage.removeItem("name");
       localStorage.removeItem("last_name");
       localStorage.removeItem("password");
+
     } catch (error) {
       console.log(error.response);
     }
