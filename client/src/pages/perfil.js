@@ -11,7 +11,8 @@ export const Perfil = () => {
 
   
   useEffect(() => {
-    fetch(`http://localhost:4000/user/${item[0].id}`)
+    fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
+    //fetch(`http://localhost:4000/user/${item[0].id}`)
     // fetch(`https://healthydent-production.up.railway.app/user/${isAuth.values.payload.id}`)
     .then((response) => response.json())
     .then((res) => {

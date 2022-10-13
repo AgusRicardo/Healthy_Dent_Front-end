@@ -9,7 +9,8 @@ export const Search = () => {
   const [state, setState] = useState()
   
   useEffect(() => {
-    fetch("http://localhost:4000/search")
+    //fetch("http://localhost:4000/search")
+    fetch('https://healthy-dent-back-end.fly.dev/search')
       .then((response) => response.json())
       .then((res) => {
         setState(res); 
