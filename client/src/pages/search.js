@@ -81,18 +81,6 @@ export const Search = () => {
             </div>
           </div>
         <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">
-          <ul className="nav flex-column" style={{padding: "20px"}}>
-            <h5>Filtrar</h5>
-            <li className="nav-item">
-              <p className="" aria-current="page">Filtro 1</p>
-            </li>
-            <li className="nav-item">
-              <p className="">Filtro 2</p>
-            </li>
-            <li className="nav-item">
-              <p className="">Filtro 3</p>
-            </li>
-          </ul>
           <div style={{display: "flex", flexDirection: 'column', width: '100%'}}>
             {
               state.map(prof => (
