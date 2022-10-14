@@ -182,7 +182,7 @@ export const Register = () => {
               name='date_birth'
               placeholder='date_birth'
               autoComplete='off'
-              min="1920-01-01" max="2022-10-1"
+              min="1920-01-01" max="2022-9-1"
               required
             />
             <label className='form-label' htmlFor="floatingSelectGrid">

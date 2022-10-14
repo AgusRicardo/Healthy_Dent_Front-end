@@ -20,29 +20,10 @@ export const MyTurns = () => {
   }, [isLoading]);
 
 
-  if ((user === undefined) || ((user.date || user.hour || user.last_name || user.name) === null)) {
-    return (
-      <section className="container">
-          <h2>Mis turnos</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Profesional</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Hora</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        </section>
-    )
-  }
-
   return (
     <Layout>
-      {isLoading ? (
+      {
+      isLoading ? (
         <Loading />
       ) : (
         <section className="container">
@@ -58,17 +39,17 @@ export const MyTurns = () => {
             </thead>
             <tbody>
               {
-                (user === undefined) || ((user.date || user.hour || user.last_name || user.name) === null) ? (
-                  user.map((turn, index) => (
-                  <tr >
-                    <th scope="row" key={turn.user_id}>{index + 1}</th>
-                    <td>{turn.name} {turn.last_name}</td>
-                    <td>{(turn.date).slice(0, -14)}</td>
-                    <td>{turn.hour}</td>
-                  </tr>
-                  ))
-                ) : (
+                (user === undefined) || ((user[0].date || user[0].hour || user[0].last_name || user[0].name) === null) ? (
                   <div>Todavía no hay turnos</div>
+                ) : (
+                  user.map((turn, index) => (
+                    <tr >
+                      <th scope="row" key={turn.user_id}>{index + 1}</th>
+                      <td>{turn.name} {turn.last_name}</td>
+                      <td>{(turn.date).slice(0, -14)}</td>
+                      <td>{turn.hour}</td>
+                    </tr>
+                    ))
                 )}
             </tbody>
           </table>

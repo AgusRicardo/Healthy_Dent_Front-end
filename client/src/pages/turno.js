@@ -139,7 +139,7 @@ export const Turno = () => {
                 name='date'
                 placeholder='Fecha'
                 autoComplete='off'
-                min="2022-10-13" max="2023-12-31"
+                min="2022-11-1" max="2023-12-31"
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>
@@ -151,10 +151,15 @@ export const Turno = () => {
             <div className="form-floating">
               <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" onChange={(e) => onChange(e)}>
                 <option selected value="DEFAULT" disabled>Seleccione un horario...</option>
-                <option value="1">12:00</option>
-                <option value="2">12:20</option>
-                <option value="3">12:30</option>
-                <option value="4">12:45</option>
+                <option value="08:00">08:00</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
               </select>
               <label htmlFor="floatingSelectGrid">Horario</label>
             </div>
