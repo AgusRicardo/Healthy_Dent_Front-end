@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { authenticateUser } from '../redux/slices/authSlice'
 import { addItem } from '../redux/slices/userSlice'
 import { Loading } from '../components/Loading'
+import '../styles/login.css'
 
 
 
@@ -46,55 +47,53 @@ export const Login = () => {
   }
   return (
     <Layout>
-      <form onSubmit={(e) => onSubmit(e)} className='container col-md-6 offset-md-3'>
-      <br />
-      <h1 style={{textAlign: 'center'}} >Login</h1>
-      <br />
-      <div className='mb-3'>
-          <div className="form-floating">
-            <input
-              onChange={(e) => onChange(e)}
-              type='email'
-              value={values.email_user}
-              className='form-control'
-              id='email_user'
-              name='email_user'
-              placeholder='email_user'
-              autoComplete='off'
-              required
+      <div className="container-login container" id="container">
+        <div className="form-container sign-in-container">
+          <form onSubmit={(e) => onSubmit(e)} className="form_login">
+            <h1 className='h1_login'>Sign in</h1>
+            <div className="social-container">
+              <a className="social a_icon"><i className="fab fa-facebook-f"></i></a>
+              <a className="social a_icon"><i className="fab fa-google-plus-g"></i></a>
+              <a className="social a_icon"><i className="fab fa-linkedin-in"></i></a>
+            </div>
+            <input 
+            type="email" 
+            placeholder="Email"
+            onChange={(e) => onChange(e)}
+            value={values.email_user}
+            className='form-control input_login'
+            id='email_user'
+            name='email_user'
+            autoComplete='off'
+            required
             />
-            <label htmlFor="floatingInputGrid" className='form-label'>
-              Email
-            </label>
+            <input 
+            type="password" 
+            placeholder="Password" 
+            onChange={(e) => onChange(e)}
+            value={values.password}
+            className='form-control input_login'
+            id='password'
+            name='password'
+            autoComplete='off'
+            required
+            />
+            {
+                error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
+            }
+            <a className='a_icon'>Forgot your password?</a>
+            <button className='button_signIn'>Sign In</button>
+          </form>
+        </div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-right">
+              <h1 className='h1_login'>Hello, Friend!</h1>
+              <p className='p_login_text'>Enter your personal details and start journey with us</p>
+            </div>
           </div>
         </div>
-
-      <div className='mb-3'>
-          <div className="form-floating">
-            <input
-              onChange={(e) => onChange(e)}
-              type='password'
-              value={values.password}
-              className='form-control'
-              id='password'
-              name='password'
-              placeholder='password'
-              autoComplete='off'
-              required
-            />
-            <label htmlFor="floatingInputGrid" className='form-label'>
-              Password
-            </label>
-          </div>
-        </div>
-        {
-          error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
-        }
-
-        <button type='submit' className='btn btn-primary'>
-          Login
-        </button>
-      </form>
+      </div>
     </Layout>
   )
 }
