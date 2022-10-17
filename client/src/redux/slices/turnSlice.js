@@ -3,14 +3,14 @@ import { createSlice } from '@reduxjs/toolkit'
 export const turnSlice = createSlice({
   name: 'turn',
   initialState: {
-    item: []
+    item: ""
   },
   reducers: {
     addTurn: (state, action) => {
-      state.item.push(action.payload)
+      state.item = action.payload
     },
     deleteTurn: (state) => {
-      state.item = []
+      state.item = ""
     },
   },
 })

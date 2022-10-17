@@ -4,6 +4,7 @@ import "../styles/home.css";
 import img from "../img/img1.jpg";
 import img2 from "../img/img2.jpg";
 import img3 from "../img/img3.jpg";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   return (
@@ -94,6 +95,7 @@ export const Home = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </Layout>
   );
 };

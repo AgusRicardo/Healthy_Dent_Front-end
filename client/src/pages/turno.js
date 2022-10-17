@@ -12,11 +12,13 @@ export const Turno = () => {
   const dispatch = useDispatch();
 
   const [isLoadingPrepaid, setIsLoadingPrepaid] = useState(true);
+  const [isLiadingPlace, setIsLiadingPlace] = useState(true)
   const [prepaid, setPrepaid] = useState()
+  const [place, setPlace] = useState()
   const [success, setSuccess] = useState(false)
   const [values, setValues] = useState({
     user_id: `${item[0].id}`,
-    prof_id: `${turn[0]}`,
+    prof_id: `${turn}`,
     prepaid_id: `${item[0].prepaid}`,
     place_id: "",
     payment_id: "",
@@ -25,6 +27,7 @@ export const Turno = () => {
     treatment: "",
   })
   const [error, setError] = useState(false)
+
 
   useEffect(() => {
     fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
@@ -36,11 +39,19 @@ export const Turno = () => {
     });
   }, []);
 
+useEffect(() => {
+  fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${item[0].id}`)
+  // fetch(`http://localhost:4000/placeProfessional/${turn}`)
+  .then((response) => response.json())
+  .then((res) => {
+    setPlace(res)
+    setIsLiadingPlace(false)
+  })
+}, [])
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
-
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -50,7 +61,7 @@ export const Turno = () => {
       setSuccess(data.message)
       setValues({
         user_id: `${item[0].id}`,
-        prof_id: `${turn[0]}`,
+        prof_id: `${turn}`,
         prepaid_id: `${item[0].prepaid}`,
         place_id: "",
         payment_id: "",
@@ -63,13 +74,11 @@ export const Turno = () => {
       setError(error.response.data.errors[0].msg);
     }
   }
-
+  
   return (
     <Layout>
-      {isLoadingPrepaid ? (
-        <Layout>
-          <Loading/>
-        </Layout>
+      {isLoadingPrepaid && setIsLiadingPlace ? (
+        <Loading/>
       ) : (
       <form onSubmit={(e) => onSubmit(e)} className='container col-md-6 offset-md-3'>
         <br />
@@ -99,10 +108,14 @@ export const Turno = () => {
             <div className="form-floating">
               <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="place_id" onChange={(e) => onChange(e)}>
                 <option selected value="DEFAULT" disabled>Seleccione un lugar de atención...</option>
-                {/* <option value="1">1</option> */}
-                <option value="2">2</option>
-                {/* <option value="3">3</option> */}
-                {/* <option value="4">4</option> */}
+                {
+                  !place || place.message ?
+                  <option value="2">Grupo Oroño</option>
+                  :
+                  place.map((site) => (
+                    <option key={site.place_id} value={site.place_id}>{site.address}</option>
+                  ))
+                }
               </select>
               <label htmlFor="floatingSelectGrid">Lugar de atención</label>
             </div>

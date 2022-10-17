@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import { addTurn } from '../redux/slices/turnSlice';
 import { Loading } from '../components/Loading';
 import '../styles/search.css'
+import { Footer } from '../components/Footer';
 
 
 
@@ -66,6 +67,7 @@ export const Search = () => {
     );
   }
   const handleSendProps = (id) =>{
+    console.log(id);
     dispatch(addTurn(id))
   }
   return (
@@ -127,6 +129,7 @@ export const Search = () => {
           }  
           </div>
           </section>
+          <Footer/>
       </Layout>
   )
 }
