@@ -67,7 +67,6 @@ export const Search = () => {
     );
   }
   const handleSendProps = (id) =>{
-    console.log(id);
     dispatch(addTurn(id))
   }
   return (

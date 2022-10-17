@@ -40,7 +40,7 @@ export const Turno = () => {
   }, []);
 
 useEffect(() => {
-  fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${item[0].id}`)
+  fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${item.id}`)
   // fetch(`http://localhost:4000/placeProfessional/${turn}`)
   .then((response) => response.json())
   .then((res) => {
