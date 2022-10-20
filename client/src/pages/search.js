@@ -20,7 +20,7 @@ export const Search = () => {
   
 
   useEffect(() => {
-    // fetch("http://localhost:4000/search")
+    //fetch("http://localhost:4000/search")
     fetch("https://healthy-dent-back-end.fly.dev/search")
       .then((response) => response.json())
       .then((res) => {

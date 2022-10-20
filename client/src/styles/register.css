@@ -1,0 +1,56 @@
+.regtitle {
+  text-align: center;
+  background-color: #05c7f2;
+  color: white;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+/*primer form*/
+
+.formfirst {
+  border: solid 2px #05c7f2;
+  border-radius: 5px;
+  padding: 7px;
+  margin-bottom: 0px;
+  background-color: #e1faff;
+}
+
+/*segundo form*/
+.secondform{
+    border: solid 2px #05c7f2;
+    border-radius: 5px;
+    padding: 7px;
+    margin-bottom: 0px;
+    background-color: #e1faff;
+}
+
+/*subtitulos del form*/
+
+.subtitleform {
+    color: black;
+}
+
+/*separador de form*/
+
+.separador{
+    margin: 0px;
+    color: #00738a;
+}
+
+/*boton de registro*/
+
+.regbutton{
+    font-weight: 400;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px 40px 10px 40px;
+    border-radius: 25px;
+    margin: 10px;
+    border: 1px solid #05c7f2;
+}
+.regbutton:hover {
+    background-color: #05c7f2;
+    opacity: 0.8;
+    border: 1px solid #05c7f2;
+  }

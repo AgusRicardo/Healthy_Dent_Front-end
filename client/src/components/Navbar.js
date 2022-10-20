@@ -35,18 +35,13 @@ const Navbar = () => {
 
   return (
     <nav className="navbar fondonav">
-      <div className="container-fluid">
+      <div className="container-fluid shadow ">
         <div className="logohd">
           <div className="logonav ">
             <NavLink to="/">
-              <img src={logonav} className="logonav" width={"140px"} />
+              <img src={logonav} className="logonav"/>
             </NavLink>
           </div>
-          <NavLink to="/" style={{textDecoration: "none"}}>
-            <div className="nombremarca  s-auto">
-              <h1>Healthy Dent</h1>
-            </div>
-          </NavLink>
         </div>
 
         {isAuth ? (
@@ -92,13 +87,13 @@ const Navbar = () => {
         ) : (
           <div>
             <NavLink to='/login'>
-              <button type="button" className="btn btn-primary homebutton">
+              <button type="button" className="btn btn-primary bn logbutton">
                     Iniciar sesion
               </button>
             </NavLink>
 
             <NavLink to='/register'>
-              <button type="button" className="btn btn-primary homebutton">
+              <button type="button" className="btn btn-primary bn regbutton">
                   Registrate
               </button>
             </NavLink>
