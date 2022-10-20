@@ -1,56 +1,54 @@
 .regtitle {
+  font-weight: bold;
+  margin: 0;
   text-align: center;
-  background-color: #05c7f2;
-  color: white;
-  margin-bottom: 0px;
-  margin-top: 20px;
+}
+.regcontainer{
+  margin-top: 7px !important;
 }
 
-/*primer form*/
-
-.formfirst {
-  border: solid 2px #05c7f2;
-  border-radius: 5px;
-  padding: 7px;
-  margin-bottom: 0px;
-  background-color: #e1faff;
+.inputreg{
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
 }
 
-/*segundo form*/
-.secondform{
-    border: solid 2px #05c7f2;
-    border-radius: 5px;
-    padding: 7px;
-    margin-bottom: 0px;
-    background-color: #e1faff;
-}
 
 /*subtitulos del form*/
 
 .subtitleform {
-    color: black;
+  color: black;
 }
 
 /*separador de form*/
 
-.separador{
-    margin: 0px;
-    color: #00738a;
+.separador {
+  margin: 0px;
+  color: #05c7f2;
+  border: 1.2px solid #05c7f2;
 }
 
 /*boton de registro*/
 
-.regbutton{
-    font-weight: 400;
-    font-size: 15px;
-    text-decoration: none;
-    padding: 10px 40px 10px 40px;
-    border-radius: 25px;
-    margin: 10px;
-    border: 1px solid #05c7f2;
+.regbutton {
+  font-weight: 400;
+  font-size: 15px;
+  text-decoration: none;
+  padding: 10px 40px 10px 40px;
+  border-radius: 25px;
+  margin: 10px;
+  border: 1px solid #05c7f2;
 }
 .regbutton:hover {
-    background-color: #05c7f2;
-    opacity: 0.8;
-    border: 1px solid #05c7f2;
-  }
+  background-color: #05c7f2;
+  opacity: 0.8;
+  border: 1px solid #05c7f2;
+}
+.containerbutreg{
+  display: flex;
+  justify-content: center;
+  padding: 0px 10px 10px 10px;
+
+}

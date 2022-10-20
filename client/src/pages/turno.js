@@ -204,7 +204,7 @@ useEffect(() => {
           success && <div className="alert alert-success" role="alert" style={{ color: 'green', margin: '10px 0', fontSize: '18px' }}>{success}</div>
         }
         <button type='submit' className='btn btn-primary'>
-          Solicitar
+          Solicitar turno
         </button>
       </form>
       )}

@@ -51,3 +51,36 @@ NavLink {
 }
 
 /*botones con inicio*/
+.regprof{
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #00c0e7;
+}
+.searchprof{
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #00c0e7;
+}
+.userbutton{
+  background-color: #05c7f2;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 17px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px 10px 40px;
+  position: relative;
+  border-radius: 25px;
+  margin: 10px;
+  border: 1px solid #05c7f2;
+}
+
+.userbutton:hover{
+  background-color: #05c7f2;
+  opacity: 0.8;
+  border: 1px solid #05c7f2;
+}

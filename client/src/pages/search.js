@@ -6,6 +6,7 @@ import { addTurn } from '../redux/slices/turnSlice';
 import { Loading } from '../components/Loading';
 import '../styles/search.css'
 import { Footer } from '../components/Footer';
+import dentist from  "../img/dentist.png"
 
 
 
@@ -73,12 +74,12 @@ export const Search = () => {
       <Layout className="container" style={{backgroundColor: '#fafafa'}}>
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
             <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
-              <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
-              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
+              <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
+              <span className="input-group-text color_items" id="basic-addon2"><i className="fa-solid fa-magnifying-glass "></i></span>
             </div>
             <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
-              <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
-              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
+              <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
+              <span className="input-group-text color_items" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
             </div>
           </div>
         <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">
@@ -89,7 +90,7 @@ export const Search = () => {
                 <div className="card mb-3 bg-light card_container">
                   <div className="row g-0">
                     <div className="col-md-3" style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
-                      <img src="https://vividpathology.com/wp-content/uploads/2016/04/DoctorIcon.png" className="img-fluid rounded-start" alt="..." style={{borderRadius:"50%"}}/>
+                      <img src={dentist} className="img-fluid rounded-start imgdentist" alt="..." style={{borderRadius:"50%"}}/>
                     </div>
                     <div className="col-md-8">
                       <div className="card-body" style={{display: "flex", justifyContent: "space-between" ,flexFlow: "row wrap", textAlign:"start"}}>
@@ -114,8 +115,8 @@ export const Search = () => {
                         </div>
                       </div>
                         <div className='btn_turn'>
-                          <NavLink to='/turn' style={{textDecoration: 'none'}}>
-                              <button className='btn btn-primary' onClick={() => handleSendProps(prof.prof_id)}>
+                          <NavLink to='/turn'>
+                              <button className='btn btn-primary turnbutton' onClick={() => handleSendProps(prof.prof_id)}>
                                 Solicitar Turno
                               </button>
                           </NavLink>

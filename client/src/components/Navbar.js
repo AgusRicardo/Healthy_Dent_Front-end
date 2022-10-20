@@ -46,17 +46,17 @@ const Navbar = () => {
 
         {isAuth ? (
           <div className="navbar">
-            <NavLink to="/register/professional" className="mx-3">
+            <NavLink to="/register/professional" className="mx-3 regprof ">
               <span>Registrate como profesional</span>
             </NavLink>
-            <NavLink to="/search" className="mx-3">
+            <NavLink to="/search" className="mx-3 searchprof">
               <span>Buscar profesional</span>
             </NavLink>
             <div className="btn-group" role="group">
               <button
                 id="btnGroupDrop1"
                 type="button"
-                className="btn btn-primary dropdown-toggle"
+                className="btn btn-primary dropdown-toggle userbutton"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >

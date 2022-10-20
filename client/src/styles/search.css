@@ -1,14 +1,10 @@
 .color_items{
   color: #1aedc7;
 }
+/*cartas*/
 .column_card {
   padding: 5px;
   margin: 5px;
-}
-.btn_turn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .card_specialization {
   border: 1px solid #1aedc7;
@@ -38,4 +34,33 @@
 }
 .card_container{
   box-shadow: 10px 10px 52px -34px #000000bf!important;
+  background: rgb(0,192,231);
+  border: white;
+  background: linear-gradient(83deg, rgba(0,192,231,1) 0%, rgba(255,255,255,1) 21%);
+}
+.imgdentist{
+  width: 130px;
+}
+/*boton de turno*/
+
+.btn_turn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.turnbutton{
+  background-color: #1aedc7;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 17px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 40px 10px 40px;
+  position: relative;
+  border-radius: 25px;
+  margin: 10px;
+  border: 1px solid #1aedc7;
 }
