@@ -1,6 +1,7 @@
 import { React, useState } from 'react'
 import { onRegistration } from '../api/auth'
 import Layout from '../components/Layout'
+import "../styles/register.css"
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -49,9 +50,10 @@ export const Register = () => {
     <Layout>
       <form onSubmit={(e) => onSubmit(e)} className='container col-md-6 offset-md-12'>
         <br />
-        <h1 style={{textAlign: 'center'}} >Registro</h1>
+        <h1 className='regtitle rounded-3'>Registro</h1>
         <br />
-        <h5>Personal</h5>
+        <div className='formfirst'>
+        <h5 className='subtitleform'>Personal</h5>
         <div className="row g-2 mb-3">
           <div className='col-md'>
             <div className="form-floating">
@@ -190,10 +192,13 @@ export const Register = () => {
             </label>
           </div>
         </div>
+        </div>
+        
         <br />
-        <hr />
+        <hr className='separador'/>
         <br />
-        <h5>Contacto</h5>
+        <div className='secondform'>
+        <h5 className='subtitleform'>Contacto</h5>
         <div className='row g-2 mb-3'>
           <div className='col-md'>
             <div className="form-floating">
@@ -233,6 +238,8 @@ export const Register = () => {
             </div>
           </div>
         </div>
+        </div>
+        
         <br />
         {
           error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '10px 0', fontSize: '18px' }}>{error}</div>
@@ -241,7 +248,7 @@ export const Register = () => {
           success && <div className="alert alert-success" role="alert" style={{ color: 'green', margin: '10px 0', fontSize: '18px' }}>{success}</div>
         }
 
-        <button type='submit' className='btn btn-primary'>
+        <button type='submit' className='btn btn-primary regbutton'>
           Registrarse
         </button>
       </form>

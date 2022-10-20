@@ -2,14 +2,29 @@
   margin: 0px !important;
   padding: 0px !important;
 }
+/*intro*/
+.firstcolumintro{
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
+.titlemarca{
+color: #05c7f2;
+}
+.descripmarca{
+
+}
+
+.logomarca{
+
+}
+
+
 /* Carousel */
-
-
 
 /* Acerca De */
 .acercaDe_home {
   padding: 40px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
   margin-bottom: 15px;
 }
 .card {
@@ -37,3 +52,4 @@
   border-right: none;
   border-bottom: none;
 }
+

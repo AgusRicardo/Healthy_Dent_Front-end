@@ -50,7 +50,7 @@ export const Login = () => {
       <div className="container-login container" id="container">
         <div className="form-container sign-in-container">
           <form onSubmit={(e) => onSubmit(e)} className="form_login">
-            <h1 className='h1_login'>Sign in</h1>
+            <h1 className='h1_login'>Iniciar sesión</h1>
             <div className="social-container">
               <a className="social a_icon"><i className="fab fa-facebook-f"></i></a>
               <a className="social a_icon"><i className="fab fa-google-plus-g"></i></a>
@@ -81,15 +81,15 @@ export const Login = () => {
             {
                 error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
             }
-            <a className='a_icon'>Forgot your password?</a>
-            <button className='button_signIn'>Sign In</button>
+            <a className='a_icon'>Olvidaste tu contraseña?</a>
+            <button className='button_signIn'>Iniciar</button>
           </form>
         </div>
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-right">
-              <h1 className='h1_login'>Hello, Friend!</h1>
-              <p className='p_login_text'>Enter your personal details and start journey with us</p>
+              <h1 className='h1_login'>Bienvenido!</h1>
+              <p className='p_login_text'>Ingresa tus datos o registrate para empezar este viaje...</p>
             </div>
           </div>
         </div>

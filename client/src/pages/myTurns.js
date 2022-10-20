@@ -11,7 +11,7 @@ export const MyTurns = () => {
 
   useEffect(() => {
     fetch(`https://healthy-dent-back-end.fly.dev/list/turn/${item[0].id}`)
-    // fetch(`http://localhost:4000/list/turn/${item[0].id}`)
+    //fetch(`http://localhost:4000/list/turn/${item[0].id}`)
       .then((response) => response.json())
       .then((res) => {
         setUser(res);

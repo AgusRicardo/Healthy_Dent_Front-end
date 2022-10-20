@@ -31,7 +31,7 @@ export const Turno = () => {
 
   useEffect(() => {
     fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
-    // fetch(`http://localhost:4000/user/prepaid/${item[0].id}`)
+    //fetch(`http://localhost:4000/user/prepaid/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setPrepaid(res);
@@ -41,7 +41,7 @@ export const Turno = () => {
 
 useEffect(() => {
   fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${turn}`)
-  // fetch(`http://localhost:4000/placeProfessional/${turn}`)
+  //fetch(`http://localhost:4000/placeProfessional/${turn}`)
   .then((response) => response.json())
   .then((res) => {
     setPlace(res)
