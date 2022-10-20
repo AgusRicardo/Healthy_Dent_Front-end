@@ -53,6 +53,7 @@ const RegisterProfessional = () => {
               name='n_matric'
               placeholder='n_matric'
               autoComplete='off'
+              maxLength="10"
               required
             />
             <label htmlFor="floatingInputGrid" className='form-label'>
@@ -72,6 +73,7 @@ const RegisterProfessional = () => {
               name='specialization'
               placeholder='specialization'
               autoComplete='off'
+              maxLength="45"
               required
             />
             <label htmlFor="floatingInputGrid" className='form-label'>
