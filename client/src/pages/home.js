@@ -75,9 +75,10 @@ export const Home = () => {
             <div className="card-body ">
               <h2 className="card-title title-acercade">¿Quienes somos?</h2>
               <p className="card-text">
-                Somos una empresa con la misión de facilitar la búsqueda y
+                {/* Somos una empresa con la misión de facilitar la búsqueda y
                 confirmación de turnos entre pacientes y profesionales de la
-                salud bucal.
+                salud bucal. */}
+                Somos un grupo de personas que nos cansamos de encontrarnos con muchos enrollos para poder conseguir y concretar un turno con profesionales de una manera cómoda y práctica. El tipo de impracticidad con la que probablemente se ha encontrado también usted en más de una ocasión.
               </p>
             </div>
           </div>
@@ -85,11 +86,13 @@ export const Home = () => {
             <div className="card-body ">
               <h2 className="card-title title-acercade">¿Qué hacemos?</h2>
               <p className="card-text">
-                Nos centramos en agilizar una búsqueda personalizada más simple
+                {/* Nos centramos en agilizar una búsqueda personalizada más simple
                 y práctica que se adapte a los intereses y comodidades de los
                 pacientes. Al mismo tiempo, asistimos a los profesionales con la
                 organización de sus turnos a través de una interfaz intuitiva y
-                más cómoda.
+                más cómoda. */}
+                Lo que hacemos es impulsar el objetivo de desarrollar la mejor plataforma de gestión que facilite y simplifique enormemente el incordio y el sorteo de las dificultades que pueden presentarse para contactar con los diferentes profesionales de Odontología y pactar turnos que se acomoden o acoplen a los horarios personales de cada usuario.
+                A su ves, también queremos facilitar y ayudar a difundir la actividad de los diferentes profesionales para que su radio de alcance aumente, mientras le ofrecemos un grupo de herramientas de gestión que facilitan y complementen su actividad.
               </p>
             </div>
           </div>
@@ -99,12 +102,13 @@ export const Home = () => {
                 ¿Por qué nos necesitas?
               </h2>
               <p className="card-text">
-                Muchas veces nos encontramos con el problema de no encontrar un
+                {/* Muchas veces nos encontramos con el problema de no encontrar un
                 profesional acorde a nuestras necesidades específicas
                 (odontopediatría, prótesis, implantes, ortodoncista, etc) o a
                 nuestra ubicación. HealthyDent simplifica todos estos problemas
                 a partir de filtros de búsqueda que ayuden acordes a tus
-                necesidades.
+                necesidades. */}
+                Porque con nuestra plataforma y su práctica interfaz de búsqueda que se puede personalizar según tus necesidades, preferencias y ubicación, podrás conseguir conectar con el profesional que mejor se adecue a ti. Además de que podrás realizar consultas directas con los diferentes especialistas con los que te atiendas y consultar costos aproximados de los tratamientos que desees o deba realizarse, ya sea por mensajería directa o con nuestra calculadora de costo estimados que esta a su disposición en nuestra plataforma.
               </p>
             </div>
           </div>
