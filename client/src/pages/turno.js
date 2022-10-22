@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createTurn } from '../api/auth';
+import { createTurn, url } from '../api/auth';
 import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
@@ -30,8 +30,8 @@ export const Turno = () => {
 
 
   useEffect(() => {
-    fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
-    //fetch(`http://localhost:4000/user/prepaid/${item[0].id}`)
+    //fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
+    fetch(`${url}/user/prepaid/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setPrepaid(res);
@@ -40,8 +40,8 @@ export const Turno = () => {
   }, []);
 
 useEffect(() => {
-  fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${turn}`)
-  //fetch(`http://localhost:4000/placeProfessional/${turn}`)
+  //fetch(`https://healthy-dent-back-end.fly.dev/placeProfessional/${turn}`)
+  fetch(`${url}/placeProfessional/${turn}`)
   .then((response) => response.json())
   .then((res) => {
     setPlace(res)
@@ -152,7 +152,8 @@ useEffect(() => {
                 name='date'
                 placeholder='Fecha'
                 autoComplete='off'
-                min="2022-11-1" max="2023-12-31"
+                min="2022-11-01" 
+                max="2023-12-31"
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>

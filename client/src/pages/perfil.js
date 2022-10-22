@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { url } from '../api/auth'
 import Layout from '../components/Layout'
 import { Loading } from '../components/Loading'
 import { selectUser } from '../redux/slices/userSlice'
@@ -15,16 +16,16 @@ export const Perfil = () => {
 
   
   useEffect(() => {
-    fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
-    //fetch(`http://localhost:4000/user/${item[0].id}`)
+    //fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
+    fetch(`${url}/user/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setUser(res);
       setIsLoadingUser(false); 
     });
     
-    fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
-    //fetch(`http://localhost:4000/user/prepaid/${item[0].id}`)
+    //fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
+    fetch(`${url}/user/prepaid/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
       setPrepaid(res);

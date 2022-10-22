@@ -7,6 +7,7 @@ import { Loading } from '../components/Loading';
 import '../styles/search.css'
 import { Footer } from '../components/Footer';
 import dentist from  "../img/dentist.png"
+import { url } from '../api/auth';
 
 
 
@@ -21,8 +22,7 @@ export const Search = () => {
   
 
   useEffect(() => {
-    //fetch("http://localhost:4000/search")
-    fetch("https://healthy-dent-back-end.fly.dev/search")
+    fetch(`${url}/search`)
       .then((response) => response.json())
       .then((res) => {
         setState(res); 

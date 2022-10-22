@@ -2,8 +2,8 @@ import axios from 'axios'
 axios.defaults.withCredentials = true
 
 
-//const url = 'http://localhost:4000';
-const url = 'https://healthy-dent-back-end.fly.dev';
+//export const url = 'http://localhost:4000';
+export const url = 'https://healthy-dent-back-end.fly.dev';
 
 
 
