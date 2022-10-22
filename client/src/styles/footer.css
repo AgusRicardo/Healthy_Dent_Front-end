@@ -43,3 +43,10 @@ a:hover{
     cursor: pointer;
     color: #05c7f2;
 }
+.location_footer{
+    display: flex;
+    flex-flow: row !important;
+}
+.icon_location_footer {
+    padding-right: 5px;
+}

@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/footer.css";
 import LogoCurcuma from "../img/Curcuma_1.png";
-import LogoyName from "../img/logoyname.png";
+import Logo from "../img/logo.png";
 
 export const Footer = () => {
   return (
     <section className="footer no-wrapper">
       <div className="container-fluid no-wrapper">
           <div className="imgFooter">
-            <img src={LogoyName}  width="170px"/>
+            <img src={Logo}  width="170px"/>
             <div></div>
             <div></div>
             <div></div>
@@ -41,12 +41,17 @@ export const Footer = () => {
                   <i class="fa-brands fa-github icon_footer"></i>
                 </div>
               </div>
+                <div className="location_footer">
+                  <div className="icon_location_footer">
+                    <i class="fa-solid fa-globe"></i>
+                  </div>
+                  <div>
+                    <p>Rosario, Santa Fe</p>
+                  </div>
+                </div>
             </div>
           </div>
         </div>
-        {/* <span>Terminos y condiciones</span><span>Politica de privacidad</span>
-        <p style={{margin: "0px"}}>Version 1.2.0</p>
-        <img src={LogoCurcuma} alt="" /> */}
       </div>
       <div className="footer_hr">
         <hr />
