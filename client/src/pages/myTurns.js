@@ -11,7 +11,6 @@ export const MyTurns = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //fetch(`https://healthy-dent-back-end.fly.dev/list/turn/${item[0].id}`)
     fetch(`${url}/list/turn/${item[0].id}`)
       .then((response) => response.json())
       .then((res) => {
@@ -20,7 +19,7 @@ export const MyTurns = () => {
       });
   }, [isLoading]);
 
-console.log(user)
+
   return (
     <Layout>
       {

@@ -16,7 +16,6 @@ export const Perfil = () => {
 
   
   useEffect(() => {
-    //fetch(`https://healthy-dent-back-end.fly.dev/user/${item[0].id}`)
     fetch(`${url}/user/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
@@ -24,7 +23,6 @@ export const Perfil = () => {
       setIsLoadingUser(false); 
     });
     
-    //fetch(`https://healthy-dent-back-end.fly.dev/user/prepaid/${item[0].id}`)
     fetch(`${url}/user/prepaid/${item[0].id}`)
     .then((response) => response.json())
     .then((res) => {
