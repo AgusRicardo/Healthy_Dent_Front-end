@@ -4,26 +4,11 @@ import "../styles/home.css";
 import img from "../img/img1.jpg";
 import img2 from "../img/img2.jpg";
 import img3 from "../img/img3.jpg";
-import logo from "../img/logo.png"
 import { Footer } from "../components/Footer";
 
 export const Home = () => {
   return (
     <Layout>
-      {/* ESTO PROVOCA SCROLL HORIZONTAL */}
-      {/* <section className="intro">
-      <div className="row gx-5 align-items-center">
-                    <div className="col-lg-6">
-                        <div className="mb-5 mb-lg-0  firstcolumintro">
-                            <h1 className=" titlemarca display-1 lh-1 mb-3">Healthy Dent</h1>
-                            <p className="descripmarca lead fw-normal text-muted mb-5">Un lugar donde pacientes y odontologos tienen todo</p>
-                        </div>
-                    </div>
-                    <div className="col-lg-6">
-                      <img src={logo}></img>
-                    </div>
-                </div>
-      </section> */}
       <section className="carousel container-fluid no-wrapper">
         <div
           id="carouselExampleControls"

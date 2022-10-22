@@ -5,7 +5,7 @@ import { unauthenticateUser } from "../redux/slices/authSlice";
 import { useDispatch } from "react-redux";
 import { onLogout } from "../api/auth";
 import { deleteItem } from "../redux/slices/userSlice";
-import logonav from "../img/logo.png";
+import logonav from "../img/logoynombre.png";
 import "../styles/navbar.css";
 
 

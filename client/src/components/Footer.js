@@ -1,22 +1,17 @@
 import React from "react";
 import "../styles/footer.css";
 import LogoCurcuma from "../img/Curcuma_1.png";
-import Logo from "../img/logo.png";
+import Logo from "../img/logoynombre.png";
 
 export const Footer = () => {
   return (
     <section className="footer no-wrapper">
       <div className="container-fluid no-wrapper">
-          <div className="imgFooter">
-            <img src={Logo}  width="170px"/>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
         <div className="container text-center footer_text">
           <div className="row">
+            <div className="col">
+            <img src={Logo}  width="170px"/>
+            </div>
             <div className="col">
               <div>
                 <h4><b>Sobre nosotros</b></h4>
@@ -27,7 +22,9 @@ export const Footer = () => {
             </div>
             <div className="col">
               <h4><b>Partners</b></h4>
-              <img src={LogoCurcuma} alt="" width="150px" />
+              <a href="https://curcuma.vercel.app" target="_blank">
+                <img src={LogoCurcuma} alt="" width="150px" className="logoCurcuma" />
+              </a>
             </div>
             <div className="col">
               <h4><b>Redes sociales</b></h4>

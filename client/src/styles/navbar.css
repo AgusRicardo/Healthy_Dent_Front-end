@@ -4,6 +4,7 @@
   color: white;
 }
 .navbar {
+  padding-top: 0px;
 }
 NavLink {
   text-decoration: none !important;
@@ -11,7 +12,8 @@ NavLink {
 
 /*Logo*/
 .logonav {
-    width: 120px;
+    width: 140px;
+    margin-left: 20px;
 }
 
 /*botones sin inicio*/
