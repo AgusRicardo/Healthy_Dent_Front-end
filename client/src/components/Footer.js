@@ -15,9 +15,9 @@ export const Footer = () => {
             <div className="col">
               <div>
                 <h4><b>Sobre nosotros</b></h4>
-                <p className="footer_text_row"><a href="#">Home</a></p>
-                <p className="footer_text_row"><a href="https://github.com/AgusRicardo/Healthy_Dent_Front-end" target="_blank">Github repo Frontend</a></p>
-                <p className="footer_text_row"><a href="https://github.com/AgusRicardo/Healthy_Dent_Back-end" target="_blank">Github repo Backend</a></p>
+                <p className="footer_text_row"><a className="a_footer" href="#">Home</a></p>
+                <p className="footer_text_row"><a className="a_footer" href="https://github.com/AgusRicardo/Healthy_Dent_Front-end" target="_blank">Github repo Frontend</a></p>
+                <p className="footer_text_row"><a className="a_footer" href="https://github.com/AgusRicardo/Healthy_Dent_Back-end" target="_blank">Github repo Backend</a></p>
               </div>
             </div>
             <div className="col">

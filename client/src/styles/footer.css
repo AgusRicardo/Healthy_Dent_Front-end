@@ -17,11 +17,11 @@ width: 50px;
 .footer_text_row {
     color: white;
 }
-a {
+.a_footer {
     color: white;
     text-decoration: none;
 }
-a:hover{
+.a_footer:hover{
     background-color: unset !important;
     color: unset !important;
     text-decoration: underline #05c7f2 2px solid;
