@@ -1,0 +1,36 @@
+.gradient-custom {
+  background: #05c7f2;
+  }
+  .card {
+    padding: 0px;
+  }
+  .container_profile{
+    height: 80vh !important;
+  }
+  .text-white{
+    border-top-left-radius: .5rem; 
+    border-bottom-left-radius: .5rem;
+  }
+
+  .btn_edit_profile {
+    cursor: pointer;
+    background-color: #05c7f2;
+    border: #05c7f2;
+    color: white;
+  }
+  .btn_edit_profile:hover {
+    background-color: #05c7f2;
+    opacity: 0.8;
+    color: white;
+  }
+  .btn_edit_profile:focus {
+    background-color: #05c7f2;
+    color: white;
+    border: #05c7f2;
+    box-shadow: none !important;
+  }
+  .btn_edit_profile:active {
+    background-color: #05c7f2;
+    color: white;
+    border: #05c7f2;
+  }

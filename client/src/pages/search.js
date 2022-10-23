@@ -75,11 +75,11 @@ export const Search = () => {
           <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
             <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
-              <span className="input-group-text color_items" id="basic-addon2"><i className="fa-solid fa-magnifying-glass "></i></span>
+              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass "></i></span>
             </div>
             <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
-              <span className="input-group-text color_items" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
+              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
             </div>
           </div>
         <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">

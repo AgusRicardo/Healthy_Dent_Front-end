@@ -9,7 +9,20 @@
 NavLink {
   text-decoration: none !important;
 }
-
+.text_navbar {
+  text-decoration: none !important;
+  font-size: 17px;
+  color: black;
+  font-weight: 100;
+}
+.text_navbar:hover {
+  color: grey;
+}
+.icon_navbar {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #ed1a40;
+}
 /*Logo*/
 .logonav {
     width: 140px;
@@ -55,13 +68,13 @@ NavLink {
 /*botones con inicio*/
 .regprof{
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
   color: #00c0e7;
 }
 .searchprof{
   font-weight: bold;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
   color: #00c0e7;
 }

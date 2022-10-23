@@ -47,22 +47,22 @@ const Navbar = () => {
         {isAuth ? (
           <div className="navbar">
             <NavLink to="/register/professional" className="mx-3 regprof ">
-              <span>Registrate como profesional</span>
+              <a className="text_navbar">
+                <i class="fa-solid fa-user-doctor icon_navbar"></i>
+                Registrate como profesional
+                </a>
             </NavLink>
             <NavLink to="/search" className="mx-3 searchprof">
-              <span>Buscar profesional</span>
+              <a className="text_navbar">
+                <i class="fa-solid fa-magnifying-glass icon_navbar"></i>
+                Buscar profesional
+                </a>
             </NavLink>
             <div className="btn-group" role="group">
-              <button
-                id="btnGroupDrop1"
-                type="button"
-                className="btn btn-primary dropdown-toggle userbutton"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-              <i className="fa-regular fa-circle-user"></i>
+                <a class="nav-link dropdown-toggle text_navbar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i className="fa-solid fa-circle-user icon_navbar"></i>
                 {name} {last_name}
-              </button>
+                </a>
               <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <li>
                   <NavLink to="/profile" style={{ textDecoration: "none" }}>
