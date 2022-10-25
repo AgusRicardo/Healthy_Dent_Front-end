@@ -48,18 +48,18 @@ const Navbar = () => {
           <div className="navbar">
             <NavLink to="/register/professional" className="mx-3 regprof ">
               <a className="text_navbar">
-                <i class="fa-solid fa-user-doctor icon_navbar"></i>
+                <i className="fa-solid fa-user-doctor icon_navbar"></i>
                 Registrate como profesional
                 </a>
             </NavLink>
             <NavLink to="/search" className="mx-3 searchprof">
               <a className="text_navbar">
-                <i class="fa-solid fa-magnifying-glass icon_navbar"></i>
+                <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
                 Buscar profesional
                 </a>
             </NavLink>
             <div className="btn-group" role="group">
-                <a class="nav-link dropdown-toggle text_navbar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a className="nav-link dropdown-toggle text_navbar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i className="fa-solid fa-circle-user icon_navbar"></i>
                 {name} {last_name}
                 </a>
