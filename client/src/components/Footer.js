@@ -31,16 +31,16 @@ export const Footer = () => {
               <div className="row">
                 <p>Para estar al tanto de cualquier novededad, seguínos en todas nuestras redes sociales</p>
                 <div className="container_icons_footer">
-                  <i class="fa-brands fa-twitter icon_footer"></i>
-                  <i class="fa-brands fa-facebook icon_footer"></i>
-                  <i class="fa-brands fa-instagram icon_footer"></i>
-                  <i class="fa-brands fa-linkedin icon_footer"></i>
-                  <i class="fa-brands fa-github icon_footer"></i>
+                  <i className="fa-brands fa-twitter icon_footer"></i>
+                  <i className="fa-brands fa-facebook icon_footer"></i>
+                  <i className="fa-brands fa-instagram icon_footer"></i>
+                  <i className="fa-brands fa-linkedin icon_footer"></i>
+                  <i className="fa-brands fa-github icon_footer"></i>
                 </div>
               </div>
                 <div className="location_footer">
                   <div className="icon_location_footer">
-                    <i class="fa-solid fa-globe"></i>
+                    <i className="fa-solid fa-globe"></i>
                   </div>
                   <div>
                     <p>Rosario, Santa Fe</p>
@@ -54,8 +54,8 @@ export const Footer = () => {
         <hr />
       </div>
       <div className="row">
-        <p>Copyrigth<i class="fa-regular fa-copyright"></i>by Healthy Dent. All rigth reserved.</p>
-        <span>v.1.3.0</span>
+        <p>Copyrigth<i className="fa-regular fa-copyright"></i>by Healthy Dent. All rigth reserved.</p>
+        <span>v.1.3.1</span>
       </div>
     </section>
   );
