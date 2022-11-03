@@ -37,9 +37,9 @@ export const Perfil = () => {
       ) : (
         <section className="">
           <div className="">
-            <div className="d-flex justify-content-center align-items-center container_profile">
-              <div className="col col-lg-6 mb-4 mb-lg-0">
-                <div className="card mb-3">
+            <div className="d-flex justify-content-center align-items-center container_profile ">
+              <div className="col col-lg-6 mb-4 mb-lg-0 ">
+                <div className="card mb-3 profile">
                   <div className="row g-0">
                     <div className="col-md-4 gradient-custom text-center text-white">
                       <img

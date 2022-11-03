@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
 import { selectUser } from '../redux/slices/userSlice';
+import "../styles/turno.css";
 
 export const Turno = () => {
   const item = useSelector(selectUser)
@@ -78,10 +79,14 @@ useEffect(() => {
       {isLoadingPrepaid && setIsLiadingPlace ? (
         <Loading/>
       ) : (
-      <form onSubmit={(e) => onSubmit(e)} className='container col-md-6 offset-md-3'>
+        <div className="container-login container regcontainer" id="container">
+          <div>
+          <form onSubmit={(e) => onSubmit(e)} className='container'>
         <br />
         <h1 style={{ textAlign: 'center' }} >Sacá tu turno</h1>
         <br />
+        <h5 className='subtitleform'>Datos del turno</h5>
+          <hr className='separador sepreg'></hr>
         <div className='row g-2 mb-3'>
         <div className="col-md">
             <div className="form-floating">
@@ -116,25 +121,6 @@ useEffect(() => {
                 }
               </select>
               <label htmlFor="floatingSelectGrid">Lugar de atención</label>
-            </div>
-          </div>
-        </div>
-        <div className='mb-3'>
-          <div className="col-md">
-            <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="payment_id" onChange={(e) => onChange(e)}>
-                <option selected value="DEFAULT" disabled>Seleccione un método de pago...</option>
-                <option value="1">Efectivo</option>
-                <option value="2">Débito Marstercard</option>
-                <option value="3">Crédito Mastercard</option>
-                <option value="4">Mercado Pago</option>
-                <option value="5">Crédito Santa Fe</option>
-                <option value="6">Crédito Santander</option>
-                <option value="7">Débito Santander</option>
-                <option value="8">Crédito Visa</option>
-                <option value="9">Débito Visa</option>
-              </select>
-              <label htmlFor="floatingSelectGrid">Método de pago</label>
             </div>
           </div>
         </div>
@@ -195,6 +181,28 @@ useEffect(() => {
               </label>
             </div>
           </div>
+          <br></br>
+          <h5 className='subtitleform'>Formas de pago</h5>
+          <hr className='separador sepreg'></hr>
+          <div className='mb-3'>
+          <div className="col-md">
+            <div className="form-floating">
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="payment_id" onChange={(e) => onChange(e)}>
+                <option selected value="DEFAULT" disabled>Seleccione un método de pago...</option>
+                <option value="1">Efectivo</option>
+                <option value="2">Débito Marstercard</option>
+                <option value="3">Crédito Mastercard</option>
+                <option value="4">Mercado Pago</option>
+                <option value="5">Crédito Santa Fe</option>
+                <option value="6">Crédito Santander</option>
+                <option value="7">Débito Santander</option>
+                <option value="8">Crédito Visa</option>
+                <option value="9">Débito Visa</option>
+              </select>
+              <label htmlFor="floatingSelectGrid">Método de pago</label>
+            </div>
+          </div>
+        </div>
           <br/>
         {
           error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
@@ -202,10 +210,16 @@ useEffect(() => {
         {
           success && <div className="alert alert-success" role="alert" style={{ color: 'green', margin: '10px 0', fontSize: '18px' }}>{success}</div>
         }
-        <button type='submit' className='btn btn-primary'>
+        <div className='containerbuttonregprof divbuttonturn'>
+        <button type='submit' className='btn btn-primary soliturnbutton '>
           Solicitar turno
         </button>
+        </div>
       </form>
+          </div>
+        </div>
+
+      
       )}
     </Layout>
   )

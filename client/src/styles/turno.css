@@ -1,0 +1,19 @@
+
+.soliturnbutton {
+    font-weight: 400;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 10px 40px 10px 40px;
+    border-radius: 25px;
+    margin: 10px;
+    border: 1px solid #05c7f2;
+    background-color: #05c7f2;
+  }
+  .soliturnbutton:hover {
+    background-color: #05c7f2;
+    opacity: 0.8;
+    border: 1px solid #05c7f2;
+  }
+  .divbuttonturn{
+    padding: 0px 15px 0px 15px;
+  }
