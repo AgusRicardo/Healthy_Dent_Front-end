@@ -64,6 +64,7 @@ export const Login = () => {
             className='form-control input_login'
             id='email_user'
             name='email_user'
+            readonly onFocus="this.removeAttribute('readonly');"
             autoComplete='off'
             required
             />
@@ -74,6 +75,7 @@ export const Login = () => {
             value={values.password}
             className='form-control input_login'
             id='password'
+            readonly onFocus="this.removeAttribute('readonly');"
             name='password'
             autoComplete='off'
             required
