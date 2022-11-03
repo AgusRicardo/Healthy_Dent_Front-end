@@ -150,7 +150,7 @@ useEffect(() => {
                 name='date'
                 placeholder='Fecha'
                 autoComplete='off'
-                min="2022-11-01" 
+                min="2022-11-07" 
                 max="2023-12-31"
                 required
               />
