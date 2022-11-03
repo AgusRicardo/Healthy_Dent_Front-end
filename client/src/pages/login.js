@@ -49,7 +49,7 @@ export const Login = () => {
     <Layout>
       <div className="container-login container" id="container">
         <div className="form-container sign-in-container">
-          <form onSubmit={(e) => onSubmit(e)} className="form_login">
+          <form onSubmit={(e) => onSubmit(e)} className="form_login" autocomplete="off">
             <h1 className='h1_login'>Iniciar sesión</h1>
             <div className="social-container">
               <a className="social a_icon"><i className="fab fa-facebook-f"></i></a>
