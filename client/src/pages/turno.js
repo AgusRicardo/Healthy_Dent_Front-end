@@ -172,6 +172,7 @@ useEffect(() => {
                 className='form-control'
                 id='treatment'
                 name='treatment'
+                maxLength="45"
                 placeholder='treatment'
                 autoComplete='off'
                 required
