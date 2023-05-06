@@ -1,4 +1,3 @@
-
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { unauthenticateUser } from "../redux/slices/authSlice";
@@ -8,7 +7,6 @@ import { deleteItem } from "../redux/slices/userSlice";
 import logonav from "../img/logoynombre.png";
 import "../styles/navbar.css";
 
-
 const Navbar = () => {
   const { isAuth } = useSelector((state) => state.authh);
 
@@ -17,7 +15,6 @@ const Navbar = () => {
     try {
       await onLogout();
 
-
       dispatch(unauthenticateUser());
       dispatch(deleteItem());
       localStorage.removeItem("isAuth");
@@ -25,7 +22,6 @@ const Navbar = () => {
       localStorage.removeItem("name");
       localStorage.removeItem("last_name");
       localStorage.removeItem("password");
-
     } catch (error) {
       console.log(error.response);
     }
@@ -38,9 +34,21 @@ const Navbar = () => {
       <div className="container-fluid shadow ">
         <div className="logohd">
           <div className="logonav ">
-            <NavLink to="/">
-              <img src={logonav} className="logonav"/>
-            </NavLink>
+            {!isAuth ? (
+              <NavLink to="/">
+                <img
+                  src={logonav}
+                  className="logonav"
+                  alt="Logo de Healthy-Dent"
+                />
+              </NavLink>
+            ) : (
+              <img
+                src={logonav}
+                className="logonav"
+                alt="Logo de Healthy-Dent"
+              />
+            )}
           </div>
         </div>
 
@@ -50,19 +58,24 @@ const Navbar = () => {
               <a className="text_navbar">
                 <i className="fa-solid fa-user-doctor icon_navbar"></i>
                 Registrate como profesional
-                </a>
+              </a>
             </NavLink>
             <NavLink to="/search" className="mx-3 searchprof">
               <a className="text_navbar">
                 <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
                 Buscar profesional
-                </a>
+              </a>
             </NavLink>
             <div className="btn-group" role="group">
-                <a className="nav-link dropdown-toggle text_navbar" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a
+                className="nav-link dropdown-toggle text_navbar"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
                 <i className="fa-solid fa-circle-user icon_navbar"></i>
                 {name} {last_name}
-                </a>
+              </a>
               <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                 <li>
                   <NavLink to="/profile" style={{ textDecoration: "none" }}>
@@ -71,9 +84,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink to="/list/turn" style={{ textDecoration: "none" }}>
-                    <button className="dropdown-item">
-                      Mis turnos
-                    </button>
+                    <button className="dropdown-item">Mis turnos</button>
                   </NavLink>
                 </li>
                 <li>
@@ -86,15 +97,15 @@ const Navbar = () => {
           </div>
         ) : (
           <div>
-            <NavLink to='/login'>
+            <NavLink to="/login">
               <button type="button" className="btn btn-primary bn logbutton">
-                    Iniciar sesion
+                Iniciar sesion
               </button>
             </NavLink>
 
-            <NavLink to='/register'>
+            <NavLink to="/register">
               <button type="button" className="btn btn-primary bn regbutton">
-                  Registrate
+                Registrate
               </button>
             </NavLink>
           </div>

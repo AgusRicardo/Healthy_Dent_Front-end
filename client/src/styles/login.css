@@ -15,7 +15,12 @@
   color: #333;
   font-size: 14px;
   text-decoration: none;
-  margin: 15px 0;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.a_icon:hover {
+  text-decoration: underline;
 }
 
 .button_signIn {
@@ -72,9 +77,11 @@
   width: 768px;
   max-width: 100%;
   min-height: 480px;
-  margin-top: 100px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   display: flex !important;
   justify-content: center !important;
+  align-items: center !important;
 }
 
 .form-container {
@@ -200,4 +207,8 @@
   margin: 0 5px;
   height: 40px;
   width: 40px;
+}
+
+.loginProfessional {
+  text-decoration: none;
 }
