@@ -54,12 +54,6 @@ const Navbar = () => {
 
         {isAuth ? (
           <div className="navbar">
-            <NavLink to="/register/professional" className="mx-3 regprof ">
-              <a className="text_navbar">
-                <i className="fa-solid fa-user-doctor icon_navbar"></i>
-                Registrate como profesional
-              </a>
-            </NavLink>
             <NavLink to="/search" className="mx-3 searchprof">
               <a className="text_navbar">
                 <i className="fa-solid fa-magnifying-glass icon_navbar"></i>

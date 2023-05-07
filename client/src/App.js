@@ -46,10 +46,7 @@ const App = () => {
           <Route path="/profile" element={<Perfil />} />
           <Route path="/turn" element={<Turno />} />
           <Route path="/list/turn" element={<MyTurns />} />
-          <Route
-            path="/register/professional"
-            element={<RegisterProfessional />}
-          />
+          {/*<Route path="/register/professional" element={<RegisterProfessional />}/>*/}
         </Route>
       </Routes>
     </BrowserRouter>
