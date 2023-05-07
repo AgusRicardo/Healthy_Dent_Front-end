@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 export const LoginProfessional = () => {
   return (
     <Layout>
-      <div>TIENEN QUE DESARROLLARLO AJJAJAJAJA XD</div>
+      <div>ESTO ES PARA USTEDES ARY Y NEHU JAJAJ XD</div>
     </Layout>
   );
 };
