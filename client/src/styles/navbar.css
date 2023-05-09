@@ -5,6 +5,10 @@
 }
 .navbar {
   padding-top: 0px;
+  padding-bottom: 0px;
+  position: sticky;
+  z-index: 200;
+  top: 0;
 }
 NavLink {
   text-decoration: none !important;
@@ -25,17 +29,17 @@ NavLink {
 }
 /*Logo*/
 .logonav {
-    width: 140px;
+    width: 100px;
     margin-left: 20px;
 }
 
 /*botones sin inicio*/
 .bn {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 12px;
   text-decoration: none;
   display: inline-block;
-  padding: 10px 40px 10px 40px;
+  padding: 10px 30px 10px 30px;
   position: relative;
   border-radius: 25px;
   margin: 10px;

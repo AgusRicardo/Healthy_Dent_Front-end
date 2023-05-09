@@ -50,7 +50,7 @@ export const Login = () => {
           <form
             onSubmit={(e) => onSubmit(e)}
             className="form_login"
-            autocomplete="off"
+            autoComplete="off"
           >
             <h1 className="h1_login">Iniciar sesión</h1>
             <div className="social-container">

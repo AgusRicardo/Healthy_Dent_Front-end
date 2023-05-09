@@ -1,0 +1,26 @@
+#parentM li a:hover {
+  background-color: #262728;
+  cursor: pointer;
+}
+#parentM a{
+  color: white;
+}
+#parentM {
+  background-color: #4a4b4c !important;
+}
+.nav_content {
+  background-color: #4a4b4c !important;
+  text-align: center;
+  position: sticky;
+  max-width: 285px;
+}
+.nav_title {
+  padding: 0px !important;
+  margin: 10px 15px 10px 0px;
+}
+.nav_content_title{
+  position: fixed;
+}
+.nav_line{
+  width: 100% !important;
+}

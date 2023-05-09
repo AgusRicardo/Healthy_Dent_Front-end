@@ -25,58 +25,57 @@ export const MyTurns = () => {
       {isLoading ? (
         <Loading />
       ) : (
-          <section className="intro container tablaturn">
-            <div className="titulomyturn">
-              <h2>Mis turnos</h2>
-            </div>
-          
-            <div className="bg-image h-100 divtable ">
-              <div className="mask d-flex align-items-center h-100">
-                <div className="container">
-                  <div className="row justify-content-center">
-                    <div className="col-12">
-                      <div className="card">
-                        <div className="card-body p-0">
-                          <div
-                            className="table-responsive table-scroll"
-                            data-mdb-perfect-scrollbar="true"
-                            style={{ position: "relative", height: "700px" }}
-                          >
-                            <table className="table table-striped mb-0">
-                              <thead className="marcosuo">
-                                <tr>
-                                  <th scope="col">#</th>
-                                  <th scope="col">Profesional</th>
-                                  <th scope="col">Tratamiento</th>
-                                  <th scope="col">Fecha</th>
-                                  <th scope="col">Hora</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {user === undefined ||
-                                (user[0].date ||
-                                  user[0].hour ||
-                                  user[0].last_name ||
-                                  user[0].name) === null ? (
-                                  <div>Todavía no hay turnos</div>
-                                ) : (
-                                  user.map((turn, index) => (
-                                    <tr>
-                                      <th scope="row" key={turn.user_id}>
-                                        {index + 1}
-                                      </th>
-                                      <td>
-                                        {turn.name} {turn.last_name}
-                                      </td>
-                                      <td>{turn.treatment}</td>
-                                      <td>{turn.date.slice(0, -14)}</td>
-                                      <td>{turn.hour}</td>
-                                    </tr>
-                                  ))
-                                )}
-                              </tbody>
-                            </table>
-                          </div>
+        <section className="intro container tablaturn">
+          <div className="titulomyturn">
+            <h2>Mis turnos</h2>
+          </div>
+
+          <div className="bg-image h-100 divtable ">
+            <div className="mask d-flex align-items-center h-100">
+              <div className="container">
+                <div className="row justify-content-center">
+                  <div className="col-12">
+                    <div className="card">
+                      <div className="card-body p-0">
+                        <div
+                          className="table-responsive table-scroll"
+                          data-mdb-perfect-scrollbar="true"
+                          style={{ position: "relative", height: "700px" }}
+                        >
+                          <table className="table table-striped mb-0">
+                            <thead className="marcosuo">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Profesional</th>
+                                <th scope="col">Tratamiento</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {user === undefined ||
+                              (user[0].date ||
+                                user[0].hour ||
+                                user[0].last_name ||
+                                user[0].name) === null ? (
+                                <div>Todavía no hay turnos</div>
+                              ) : (
+                                user.map((turn, index) => (
+                                  <tr key={index}>
+                                    <th scope="row" key={turn.user_id}>
+                                      {index + 1}
+                                    </th>
+                                    <td>
+                                      {turn.name} {turn.last_name}
+                                    </td>
+                                    <td>{turn.treatment}</td>
+                                    <td>{turn.date.slice(0, -14)}</td>
+                                    <td>{turn.hour}</td>
+                                  </tr>
+                                ))
+                              )}
+                            </tbody>
+                          </table>
                         </div>
                       </div>
                     </div>
@@ -84,7 +83,8 @@ export const MyTurns = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
       )}
     </Layout>
   );
