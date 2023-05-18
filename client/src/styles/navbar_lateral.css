@@ -2,7 +2,7 @@
   background-color: #262728;
   cursor: pointer;
 }
-#parentM a{
+#parentM a {
   color: white;
 }
 #parentM {
@@ -18,9 +18,13 @@
   padding: 0px !important;
   margin: 10px 15px 10px 0px;
 }
-.nav_content_title{
+.nav_content_title {
   position: fixed;
 }
-.nav_line{
+.nav_line {
   width: 100% !important;
+}
+.bottonnav-item {
+  font-size: 18px;
+  text-decoration: none !important;
 }

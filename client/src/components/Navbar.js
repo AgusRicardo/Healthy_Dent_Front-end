@@ -55,12 +55,6 @@ const Navbar = () => {
 
           {isAuth ? (
             <div className="navbar">
-              <NavLink to="/search" className="mx-3 searchprof">
-                <a className="text_navbar">
-                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
-                  Buscar profesional
-                </a>
-              </NavLink>
               <div className="btn-group" role="group">
                 <a
                   className="nav-link dropdown-toggle text_navbar"
@@ -72,16 +66,6 @@ const Navbar = () => {
                   {name} {last_name}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                  <li>
-                    <NavLink to="/profile" style={{ textDecoration: "none" }}>
-                      <button className="dropdown-item">Perfil</button>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/list/turn" style={{ textDecoration: "none" }}>
-                      <button className="dropdown-item">Mis turnos</button>
-                    </NavLink>
-                  </li>
                   <li>
                     <button className="dropdown-item" onClick={() => logout()}>
                       Logout
