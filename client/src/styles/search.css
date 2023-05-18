@@ -1,4 +1,4 @@
-.color_items{
+.color_items {
   color: #1aedc7;
 }
 /*cartas*/
@@ -19,26 +19,30 @@
   font-size: 25px;
   margin-top: 15px;
 }
-.fa-regular{
+.fa-regular {
   padding: 10px;
 }
-.fa-brands{
+.fa-brands {
   padding: 10px;
 }
-.h5_specialization{
+.h5_specialization {
   margin-bottom: 20px;
   margin-top: 10px;
 }
-.items_pointer{
+.items_pointer {
   cursor: pointer;
 }
-.card_container{
-  box-shadow: 10px 10px 52px -34px #000000bf!important;
-  background: rgb(0,192,231);
+.card_container {
+  box-shadow: 10px 10px 52px -34px #000000bf !important;
+  background: rgb(0, 192, 231);
   border: white;
-  background: linear-gradient(83deg, rgba(0,192,231,1) 0%, rgba(255,255,255,1) 21%);
+  background: linear-gradient(
+    83deg,
+    rgba(0, 192, 231, 1) 0%,
+    rgba(255, 255, 255, 1) 21%
+  );
 }
-.imgdentist{
+.imgdentist {
   width: 130px;
 }
 /*boton de turno*/
@@ -49,10 +53,10 @@
   align-items: center;
 }
 
-.turnbutton{
+.turnbutton {
   background-color: #1aedc7;
-  color: white;
-  font-weight: bold;
+  color: #ffffff;
+  font-weight: 900 !important;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 17px;

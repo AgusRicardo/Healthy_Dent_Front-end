@@ -25,12 +25,12 @@ NavLink {
 .icon_navbar {
   font-size: 20px;
   margin-right: 10px;
-  color: #ed1a40;
+  color: #ffffff;
 }
 /*Logo*/
 .logonav {
-    width: 100px;
-    margin-left: 20px;
+  width: 100px;
+  margin-left: 20px;
 }
 
 /*botones sin inicio*/
@@ -70,19 +70,19 @@ NavLink {
 }
 
 /*botones con inicio*/
-.regprof{
+.regprof {
   font-weight: bold;
   /* text-transform: uppercase; */
   text-decoration: none;
   color: #00c0e7;
 }
-.searchprof{
+.searchprof {
   font-weight: bold;
   /* text-transform: uppercase; */
   text-decoration: none;
   color: #00c0e7;
 }
-.userbutton{
+.userbutton {
   background-color: #05c7f2;
   color: white;
   font-weight: bold;
@@ -98,8 +98,14 @@ NavLink {
   border: 1px solid #05c7f2;
 }
 
-.userbutton:hover{
+.userbutton:hover {
   background-color: #05c7f2;
   opacity: 0.8;
   border: 1px solid #05c7f2;
+}
+
+/*En teoria este es el icono*/
+.iconnav-user {
+  color: red !important;
+  margin-right: 5px;
 }

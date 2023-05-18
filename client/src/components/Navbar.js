@@ -62,7 +62,7 @@ const Navbar = () => {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  <i className="fa-solid fa-circle-user icon_navbar"></i>
+                  <i className="fa-solid fa-circle-user  iconnav-user"></i>
                   {name} {last_name}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
