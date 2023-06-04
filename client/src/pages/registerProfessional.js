@@ -9,7 +9,7 @@ const RegisterProfessional = () => {
   const item = useSelector(selectUser);
 
   const [values, setValues] = useState({
-    user_id: `${item[0].id}`,
+    /*user_id: `${item[0].id}`,*/
     n_matric: "",
     specialization: "",
   });

@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import { onRegistration } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/register.css";
+import { NavLink } from "react-router-dom";
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -254,7 +255,6 @@ export const Register = () => {
               </div>
             </div>
 
-            <br />
             {error && (
               <div
                 className="alert alert-danger"
@@ -265,13 +265,20 @@ export const Register = () => {
               </div>
             )}
             {success && (
+              <>
+              <div>
+                <NavLink to="/register/professional" className="registerBottom">
+                <a>Registrate como profesional</a>  
+                </NavLink>
+              </div>
               <div
                 className="alert alert-success"
                 role="alert"
                 style={{ color: "green", margin: "10px 0", fontSize: "18px" }}
               >
                 {success}
-              </div>
+            </div>
+              </>
             )}
             <div className="containerbutreg">
             <button type="submit" className="btn btn-primary regbutton">

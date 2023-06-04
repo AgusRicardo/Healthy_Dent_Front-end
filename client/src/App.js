@@ -39,6 +39,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/loginProfessional" element={<LoginProfessional />} />
+          <Route path="/register/professional" element={<RegisterProfessional />}/>
         </Route>
 
         <Route element={<PrivateRoutes />}>
@@ -46,7 +47,6 @@ const App = () => {
           <Route path="/profile" element={<Perfil />} />
           <Route path="/turn" element={<Turno />} />
           <Route path="/list/turn" element={<MyTurns />} />
-          {/*<Route path="/register/professional" element={<RegisterProfessional />}/>*/}
         </Route>
       </Routes>
     </BrowserRouter>
