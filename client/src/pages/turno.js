@@ -13,7 +13,7 @@ export const Turno = () => {
   const dispatch = useDispatch();
 
   const [isLoadingPrepaid, setIsLoadingPrepaid] = useState(true);
-  const [isLiadingPlace, setIsLiadingPlace] = useState(true)
+  const [isLoadingPlace, setIsLoadingPlace] = useState(true)
   const [prepaid, setPrepaid] = useState()
   const [place, setPlace] = useState()
   const [success, setSuccess] = useState(false)
@@ -43,7 +43,7 @@ useEffect(() => {
   .then((response) => response.json())
   .then((res) => {
     setPlace(res)
-    setIsLiadingPlace(false)
+    setIsLoadingPlace(false)
   })
 }, [])
 
@@ -66,6 +66,7 @@ useEffect(() => {
         date: "",
         treatment: "",
       })
+      console.log(values);
       dispatch(deleteTurn())
     } catch (error) {
       setError(error.response.data.errors[0].msg);
@@ -74,7 +75,7 @@ useEffect(() => {
   
   return (
     <Layout>
-      {isLoadingPrepaid && setIsLiadingPlace ? (
+      {isLoadingPrepaid && setIsLoadingPlace ? (
         <Loading/>
       ) : (
         <div className="container-login container regcontainer" id="container">
@@ -186,7 +187,7 @@ useEffect(() => {
           <div className='mb-3'>
           <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="payment_id" onChange={(e) => onChange(e)}>
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
                 <option selected value="DEFAULT" disabled>Seleccione un método de pago...</option>
                 <option value="1">Efectivo</option>
                 <option value="2">Débito Marstercard</option>
