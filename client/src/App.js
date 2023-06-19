@@ -14,12 +14,12 @@ import RegisterProfessional from "./pages/registerProfessional";
 import { Perfil } from "./pages/perfil";
 import { Turno } from "./pages/turno";
 import { MyTurns } from "./pages/myTurns";
-import { LoginProfessional } from "./pages/loginProfessional";
 
 const PrivateRoutes = () => {
   const { isAuth } = useSelector((state) => state.authh);
 
   return <>{isAuth ? <Outlet /> : <Navigate to="/login" />}</>;
+  
 };
 
 const RestrictedRoutes = () => {
@@ -38,7 +38,6 @@ const App = () => {
         <Route element={<RestrictedRoutes />}>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/loginProfessional" element={<LoginProfessional />} />
           <Route path="/register/professional" element={<RegisterProfessional />}/>
         </Route>
 

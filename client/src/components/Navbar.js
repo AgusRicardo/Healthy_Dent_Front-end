@@ -29,6 +29,7 @@ const Navbar = () => {
   const name = localStorage.getItem("name");
   const last_name = localStorage.getItem("last_name");
 
+
   return (
     <>
       <nav className="navbar fondonav">
