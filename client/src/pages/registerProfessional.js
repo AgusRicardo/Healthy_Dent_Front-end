@@ -24,7 +24,7 @@ const RegisterProfessional = () => {
     n_matric: "",
     specialization: "",
   });
-  console.log(values);
+
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
