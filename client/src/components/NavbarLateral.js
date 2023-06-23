@@ -58,6 +58,8 @@ const NavbarLateral = () => {
               <a
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
+                href="https://collectednotes.com/"
+                target="_blank"
               >
                 <i className="fa-solid fa-circle-info icon_navbar"></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>

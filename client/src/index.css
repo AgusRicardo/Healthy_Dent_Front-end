@@ -1,13 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya&family=Asap:wght@500&family=Caveat:wght@500&family=Josefin+Sans&family=Kalam&family=Playfair+Display:ital@1&family=Source+Serif+Pro&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 body {
-  font-family: 'Alegreya', serif;
-font-family: 'Asap', sans-serif;
-font-family: 'Caveat', cursive;
-font-family: 'Josefin Sans', sans-serif;
-font-family: 'Kalam', cursive;
-font-family: 'Playfair Display', serif;
-font-family: 'Source Serif Pro', serif;
+  font-family: 'Open Sans', sans-serif;
   position: relative;
   min-height: 100vh;
   background-color: #fafafa;
