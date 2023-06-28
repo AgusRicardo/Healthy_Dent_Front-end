@@ -182,28 +182,6 @@ useEffect(() => {
             </div>
           </div>
           <br></br>
-          <h5 className='subtitleform'>Formas de pago</h5>
-          <hr className='separador sepreg'></hr>
-          <div className='mb-3'>
-          <div className="col-md">
-            <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
-                <option selected value="DEFAULT" disabled>Seleccione un método de pago...</option>
-                <option value="1">Efectivo</option>
-                <option value="2">Débito Marstercard</option>
-                <option value="3">Crédito Mastercard</option>
-                <option value="4">Mercado Pago</option>
-                <option value="5">Crédito Santa Fe</option>
-                <option value="6">Crédito Santander</option>
-                <option value="7">Débito Santander</option>
-                <option value="8">Crédito Visa</option>
-                <option value="9">Débito Visa</option>
-              </select>
-              <label htmlFor="floatingSelectGrid">Método de pago</label>
-            </div>
-          </div>
-        </div>
-          <br/>
         {
           error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
         }
