@@ -1,12 +1,12 @@
 import { React, useState } from "react";
 import { onLogin } from "../api/auth";
+import { onLoginProfessional } from "../api/auth";
 import Layout from "../components/Layout";
 import { useDispatch } from "react-redux";
 import { authenticateUser } from "../redux/slices/authSlice";
 import { addItem } from "../redux/slices/userSlice";
 import { Loading } from "../components/Loading";
 import "../styles/login.css";
-import { NavLink } from "react-router-dom";
 
 export const Login = () => {
   const [values, setValues] = useState({
@@ -23,6 +23,8 @@ export const Login = () => {
   };
 
   const dispatch = useDispatch();
+
+  // Esto envía el login del paciente
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -34,10 +36,30 @@ export const Login = () => {
       localStorage.setItem("isAuth", "true");
       localStorage.setItem("name", `${data.payload.name}`);
       localStorage.setItem("last_name", `${data.payload.last_name}`);
+      localStorage.setItem("tipo", `${data.payload.tipo}`);
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
   };
+
+  // Esto envía el login del profesional
+  const onSubmitProfessional = async (e) => {
+    e.preventDefault();
+
+    try {
+      const { data } = await onLoginProfessional(values);
+      setIsLoading(true);
+      dispatch(authenticateUser());
+      dispatch(addItem(data.payload));
+      localStorage.setItem("isAuth", "true");
+      localStorage.setItem("name", `${data.payload.name}`);
+      localStorage.setItem("last_name", `${data.payload.last_name}`);
+      localStorage.setItem("tipo", `${data.payload.tipo}`);
+    } catch (error) {
+      setError(error.response.data.errors[0].msg);
+    }
+  };
+
   if (isLoading) {
     return (
       <Layout>
@@ -62,13 +84,13 @@ export const Login = () => {
         <div className="grid-container">
           <ul className="nav nav-tabs">
             <li>
-              <a className={!isActive ? 'button-extra-one nav-link active' : 'button-extra-one nav-link'}  onClick={() => btnChangePatient()}>Paciente</a>
+              <a className={!isActive ? 'button-extra-one nav-link cursor active' : 'button-extra-one nav-link cursor'}  onClick={() => btnChangePatient()}>Paciente</a>
             </li>
             <li>
-              <a className={isActive ? 'button-extra-two nav-link active' : 'button-extra-two nav-link'} onClick={() => btnChangeProfessional()}>Profesional</a>
+              <a className={isActive ? 'button-extra-two nav-link cursor active' : 'button-extra-two nav-link cursor'} onClick={() => btnChangeProfessional()}>Profesional</a>
             </li>
           </ul>
-          { !btnLogin ? (
+          { !btnLogin ? ( // ESTO ES EL LOGIN DEL PACIENTE
             <div className="container-login container" id="container">
             <div className="form-container sign-in-container">
               <form
@@ -130,10 +152,11 @@ export const Login = () => {
               </div>
             </div>
           </div>
-            ) : (
+            ) : ( // ESTO ES EL LOGIN DEL PROFESIONAL
               <div className="container-login container" id="container">
             <div className="form-container sign-in-container-prof">
               <form
+                onSubmit={(e) => onSubmitProfessional(e)}
                 className="form_login"
                 autoComplete="off"
               >

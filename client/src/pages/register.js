@@ -170,7 +170,7 @@ export const Register = () => {
                       name="prepaid_id"
                       onChange={(e) => onChange(e)}
                     >
-                      <option selected value="DEFAULT" disabled>
+                      <option defaultValue value="DEFAULT" disabled>
                         Seleccione su obra social ...
                       </option>
                       <option value="1">Particular</option>

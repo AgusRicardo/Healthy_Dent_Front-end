@@ -18,6 +18,10 @@ export async function onLogin(loginData) {
   return await axios.post(`${url}/login`, loginData)
 }
 
+export async function onLoginProfessional(loginData) {
+  return await axios.post(`${url}/loginProfessional`, loginData)
+}
+
 export async function onLogout() {
   return await axios.get(`${url}/logout`)
 }

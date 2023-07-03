@@ -7,6 +7,7 @@ const UserAuthFromLocalStorage = () => {
     localStorage.removeItem('isAuth')
     localStorage.removeItem('name')
     localStorage.removeItem('last_name')
+    localStorage.removeItem('tipo')
   }
   
   return false

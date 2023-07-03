@@ -21,7 +21,6 @@ export const Perfil = () => {
         setUser(res);
         setIsLoadingUser(false);
       });
-
     fetch(`${url}/user/prepaid/${item[0].id}`)
       .then((response) => response.json())
       .then((res) => {
