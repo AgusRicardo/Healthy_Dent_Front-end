@@ -29,7 +29,7 @@ const NavbarLateral = () => {
                 >
                   <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    ESTADISTICAS PRUEBA
+                    AGENDA PRUEBA
                   </span>
                 </a>
               </NavLink>

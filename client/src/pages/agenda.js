@@ -4,7 +4,7 @@ import "../styles/estadisticas.css";
 import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
 
-export const Estadisticas = () => {
+export const Agenda = () => {
   const [date, setDate] = useState(new Date());
   const [currentMonth, setCurrentMonth] = useState('');
   const today = date.getDate();
