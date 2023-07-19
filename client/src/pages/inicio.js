@@ -24,10 +24,7 @@ export const Inicio = () => {
               <div className='prof-title'>
                 <ul className='nav nav-tabs nav-tabs-home'>
                   <li>
-                    <NavLink
-                      to="/calendar"
-                      className=""
-                    >
+                    <NavLink to='/calendar' className='nav-text'>
                       <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                         <i className='fa-solid fa-calendar size-font'></i>
                         Agenda
