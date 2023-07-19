@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/inicio.css';
 import Navbar from '../components/Navbar';
+import { NavLink } from 'react-router-dom';
 
 export const Inicio = () => {
 
@@ -23,10 +24,15 @@ export const Inicio = () => {
               <div className='prof-title'>
                 <ul className='nav nav-tabs nav-tabs-home'>
                   <li>
-                    <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
-                      <i className='fa-solid fa-calendar size-font'></i>
-                      Agenda
-                    </a>
+                    <NavLink
+                      to="/calendar"
+                      className=""
+                    >
+                      <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                        <i className='fa-solid fa-calendar size-font'></i>
+                        Agenda
+                      </a>
+                    </NavLink>
                   </li>
                   <li>
                     <a className='button-extra-one nav-link cursor active text1 nav-link-home'>

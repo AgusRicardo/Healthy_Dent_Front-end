@@ -20,7 +20,23 @@ const NavbarLateral = () => {
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
               <NavLink
-                to="/statistics"
+                to="/inicio"
+                className="ms-2 d-none d-sm-inline bottonnav-item"
+              >
+                <a
+                  className="nav-link text-center text-sm-start"
+                  aria-current="page"
+                >
+                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    INICIO PRUEBA
+                  </span>
+                </a>
+              </NavLink>
+            </li>
+            <li className="nav-item text-white my-1 py-2 py-sm-2 ">
+              <NavLink
+                to="/calendar"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
               >
                 <a
