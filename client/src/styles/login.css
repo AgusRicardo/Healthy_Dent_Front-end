@@ -20,7 +20,7 @@
 }
 
 .a_icon:hover, .a_icon:focus {
-  color: #05c7f2;
+  color: #00c1fc;
   text-decoration: none;
 }
 
@@ -30,8 +30,8 @@
 
 .button_signIn {
   border-radius: 20px;
-  border: 1px solid #05c7f2;
-  background-color: #05c7f2;
+  border: 1px solid #00c1fc;
+  background-color: #00c1fc;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -271,17 +271,17 @@
 
 .button-extra-one{
   color: #706b6b;
-  background-color: #05c7f2;
+  background-color: #00c1fc;
 }
 
 .button-extra-one:active {
-  background-color: #05c7f2;
-  border-color: #05c7f2;
+  background-color: #00c1fc;
+  border-color: #00c1fc;
 }
 
 .button-extra-two:active {
-  background-color: #05c7f2;
-  border-color: #05c7f2;
+  background-color: #00c1fc;
+  border-color: #00c1fc;
 }
 
 .nav-tabs .nav-link {
@@ -296,8 +296,8 @@
 
 .nav-tabs .nav-link.active {
   color: white;
-  background-color: #05c7f2;
-  border-color: #dee2e6 #dee2e6 #fff;
+  background-color: #00c1fc;
+  border-color: #00c1fc;
   box-shadow: 0 5px 6px rgba(0, 0, 0, 0.25), 0 5px 17px rgba(0, 0, 0, 0.22);
 }
 
@@ -306,5 +306,5 @@
 }
 
 .nav-link:focus, .nav-link:hover {
-  color: #05c7f2;
+  color: #00c1fc;
 }
