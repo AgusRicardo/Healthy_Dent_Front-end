@@ -15,6 +15,7 @@ import { Perfil } from "./pages/perfil";
 import { Turno } from "./pages/turno";
 import { MyTurns } from "./pages/myTurns";
 import { Inicio } from "./pages/inicio";
+import { Estadisticas } from "./pages/estadisticas";
 
 const PacienteRoutes = () => {
   const { isAuth } = useSelector((state) => state.authh);
@@ -52,7 +53,7 @@ const App = () => {
           <Route path="/register/professional" element={<RegisterProfessional />}/>
         </Route>
 
-        {/* RUTAS DEL PROFESIONAL */}
+        {/* RUTAS DEL PACIENTE */}
         {isAuth && tipo === "Paciente" ? (
           <Route element={<PacienteRoutes />}>
             <Route path="/inicio" element={<Inicio />} />
@@ -69,6 +70,7 @@ const App = () => {
         {isAuth && tipo === "Profesional" ? (
           <Route element={<ProfessionalRoutes />}>
             <Route path="/inicio" element={<Inicio />} />
+            <Route path="/statistics" element={<Estadisticas />} />
           </Route>
         ) : (
           <Route path="/" element={<Home />} />
