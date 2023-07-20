@@ -7,18 +7,17 @@
 }
 .calendario{
   background-color: white;
-  margin: 10px;
+  margin: 40px;
   min-width: 50vw;
   max-width: 50vw;
   min-height: 40vh;
   max-height: 40vh;
   display: flex;
-  /* flex-flow: row wrap; */
   align-items: center;
   align-content: center;
 }
 .react-calendar__tile:disabled{
-  background-color: white;
+  background-color: transparent ;
   color: black;
 }
 .btn_reset {
@@ -176,6 +175,14 @@ abbr[title] {
   background: #f8f8fa !important;
   border-radius: 30px;
   color: white;
+}
+
+.react-calendar__tile--active abbr {
+  color: white ;
+}
+
+.react-calendar__tile:disabled {
+  background-color: none;
 }
  
 .react-calendar--selectRange .react-calendar__tile--hover {
