@@ -38,10 +38,12 @@ export const Inicio = () => {
                     </a>
                   </li>
                   <li>
+                    <NavLink to='/estadisticas' className='nav-text'>
                     <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                       <i className='fa-solid fa-chart-line size-font'></i>
                       Estadisticas
                     </a>
+                    </NavLink>
                   </li>
                   <li>
                     <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
