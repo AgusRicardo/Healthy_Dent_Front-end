@@ -2,20 +2,45 @@
     border-radius: 4px;
     background: #C0F1FC;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    margin-top:20px;
+    margin-top: 20px;
     padding: 20px;
+    width: 650px;
+    height: 740px;
+    margin-top: 40px;
   }
+  
   
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100% !important;
   }
 
   .container_img {
     display: flex;
-    justify-content: center;
-    flex-flow: column !important;
+    flex-flow: row;
+    margin-left: 64px;
   }
-  
+
+  .icono-perfil-prof {
+    color:#00c1fc;
+    font-size: 170px;
+    margin: 10px;
+    margin-left: 36px;
+  }
+
+  .container_form { 
+    margin-top: -6px;
+  }
+
+  .fields { 
+    margin-top: 20px;
+  }
+
+  .inputreg-prof { 
+    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 280px;
+  }
