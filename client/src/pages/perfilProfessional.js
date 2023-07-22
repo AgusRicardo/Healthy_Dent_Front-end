@@ -151,6 +151,9 @@ export const PerfilProfessional = () => {
               </div>
             </div>
           </div>
+          <div>
+          <button className="Button-edit">Editar</button>
+          </div>
         </div>
       </section>
     </Layout>
