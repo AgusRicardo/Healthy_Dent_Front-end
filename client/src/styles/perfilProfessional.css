@@ -19,7 +19,7 @@
   .container_img {
     display: flex;
     flex-flow: row;
-    margin-left: 64px;
+    margin-left: 60px;
   }
 
   .icono-perfil-prof {
