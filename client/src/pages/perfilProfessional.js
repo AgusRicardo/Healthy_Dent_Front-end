@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/perfilProfessional.css";
+import { Loading } from "../components/Loading";
+import { selectUser } from "../redux/slices/userSlice";
 
 export const PerfilProfessional = () => {
 
+  const item = useSelector(selectUser);
+  const [user, setUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${url}/professional/profile/${item[0].id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        setUser(res);
+        setIsLoading(false);
+      });
+  }, [isLoading]);
+
   return (
     <Layout>
+      {isLoading ? (
+        <Loading />
+      ) : (
       <section className='container'>
         <div className='squaro'>
           <div className='container_img'>
@@ -20,9 +40,11 @@ export const PerfilProfessional = () => {
                     placeholder="name"
                     autoComplete="off"
                     required
+                    value={user[0].name}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
-                    Nombre
+                    Nombre:
                   </label>
                 </div>
               </div>
@@ -36,6 +58,8 @@ export const PerfilProfessional = () => {
                     placeholder="last_name"
                     autoComplete="off"
                     required
+                    value={user[0].last_name}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Apellido
@@ -54,6 +78,8 @@ export const PerfilProfessional = () => {
                     min="1920-01-01"
                     max="2004-01-01"
                     required
+                    value={(new Date(user[0].date_birth)).toISOString().split('T')[0]}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Fecha de nacimiento
@@ -78,6 +104,8 @@ export const PerfilProfessional = () => {
                     placeholder="direccion"
                     autoComplete="off"
                     required
+                    value={user[0].address_user}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Direccion
@@ -94,6 +122,8 @@ export const PerfilProfessional = () => {
                     placeholder="telefono"
                     autoComplete="off"
                     required
+                    value={user[0].telephone}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Teléfono
@@ -110,6 +140,8 @@ export const PerfilProfessional = () => {
                     placeholder="test@gmail.com"
                     autoComplete="off"
                     required
+                    value={user[0].email_user}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Email
@@ -126,6 +158,8 @@ export const PerfilProfessional = () => {
                     placeholder="especializacion"
                     autoComplete="off"
                     required
+                    value={user[0].specialization}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Especializacion
@@ -143,6 +177,8 @@ export const PerfilProfessional = () => {
                     autoComplete="off"
                     maxLength="10"
                     required
+                    value={user[0].n_matric}
+                    disabled
                   />
                   <label className="form-label" htmlFor="floatingInputGrid">
                     Nro matricula
@@ -156,6 +192,8 @@ export const PerfilProfessional = () => {
           </div>
         </div>
       </section>
+      )}
+      
     </Layout>
   )
 }
