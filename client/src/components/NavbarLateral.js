@@ -29,7 +29,7 @@ const NavbarLateral = () => {
                 >
                   <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    INICIO PRUEBA
+                    INICIO 
                   </span>
                 </a>
               </NavLink>
@@ -102,6 +102,21 @@ const NavbarLateral = () => {
           <hr className="text-white d-none d-sm-block nav_line" />
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
+            <NavLink
+                to=""//se agregar al futuro 
+                className="ms-2 d-none d-sm-inline bottonnav-item"
+              >
+                <a
+                  className="nav-link text-center text-sm-start"
+                  aria-current="page"
+                >
+                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <span className="ms-2 d-none d-sm-inline">
+                    INICIO 
+                  </span>
+                </a>
+              </NavLink>
+              
               <NavLink
                 to="/search"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
