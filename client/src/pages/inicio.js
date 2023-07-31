@@ -59,13 +59,58 @@ export const Inicio = () => {
                       Ayuda
                     </a>
                   </li>
+                  <div className='container square squareProf'></div>
                 </ul>
               </div>
-            <div className='container square'></div>
           </div>
         </div>
       ) : ( // MENÚ PACIENTE
-        <h1>Próximamente paciente</h1>
+      <div>
+      <Navbar />
+      <div className='container'>
+        <div className='prof-title'>
+          <i className='fa-solid fa-circle-user icono-perfil'></i>
+        </div>
+        <div className='prof-title'>
+          <h1 className='welcome'>Bienvenido {last_name}</h1>
+        </div>
+          <div className='prof-title'>
+            <ul className='nav nav-tabs nav-tabs-home'>
+              <li>
+                <NavLink to='/search' className='nav-text'>
+                  <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                  <i class="fa-solid fa-magnifying-glass size-font"></i>
+                    Buscar profesional
+                  </a>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/profile' className='nav-text'>
+                <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                  <i className='fa-solid fa-user size-font'></i>
+                  Mi perfil
+                </a>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/list/turn' className='nav-text'>
+                <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                  <i class="fa-solid fa-notes-medical size-font"></i>
+                  Turnos
+                </a>
+                </NavLink>
+              </li>
+              <li>
+                <a href='https://collectednotes.com/' className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                  <i className='fa-solid fa-circle-info size-font'></i>
+                  Ayuda
+                </a>
+              </li>
+              <div className='container square'></div>
+            </ul>
+          </div>
+      </div>
+    </div>
       )
     }
     </>
