@@ -20,6 +20,7 @@ const NavbarLateral = () => {
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
               <NavLink
+
                 to="/inicio"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
               >
@@ -27,9 +28,9 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <i class="fa-solid fa-house size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    INICIO 
+                    Inicio 
                   </span>
                 </a>
               </NavLink>
@@ -43,37 +44,50 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <i className='fa-solid fa-calendar size-font'></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    AGENDA PRUEBA
+                    Agenda
                   </span>
                 </a>
               </NavLink>
             </li>
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
               <NavLink 
-              //to="/list/turn" 
+              to='/perfilProfessional'
               className="bottonnav-item">
                 <a
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-list icon_navbar"></i>
-                  <span className="ms-2 d-none d-sm-inline">Opcion 2</span>
+                 <i className='fa-solid fa-user size-font'></i>
+                  <span className="ms-2 d-none d-sm-inline">Mi perfil</span>
                 </a>
               </NavLink>
             </li>
 
             <li className="nav-item text-white my-1 py-2 py-sm-2 bottonnav-item">
               <NavLink 
-              //to="/profile" 
+              to='/estadisticas'
               className="bottonnav-item">
                 <a
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-address-card icon_navbar"></i>
-                  <span className="ms-2 d-none d-sm-inline">Opcion 3</span>
+                  <i className='fa-solid fa-chart-line size-font'></i>
+                  <span className="ms-2 d-none d-sm-inline">Estadisticas</span>
+                </a>
+              </NavLink>
+            </li>
+            <li className="nav-item text-white my-1 py-2 py-sm-2 ">
+              <NavLink 
+              
+              className="bottonnav-item">
+                <a
+                  className="nav-link text-center text-sm-start"
+                  aria-current="page"
+                >
+                  <i className='fa-solid fa-users size-font'></i>
+                  <span className="ms-2 d-none d-sm-inline">Mis pacientes</span>
                 </a>
               </NavLink>
             </li>
@@ -84,7 +98,7 @@ const NavbarLateral = () => {
                 href="https://collectednotes.com/"
                 target="_blank"
               >
-                <i className="fa-solid fa-circle-info icon_navbar"></i>
+                <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
               </a>
             </li>
@@ -103,20 +117,21 @@ const NavbarLateral = () => {
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
             <NavLink
-                to=""//se agregar al futuro 
+                to="/inicio"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
               >
                 <a
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <i class="fa-solid fa-house size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    INICIO 
+                    Inicio
                   </span>
                 </a>
-              </NavLink>
-              
+            </NavLink>
+            </li>
+              <li className="nav-item text-white my-1 py-2 py-sm-2 "> 
               <NavLink
                 to="/search"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
@@ -125,10 +140,21 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-magnifying-glass icon_navbar"></i>
+                  <i class="fa-solid fa-magnifying-glass size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Buscar profesional
                   </span>
+                </a>
+              </NavLink>
+            </li>
+            <li className="nav-item text-white my-1 py-2 py-sm-2 bottonnav-item">
+              <NavLink to="/profile" className="bottonnav-item">
+                <a
+                  className="nav-link text-center text-sm-start"
+                  aria-current="page"
+                >
+                  <i className='fa-solid fa-user size-font'></i>
+                  <span className="ms-2 d-none d-sm-inline">Mi Perfil</span>
                 </a>
               </NavLink>
             </li>
@@ -138,23 +164,13 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i className="fa-solid fa-list icon_navbar"></i>
+                  <i class="fa-solid fa-notes-medical size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">Turnos</span>
                 </a>
               </NavLink>
             </li>
 
-            <li className="nav-item text-white my-1 py-2 py-sm-2 bottonnav-item">
-              <NavLink to="/profile" className="bottonnav-item">
-                <a
-                  className="nav-link text-center text-sm-start"
-                  aria-current="page"
-                >
-                  <i className="fa-solid fa-address-card icon_navbar"></i>
-                  <span className="ms-2 d-none d-sm-inline">Perfil</span>
-                </a>
-              </NavLink>
-            </li>
+            
             <li className="nav-item text-white my-1 py-2 py-sm-2 bottonnav-item">
               <a
                 className="nav-link text-center text-sm-start"
@@ -162,7 +178,7 @@ const NavbarLateral = () => {
                 href="https://collectednotes.com/"
                 target="_blank"
               >
-                <i className="fa-solid fa-circle-info icon_navbar"></i>
+                <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
               </a>
             </li>
