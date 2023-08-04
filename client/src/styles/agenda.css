@@ -213,3 +213,21 @@ abbr[title] {
   background: #f8f8fa;
   color: white;
 }
+
+.box-vtodos{
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-vtodos{
+  border-radius: 20px;
+  border: 1px solid #00c1fc;
+  background-color: #00c1fc;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-left: 430px;
+  margin-top: 20px;
+}

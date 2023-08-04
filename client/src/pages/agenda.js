@@ -81,7 +81,11 @@ export const Agenda = () => {
               </div>
           </div>
           <div className="ult_turnos style_container">
-            Turnos del día de hoy:
+            <div className="titulo-turnos">Turnos del dia de hoy:</div>
+            <div className="turnos-hoy"></div>
+            <div className="box-vtodos">
+            <button className="btn-vtodos">Ver Todos</button>
+            </div>
           </div>
         </section>
     </Layout>
