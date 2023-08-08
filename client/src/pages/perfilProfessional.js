@@ -1,16 +1,73 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { url } from "../api/auth";
+import { editProfile, url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/perfilProfessional.css";
 import { Loading } from "../components/Loading";
 import { selectUser } from "../redux/slices/userSlice";
 
 export const PerfilProfessional = () => {
-
   const item = useSelector(selectUser);
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [direccionDisabled, setdireccionDisabled] = useState(true);
+  const [telefonoDisabled, settelefonoDisabled] = useState(true);
+  const [emailDisabled, setEmailDisabled] = useState(true);
+  const [espeDisabled, setEspeDisabled] = useState(true);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [values, setValues] = useState({
+    "user_id": item[0].id,
+  });
+
+  const toggleInputCancelar = () => {
+    setdireccionDisabled(true);
+    settelefonoDisabled(true);
+    setEmailDisabled(true);
+    setEspeDisabled(true);
+    setIsLoading(true);
+    setSuccess(false);
+    setError(false);
+
+    setValues({
+      "user_id": item[0].id,
+    });
+  }
+
+  const toggleEdit = (controlName) => {
+    switch (controlName) {
+      case "Direccion":
+        setdireccionDisabled(!direccionDisabled);
+        settelefonoDisabled(true);
+        setEmailDisabled(true);
+        setEspeDisabled(true);
+        break;
+      case "Telefono":
+        settelefonoDisabled(!telefonoDisabled);
+        setdireccionDisabled(true);
+        setEmailDisabled(true);
+        setEspeDisabled(true);
+        break;
+      case "Email":
+        setEmailDisabled(!emailDisabled);
+        setdireccionDisabled(true);
+        settelefonoDisabled(true);
+        setEspeDisabled(true);
+        break;
+      case "Espe":
+        setEspeDisabled(!espeDisabled);
+        setdireccionDisabled(true);
+        settelefonoDisabled(true);
+        setEmailDisabled(true);
+        break;
+      default:
+        break;
+    }
+  }
+
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     fetch(`${url}/professional/profile/${item[0].id}`)
@@ -20,6 +77,36 @@ export const PerfilProfessional = () => {
         setIsLoading(false);
       });
   }, [isLoading]);
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (Object.keys(values).length > 1) {
+        const { data } = await editProfile(values);
+        setError("");
+        setSuccess(data.message);
+      }
+      setValues({
+        "user_id": item[0].id,
+      });
+      setIsLoading(true);
+      setdireccionDisabled(true);
+      settelefonoDisabled(true);
+      setEmailDisabled(true);
+      setEspeDisabled(true);
+    } catch (error) {
+      setValues({
+        "user_id": item[0].id,
+      });
+      setIsLoading(true);
+      setError(error.response.data.error);
+      setSuccess("");
+      setdireccionDisabled(true);
+      settelefonoDisabled(true);
+      setEmailDisabled(true);
+      setEspeDisabled(true);
+    }
+  };
 
   return (
     <Layout>
@@ -92,104 +179,136 @@ export const PerfilProfessional = () => {
             </div>
           </div>
 
-          <div className='container_img'>
-            <div className='container_form'>
-              <div className="col-md fields">
-                <div className="form-floating">
-                  <input
-                    type="text"
-                    className="form-control inputreg-prof"
-                    id="direccion"
-                    name="direccion"
-                    placeholder="direccion"
-                    autoComplete="off"
-                    required
-                    value={user[0].address_user}
-                    disabled
-                  />
-                  <label className="form-label" htmlFor="floatingInputGrid">
-                    Direccion
-                  </label>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <div className='container_img'>
+              <div className='container_form'>
+                <div className="col-md fields">
+                  <div className="form-floating">
+                    <input
+                      onChange={(e) => onChange(e)}
+                      type="text"
+                      className={`form-control inputreg-prof ${!direccionDisabled ? 'btn_active': ''}`}
+                      id="direccion"
+                      name="address_user"
+                      placeholder="direccion"
+                      autoComplete="off"
+                      required
+                      defaultValue={user[0].address_user}
+                      disabled={direccionDisabled}
+                    />
+                    <label className="form-label" htmlFor="floatingInputGrid">
+                      Dirección
+                    </label>
+                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Direccion")}></i>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md fields">
-                <div className="form-floating">
-                  <input
-                    type="number"
-                    className="form-control inputreg-prof"
-                    id="telefono"
-                    name="telefono"
-                    placeholder="telefono"
-                    autoComplete="off"
-                    required
-                    value={user[0].telephone}
-                    disabled
-                  />
-                  <label className="form-label" htmlFor="floatingInputGrid">
-                    Teléfono
-                  </label>
+                <div className="col-md fields">
+                  <div className="form-floating">
+                    <input
+                      onChange={(e) => onChange(e)}
+                      type="number"
+                      className={`form-control inputreg-prof ${!telefonoDisabled ? 'btn_active': ''}`}
+                      id="telefono"
+                      name="telephone"
+                      placeholder="telefono"
+                      autoComplete="off"
+                      required
+                      defaultValue={user[0].telephone}
+                      disabled={telefonoDisabled}
+                    />
+                    <label className="form-label" htmlFor="floatingInputGrid">
+                      Teléfono
+                    </label>
+                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Telefono")}></i>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md fields">
-                <div className="form-floating">
-                  <input
-                    type="email"
-                    className="form-control inputreg-prof"
-                    id="email"
-                    name="email"
-                    placeholder="test@gmail.com"
-                    autoComplete="off"
-                    required
-                    value={user[0].email_user}
-                    disabled
-                  />
-                  <label className="form-label" htmlFor="floatingInputGrid">
-                    Email
-                  </label>
+                <div className="col-md fields">
+                  <div className="form-floating">
+                    <input
+                      onChange={(e) => onChange(e)}
+                      type="email"
+                      className={`form-control inputreg-prof ${!emailDisabled ? 'btn_active': ''}`}
+                      id="email"
+                      name="email_user"
+                      placeholder="test@gmail.com"
+                      autoComplete="off"
+                      required
+                      defaultValue={user[0].email_user}
+                      disabled={emailDisabled}
+                    />
+                    <label className="form-label" htmlFor="floatingInputGrid">
+                      Email
+                    </label>
+                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Email")}></i>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md fields">
-                <div className="form-floating">
-                  <input
-                    type="text"
-                    className="form-control inputreg-prof"
-                    id="especializacion"
-                    name="especializacion"
-                    placeholder="especializacion"
-                    autoComplete="off"
-                    required
-                    value={user[0].specialization}
-                    disabled
-                  />
-                  <label className="form-label" htmlFor="floatingInputGrid">
-                    Especializacion
-                  </label>
+                <div className="col-md fields">
+                  <div className="form-floating">
+                    <input
+                      onChange={(e) => onChange(e)}
+                      type="text"
+                      className={`form-control inputreg-prof ${!espeDisabled ? 'btn_active': ''}`}
+                      id="especializacion"
+                      name="specialization"
+                      placeholder="especializacion"
+                      autoComplete="off"
+                      required
+                      defaultValue={user[0].specialization}
+                      disabled={espeDisabled}
+                    />
+                    <label className="form-label" htmlFor="floatingInputGrid">
+                      Especializacion
+                    </label>
+                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Espe")}></i>
+                  </div>
                 </div>
-              </div>
-              <div className="col-md fields">
-                <div className="form-floating">
-                  <input
-                    type="number"
-                    className="form-control"
-                    id="n_matric"
-                    name="n_matric"
-                    placeholder="n_matric"
-                    autoComplete="off"
-                    maxLength="10"
-                    required
-                    value={user[0].n_matric}
-                    disabled
-                  />
-                  <label className="form-label" htmlFor="floatingInputGrid">
-                    Nro matricula
-                  </label>
+                <div className="col-md fields">
+                  <div className="form-floating">
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="n_matric"
+                      name="n_matric"
+                      placeholder="n_matric"
+                      autoComplete="off"
+                      maxLength="10"
+                      required
+                      value={user[0].n_matric}
+                      disabled
+                    />
+                    <label className="form-label" htmlFor="floatingInputGrid">
+                      Nro matricula
+                    </label>
+                      <i class="fa-solid fa-pen-to-square icon_matricula"></i>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-          <button className="Button-edit">Editar</button>
-          </div>
+            <div className="container_btns">
+              <button className="btn btn-danger Button-edit" onClick={toggleInputCancelar}>Cancelar</button>
+              <button className="btn btn-success Button-edit" type="submit">Guardar cambios</button>
+            </div>
+          </form>
+          {error && (
+              <div
+                className="alert alert-danger"
+                role="alert"
+                style={{ color: "red", margin: "10px 0", fontSize: "18px" }}
+              >
+                {error}
+              </div>
+            )}
+            {success && (
+              <>
+              <div
+                className="alert alert-success"
+                role="alert"
+                style={{ color: "green", margin: "10px 0", fontSize: "18px" }}
+              >
+                {success}
+            </div>
+              </>
+            )}
         </div>
       </section>
       )}
