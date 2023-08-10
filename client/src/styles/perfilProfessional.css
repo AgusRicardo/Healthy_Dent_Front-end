@@ -5,23 +5,41 @@
     margin-top: 20px;
     padding: 20px;
     width: 650px;
-    height: 740px;
     margin-top: 40px;
   }
-  
-  
+  .form-floating{
+    display: flex;
+    align-items: center;
+  }
+  .icon_edit{
+    cursor: pointer;
+    padding: 5px;
+    color: black;
+  }
+  .icon_edit:hover{
+    transform: scale(1.17, 1.17);
+  }
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-
+  .container_btns{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .btn_active {
+    background-color: white !important;
+  }
   .container_img {
     display: flex;
     flex-flow: row;
     margin-left: 60px;
   }
-
+  .icon_matricula{
+    color:transparent;
+    padding: 5px;
+  }
   .icono-perfil-prof {
     color:#00c1fc;
     font-size: 170px;
@@ -41,19 +59,19 @@
     background-color: #eee;
     border: none;
     padding: 12px 15px;
-    margin: 8px 0;
+    margin: 2px 0;
     width: 280px;
   }
   .Button-edit{
     border-radius: 20px;
-    border: 1px solid #00c1fc;
-    background-color: #00c1fc;
+    /* background-color: #00c1fc; */
     color: #ffffff;
     font-size: 12px;
     font-weight: bold;
     padding: 12px 40px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    margin-left: 430px;
+    margin-left: 5px;
+    margin-right: 5px;
     margin-top: 20px;
   }

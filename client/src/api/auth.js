@@ -37,4 +37,8 @@ export async function createTurn(turnData){
   return await axios.post(`${url}/turn`, turnData)
 }
 
+export async function editProfile(editData) {
+  return await axios.put(`${url}/editProfile`, editData)
+}
+
 
