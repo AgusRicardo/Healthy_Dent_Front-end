@@ -231,3 +231,15 @@ abbr[title] {
   margin-left: 430px;
   margin-top: 20px;
 }
+.sin-padding{
+  padding: 0%;
+  display: flex;
+  width: max-content !important;
+  overflow: visible !important;
+
+}
+.box-modal{
+  display: flex;
+  width: max-content;
+  margin: 0.2rem;
+}

@@ -3,6 +3,10 @@ import Layout from "../components/Layout";
 import "../styles/agenda.css";
 import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
+import { url } from '../api/auth';
+import { selectUser } from "../redux/slices/userSlice";
+import { useSelector } from "react-redux";
+import { Loading } from "../components/Loading";
 
 export const Agenda = () => {
   const [date, setDate] = useState(new Date());
@@ -22,6 +26,19 @@ export const Agenda = () => {
     
   }, [date]);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [turns, setTurns] = useState(true);
+  const item = useSelector(selectUser);
+  useEffect(() => {
+    fetch(`${url}/allturnos/${item[0].prof_id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        setTurns(res)
+        setIsLoading(false);
+      });
+  }, [isLoading]);
+
+
   const handlePrevMonth = () => {
     setDate((prevDate) => {
       const prevMonth = prevDate.getMonth() - 1;
@@ -37,10 +54,17 @@ export const Agenda = () => {
   const handleReset = () => {
     setDate(new Date());
   };
+  const showAllturn = ()=>{
+    console.log(turns);
+  }
 
   return (
     <Layout>
-        <section className="container_agenda">
+      {
+        isLoading ? (
+          <Loading/>
+        ): (
+          <section className="container_agenda">
           <div className="calendario style_container">
             <div className="dia">
               <div className="dia_arrows_num">
@@ -84,10 +108,52 @@ export const Agenda = () => {
             <div className="titulo-turnos">Turnos del dia de hoy:</div>
             <div className="turnos-hoy"></div>
             <div className="box-vtodos">
-            <button className="btn-vtodos">Ver Todos</button>
+            <button className="btn-vtodos" onClick={showAllturn} data-bs-toggle="modal" data-bs-target="#exampleModal">Ver Todos</button>
             </div>
           </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
+            <div class="modal-content sin-padding">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Todos los turnos</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body box-modal">
+                <table className="table table-striped mb-0">
+                            <thead className="marcosuo">
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre y apellido</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Tratamiento</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {
+                                 turns.map((turn, index) => (
+                                  <tr key={index}>
+                                    <th scope="row" key={turn.turn_id}>
+                                      {index + 1}
+                                    </th>
+                                    <td>
+                                      {turn.name} {turn.last_name}
+                                    </td>
+                                    <td>{turn.date.slice(0, -14)}</td>
+                                    <td>{turn.hour}</td>
+                                    <td>{turn.treatment}</td>
+                                  </tr>
+                                ))
+                              }
+                            </tbody>
+                          </table>
+                </div>
+            </div>
+          </div>
+          </div>
         </section>
+        )
+      }
     </Layout>
   );
 };
