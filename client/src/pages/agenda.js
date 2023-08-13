@@ -54,9 +54,6 @@ export const Agenda = () => {
   const handleReset = () => {
     setDate(new Date());
   };
-  const showAllturn = ()=>{
-    console.log(turns);
-  }
 
   return (
     <Layout>
@@ -108,7 +105,7 @@ export const Agenda = () => {
             <div className="titulo-turnos">Turnos del dia de hoy:</div>
             <div className="turnos-hoy"></div>
             <div className="box-vtodos">
-            <button className="btn-vtodos" onClick={showAllturn} data-bs-toggle="modal" data-bs-target="#exampleModal">Ver Todos</button>
+            <button className="btn-vtodos" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver Todos</button>
             </div>
           </div>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
