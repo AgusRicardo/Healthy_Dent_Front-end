@@ -75,8 +75,20 @@
     margin-top:20px;
     max-width: 1034px;
     margin: 0;
+    padding: 25px;
+    justify-content: start !important;
   }
-  
+  .novedades-titulo{
+    font-weight: 300;
+    font-size: 22px;
+  }
+  .novedades {
+    font-size: 14px;
+    width: 100%;
+  }
+  .item-list {
+    margin: 0px !important;
+  }
   .container {
     display: flex;
     flex-direction: column;

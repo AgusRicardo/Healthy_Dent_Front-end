@@ -1,0 +1,47 @@
+.container-misPacientes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.container-general {
+  padding: 15px;
+  min-width: 40vw;
+  border-radius: 4px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.container-row{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around !important;
+}
+.input-search {
+  display: flex;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.25rem;
+}
+.search-paciente {
+  border: 0px !important;
+  background-color: #fff;
+}
+.form-control:focus {
+  box-shadow: none !important;
+}
+.row-title{
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+}
+.table {
+  text-align: center;
+}
+.fa-eye{
+  cursor: pointer;
+  color: red;
+}
+.fa-eye:hover {
+  transform: scale(1.1, 1.1);
+}
+.table>:not(:first-child) {
+  border-top: 1px solid gray;
+}

@@ -18,6 +18,7 @@ import { Inicio } from "./pages/inicio";
 import { Agenda } from "./pages/agenda";
 import { Estadisticas } from "./pages/estadisticas";
 import { PerfilProfessional } from "./pages/perfilProfessional";
+import { MisPacientes } from "./pages/misPacientes";
 
 
 const PacienteRoutes = () => {
@@ -76,6 +77,7 @@ const App = () => {
             <Route path="/calendar" element={<Agenda />} />
             <Route path="/estadisticas" element={<Estadisticas />} />
             <Route path="/perfilProfessional" element={<PerfilProfessional />} />
+            <Route path="/misPacientes" element={<MisPacientes />} />
             
 
           </Route>

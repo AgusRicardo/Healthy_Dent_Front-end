@@ -80,7 +80,7 @@ const NavbarLateral = () => {
             </li>
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
               <NavLink 
-              
+              to='/misPacientes'
               className="bottonnav-item">
                 <a
                   className="nav-link text-center text-sm-start"

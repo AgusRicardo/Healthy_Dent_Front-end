@@ -48,10 +48,12 @@ export const Inicio = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
-                      <i className='fa-solid fa-users size-font'></i>
-                      Mis Pacientes
-                    </a>
+                    <NavLink to='/misPacientes' className='nav-text'>
+                      <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                        <i className='fa-solid fa-users size-font'></i>
+                        Mis Pacientes
+                      </a>
+                    </NavLink>
                   </li>
                   <li>
                     <a href='https://collectednotes.com/' className='button-extra-one nav-link cursor active text1 nav-link-home'>
@@ -59,7 +61,39 @@ export const Inicio = () => {
                       Ayuda
                     </a>
                   </li>
-                  <div className='container square squareProf'></div>
+                  <div className='container square squareProf'>
+                    <div className="novedades-titulo">Novedades</div>
+                    <div className="novedades">
+                      <p>Update v1.2.0</p>
+                      <h6>Nuevo:</h6>
+                      <ul class="fa-ul">
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Aplicación accesible para usuarios Profesionales
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Nuevo login
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Implementación del inicio
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Módulo Agenda junto con un calendario, panel para visualizar los proximos 5 turnos y la posibilidad de desplegar un pop up para ver todos los turnos de hoy
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Módulo Mi perfil compuesto por toda la información del profesional y la posibilidad de editar campos seleccionados
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Módulo Mis pacientes, apartado orientado a la búsqueda de pacientes del profesional
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Módulo Estadísticas
+                        </li>
+                        <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
+                        Módulo Ayuda
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </ul>
               </div>
           </div>
