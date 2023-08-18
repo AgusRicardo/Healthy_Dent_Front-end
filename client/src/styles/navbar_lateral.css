@@ -14,18 +14,24 @@
   position: sticky;
   max-width: 285px;
 }
+.menu-lateral{
+  min-height: 92.3vh !important;
+}
+.nav-title{
+  margin-top: 2rem !important;
+}
 .inicio-menu{
   margin-bottom: -1.7rem !important;
-}
-.nav_title {
-  padding: 0px !important;
-  margin: 10px 15px 10px 0px;
 }
 .nav_content_title {
   position: fixed;
 }
 .nav_line {
   width: 100% !important;
+}
+.fijar-nav{
+  position: fixed !important;
+  z-index: 30 !important;
 }
 .bottonnav-item {
   font-size: 18px;

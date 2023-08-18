@@ -72,7 +72,7 @@ export const Search = () => {
   }
   return (
       <Layout className="container" style={{backgroundColor: '#fafafa'}}>
-          <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
+          <div style={{display: 'flex',marginLeft: '48vh' ,flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
             <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
               <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass "></i></span>
@@ -83,7 +83,7 @@ export const Search = () => {
             </div>
           </div>
         <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">
-          <div style={{display: "flex", flexDirection: 'column', width: '100%'}}>
+          <div style={{display: "flex", flexDirection: 'column', width: '100%', marginLeft: '28vh'}}>
             {
               state.map(prof => (
                 <div key={prof.prof_id} style={{padding: "0px 50px 0px 50px", marginTop: "15px"}}>

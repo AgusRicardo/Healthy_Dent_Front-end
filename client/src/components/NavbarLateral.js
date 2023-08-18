@@ -9,11 +9,11 @@ const NavbarLateral = () => {
     <>
     {
       tipo === "Profesional" ? ( // MENÚ PROFESIONAL
-        <div className="col-auto col-sm-3 min-vh-100 nav_content">
+        <div className="col-auto fijar-nav col-sm-3 menu-lateral nav_content">
         <div className="">
-          <div className="nav_title">
+          <div className="nav-title ">
             <a className="text-decoration-none d-flex align-items-center text-sm-start text-white d-none d-sm-inline">
-              <span className="fs-4">Profesional</span>
+              <span className="fs-4 title-user">Profesional</span>
             </a>
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
@@ -106,11 +106,11 @@ const NavbarLateral = () => {
         </div>
       </div>
       ) : ( // MENÚ PACIENTE
-        <div className="col-auto col-sm-3 min-vh-100 nav_content">
+        <div className="col-auto col-sm-3 menu-lateral fijar-nav nav_content">
         <div className="">
-          <div className="nav_title">
+          <div className="nav-title">
             <a className="text-decoration-none d-flex align-items-center text-sm-start text-white d-none d-sm-inline">
-              <span className="fs-4">Paciente</span>
+              <span className="fs-4 title-user">Paciente</span>
             </a>
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
