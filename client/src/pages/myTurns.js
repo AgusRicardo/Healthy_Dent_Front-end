@@ -27,7 +27,7 @@ export const MyTurns = () => {
       ) : (
         <section className="intro container tablaturn">
           <div className="titulomyturn">
-            <h2>Mis turnos</h2>
+            <h2>Próximos turnos</h2>
           </div>
 
           <div className="bg-image h-100 divtable ">

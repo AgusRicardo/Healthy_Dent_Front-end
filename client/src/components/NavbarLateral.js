@@ -165,7 +165,7 @@ const NavbarLateral = () => {
                   aria-current="page"
                 >
                   <i class="fa-solid fa-notes-medical size-font"></i>
-                  <span className="ms-2 d-none d-sm-inline">Turnos</span>
+                  <span className="ms-2 d-none d-sm-inline">Próximos turnos</span>
                 </a>
               </NavLink>
             </li>
