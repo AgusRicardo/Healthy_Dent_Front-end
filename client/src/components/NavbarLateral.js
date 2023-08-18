@@ -18,7 +18,7 @@ const NavbarLateral = () => {
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
-            <li className="nav-item text-white my-1 py-2 py-sm-2 ">
+            <li className="nav-item text-white my-1 py-2 py-sm-2 inicio-menu " >
               <NavLink
 
                 to="/inicio"
@@ -28,7 +28,7 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="fa-solid fa-house size-font"></i>
+                  <i className="fa-solid fa-house size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Inicio 
                   </span>
@@ -96,7 +96,7 @@ const NavbarLateral = () => {
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
                 href="https://collectednotes.com/"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
@@ -115,7 +115,7 @@ const NavbarLateral = () => {
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
-            <li className="nav-item text-white my-1 py-2 py-sm-2 ">
+            <li className="nav-item text-white my-1 py-2 py-sm-2 inicio-menu ">
             <NavLink
                 to="/inicio"
                 className="ms-2 d-none d-sm-inline bottonnav-item"
@@ -176,7 +176,7 @@ const NavbarLateral = () => {
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
                 href="https://collectednotes.com/"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
