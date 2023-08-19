@@ -56,7 +56,7 @@ export const Inicio = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <a href='https://collectednotes.com/' className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                    <a href='https://collectednotes.com/' target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
                       <i className='fa-solid fa-circle-info size-font'></i>
                       Ayuda
                     </a>
@@ -135,7 +135,7 @@ export const Inicio = () => {
                 </NavLink>
               </li>
               <li>
-                <a href='https://collectednotes.com/' className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                <a href='https://collectednotes.com/' target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
                   <i className='fa-solid fa-circle-info size-font'></i>
                   Ayuda
                 </a>
