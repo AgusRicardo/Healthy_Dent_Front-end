@@ -160,7 +160,7 @@ export const Agenda = () => {
                                 <td>{turn.hour}hs</td>
                                 <td>{turn.treatment}</td>
                               </tr>
-                            ))
+                          ))
                         }
                       </tbody>
                     </table>
@@ -222,6 +222,7 @@ export const Agenda = () => {
             </div>
           </div>
           </div>
+          
         </section>
         )
       }
