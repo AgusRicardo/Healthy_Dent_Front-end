@@ -222,7 +222,6 @@ export const Agenda = () => {
             </div>
           </div>
           </div>
-          
         </section>
         )
       }

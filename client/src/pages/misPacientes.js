@@ -27,7 +27,7 @@ export const MisPacientes = () => {
                 {/* Todos los pacientes */}
                 <tr>
                   <td>apellido, nombre</td>
-                  <td>44.232.252</td>
+                  <td>44.232.256</td>
                   <td><i className="fa-solid fa-eye"></i></td>
                 </tr>
                 <tr>
