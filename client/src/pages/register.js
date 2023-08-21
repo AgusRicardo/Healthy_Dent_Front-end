@@ -143,7 +143,7 @@ export const Register = () => {
                   <div className="form-floating">
                     <input
                       onChange={(e) => onChange(e)}
-                      type="text"
+                      type="number"
                       value={values.dni}
                       className="form-control inputreg"
                       id="dni"
