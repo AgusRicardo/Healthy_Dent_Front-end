@@ -57,7 +57,7 @@ export const Perfil = () => {
                         <hr className="mt-0 mb-4" />
                         <div className="row pt-1">
                           <div className="col-6 mb-3">
-                            <h6>Nombre y apellido</h6>
+                            <h6>Nombre y Apellido</h6>
                             <p className="text-muted">
                               {user.name} {user.last_name}
                             </p>
