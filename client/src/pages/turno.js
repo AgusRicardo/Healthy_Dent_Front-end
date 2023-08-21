@@ -66,7 +66,6 @@ useEffect(() => {
         date: "",
         treatment: "",
       })
-      console.log(values);
       dispatch(deleteTurn())
     } catch (error) {
       setError(error.response.data.errors[0].msg);
@@ -75,7 +74,7 @@ useEffect(() => {
   
   return (
     <Layout>
-      {isLoadingPrepaid && setIsLoadingPlace ? (
+      {isLoadingPrepaid && isLoadingPlace ? (
         <Loading/>
       ) : (
         <div className="container-login container regcontainer" id="container">
