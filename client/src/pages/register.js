@@ -59,7 +59,7 @@ export const Register = () => {
             <h1 className="regtitle rounded-3">Registro</h1>
             <br />
             <div className="formfirst">
-              <h5 className="subtitleform">Personal</h5>
+              <h5 className="subtitleform">Información personal</h5>
               <hr className="separador"></hr>
               <div className="row g-2 mb-3">
                 <div className="col-md">
@@ -133,7 +133,7 @@ export const Register = () => {
                     required
                   />
                   <label htmlFor="floatingInputGrid" className="form-label">
-                    Password
+                    Contraseña
                   </label>
                 </div>
               </div>
@@ -208,13 +208,8 @@ export const Register = () => {
                     Fecha de nacimiento
                   </label>
                 </div>
-              </div>
-            </div>
-            <br />
-            <div className="secondform">
-              <h5 className="subtitleform">Contacto</h5>
-              <hr className="separador"></hr>
-              <div className="row g-2 mb-3">
+
+                <div className="row g-2 mb-3">
                 <div className="col-md">
                   <div className="form-floating">
                     <input
@@ -229,7 +224,7 @@ export const Register = () => {
                       required
                     />
                     <label className="form-label" htmlFor="floatingSelectGrid">
-                      Direccion
+                      Dirección
                     </label>
                   </div>
                 </div>
@@ -248,12 +243,14 @@ export const Register = () => {
                       required
                     />
                     <label className="form-label" htmlFor="floatingSelectGrid">
-                      Telefono
+                      Teléfono
                     </label>
                   </div>
                 </div>
               </div>
+              </div>
             </div>
+            <br />
 
             {error && (
               <div
