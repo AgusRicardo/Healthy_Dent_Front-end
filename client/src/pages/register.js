@@ -150,8 +150,8 @@ export const Register = () => {
                       name="dni"
                       placeholder="DNI"
                       autoComplete="off"
-                      pattern="[0-9]{7}"
-                      title="Debe poner 7 números como mínimo"
+                      pattern=".{7,8}"
+                      title="El rango requerido es entre 7 y 8 caracteres"
                       required
                     />
                     <label htmlFor="floatingInputGrid" className="form-label">
