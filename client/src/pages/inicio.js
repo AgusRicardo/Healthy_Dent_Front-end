@@ -35,7 +35,7 @@ export const Inicio = () => {
                     <NavLink to='/perfilProfessional' className='nav-text'>
                     <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                       <i className='fa-solid fa-user size-font'></i>
-                      Mi perfil
+                      Mi Perfil
                     </a>
                     </NavLink>
                   </li>
@@ -43,7 +43,7 @@ export const Inicio = () => {
                     <NavLink to='/estadisticas' className='nav-text'>
                     <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                       <i className='fa-solid fa-chart-line size-font'></i>
-                      Estadisticas
+                      Estadísticas
                     </a>
                     </NavLink>
                   </li>
@@ -114,7 +114,7 @@ export const Inicio = () => {
                 <NavLink to='/search' className='nav-text'>
                   <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                   <i class="fa-solid fa-magnifying-glass size-font"></i>
-                    Buscar profesional
+                    Buscar Profesional
                   </a>
                 </NavLink>
               </li>
@@ -122,7 +122,7 @@ export const Inicio = () => {
                 <NavLink to='/profile' className='nav-text'>
                 <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                   <i className='fa-solid fa-user size-font'></i>
-                  Mi perfil
+                  Mi Perfil
                 </a>
                 </NavLink>
               </li>

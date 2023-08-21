@@ -257,7 +257,7 @@ export const PerfilProfessional = () => {
                       disabled={espeDisabled}
                     />
                     <label className="form-label" htmlFor="floatingInputGrid">
-                      Especializacion
+                      Especialización
                     </label>
                       <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Espe")}></i>
                   </div>
@@ -277,7 +277,7 @@ export const PerfilProfessional = () => {
                       disabled
                     />
                     <label className="form-label" htmlFor="floatingInputGrid">
-                      Nro matricula
+                      Nro matrícula
                     </label>
                       <i class="fa-solid fa-pen-to-square icon_matricula"></i>
                   </div>

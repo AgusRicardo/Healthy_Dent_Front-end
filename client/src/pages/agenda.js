@@ -104,7 +104,7 @@ export const Agenda = () => {
               <p className='text-center bold dia_mes'>
                 {currentMonth} - {year}
               </p>
-              <button className="btn btn-outline-primary btn_reset" onClick={handleReset} type="button">Reset</button>
+              <button className="btn btn-outline-primary btn_reset" onClick={handleReset} type="button">Reiniciar</button>
             </div>
               <div className="calendario_completo">
                 <Calendar
