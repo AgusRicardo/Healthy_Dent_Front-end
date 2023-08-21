@@ -145,7 +145,7 @@ useEffect(() => {
           </div>
           <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" onChange={(e) => onChange(e)}>
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" onChange={(e) => onChange(e)} required>
                 <option selected value="DEFAULT" disabled>Seleccione un horario...</option>
                 <option value="08:00">08:00</option>
                 <option value="09:00">09:00</option>
