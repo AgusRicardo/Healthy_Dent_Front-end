@@ -23,10 +23,15 @@ export const Register = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
-
     try {
+      values.name = capitalizeFirstLetter(values.name);
+      values.last_name = capitalizeFirstLetter(values.last_name);
       const { data } = await onRegistration(values);
       setError("");
       setSuccess(data.message);
@@ -174,15 +179,15 @@ export const Register = () => {
                         Seleccione su obra social ...
                       </option>
                       <option value="1">Particular</option>
-                      <option value="2">IAPOS</option>
-                      <option value="3">OMINT</option>
-                      <option value="4">MEDICINA ESENCIAL</option>
-                      <option value="5">OSCHOCA</option>
-                      <option value="6">OSPRERA</option>
-                      <option value="7">OSPE</option>
+                      <option value="2">Iapos</option>
+                      <option value="3">Omint</option>
+                      <option value="4">Medicina Esencial</option>
+                      <option value="5">Oschoca</option>
+                      <option value="6">Osprera</option>
+                      <option value="7">Ospe</option>
                       <option value="8">Unión Personal</option>
-                      <option value="9">FEMEBA</option>
-                      <option value="10">OSMEDICA</option>
+                      <option value="9">Femeba</option>
+                      <option value="10">Osmedica</option>
                     </select>
                     <label htmlFor="floatingSelectGrid">Obra social</label>
                   </div>
