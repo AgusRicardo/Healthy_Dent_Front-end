@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { url } from "../api/auth";
 import Layout from "../components/Layout";
 import { Loading } from "../components/Loading";
-import { selectUser } from "../redux/slices/userSlice";
+//import { selectUser } from "../redux/slices/userSlice";
 import "../styles/perfil.css";
 
 export const Perfil = () => {
-  const item = useSelector(selectUser);
-
+  //const item = useSelector(selectUser);
+  const user_id = localStorage.getItem("user_id");
   const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [isLoadingPrepaid, setIsLoadingPrepaid] = useState(true);
   const [user, setUser] = useState();
   const [prepaid, setPrepaid] = useState();
 
   useEffect(() => {
-    fetch(`${url}/user/${item[0].id}`)
+    fetch(`${url}/user/${user_id}`)
       .then((response) => response.json())
       .then((res) => {
         setUser(res);
         setIsLoadingUser(false);
       });
-    fetch(`${url}/user/prepaid/${item[0].id}`)
+    fetch(`${url}/user/prepaid/${user_id}`)
       .then((response) => response.json())
       .then((res) => {
         setPrepaid(res);

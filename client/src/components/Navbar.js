@@ -21,7 +21,9 @@ const Navbar = () => {
       localStorage.removeItem("email");
       localStorage.removeItem("name");
       localStorage.removeItem("last_name");
-      localStorage.removeItem("password");
+      localStorage.removeItem("tipo");
+      localStorage.removeItem("user_id");
+      localStorage.removeItem("prof_id");
     } catch (error) {
       console.log(error.response);
     }

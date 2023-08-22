@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { editProfile, url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/perfilProfessional.css";
 import { Loading } from "../components/Loading";
-import { selectUser } from "../redux/slices/userSlice";
+//import { selectUser } from "../redux/slices/userSlice";
 
 export const PerfilProfessional = () => {
-  const item = useSelector(selectUser);
+  //const item = useSelector(selectUser);
+  const user_id = localStorage.getItem("user_id");
   const [user, setUser] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [direccionDisabled, setdireccionDisabled] = useState(true);
@@ -17,7 +18,7 @@ export const PerfilProfessional = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [values, setValues] = useState({
-    "user_id": item[0].id,
+    "user_id": user_id,
   });
 
   const toggleInputCancelar = () => {
@@ -30,7 +31,7 @@ export const PerfilProfessional = () => {
     setError(false);
 
     setValues({
-      "user_id": item[0].id,
+      "user_id": user_id,
     });
   }
 
@@ -70,7 +71,7 @@ export const PerfilProfessional = () => {
   };
 
   useEffect(() => {
-    fetch(`${url}/professional/profile/${item[0].id}`)
+    fetch(`${url}/professional/profile/${user_id}`)
       .then((response) => response.json())
       .then((res) => {
         setUser(res);
@@ -87,7 +88,7 @@ export const PerfilProfessional = () => {
         setSuccess(data.message);
       }
       setValues({
-        "user_id": item[0].id,
+        "user_id": user_id,
       });
       setIsLoading(true);
       setdireccionDisabled(true);
@@ -96,7 +97,7 @@ export const PerfilProfessional = () => {
       setEspeDisabled(true);
     } catch (error) {
       setValues({
-        "user_id": item[0].id,
+        "user_id": user_id,
       });
       setIsLoading(true);
       setError(error.response.data.error);

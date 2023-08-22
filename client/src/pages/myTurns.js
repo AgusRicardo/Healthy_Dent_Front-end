@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 import { url } from "../api/auth";
 import Layout from "../components/Layout";
 import { Loading } from "../components/Loading";
-import { selectUser } from "../redux/slices/userSlice";
+//import { selectUser } from "../redux/slices/userSlice";
 import "../styles/myturn.css";
 
 export const MyTurns = () => {
-  const item = useSelector(selectUser);
+  //const item = useSelector(selectUser);
+  const user_id = localStorage.getItem("user_id");
   const [user, setUser] = useState({});
   const [sinTurnos, setSinTurnos] = useState()
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${url}/list/turn/${item[0].id}`)
+    fetch(`${url}/list/turn/${user_id}`)
       .then((response) => response.json())
       .then((res) => {
         if (res.message) {

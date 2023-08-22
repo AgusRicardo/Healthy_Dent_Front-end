@@ -2,17 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const UserAuthFromLocalStorage = () => {
   const isAuth = localStorage.getItem('isAuth')
-
-  if (isAuth && JSON.parse(isAuth) === true) {
-    localStorage.removeItem('isAuth')
-    localStorage.removeItem('name')
-    localStorage.removeItem('last_name')
-    localStorage.removeItem('tipo')
-  }
+  return isAuth === 'true'
+  // if (isAuth && JSON.parse(isAuth) === true) {
+  //   localStorage.removeItem('isAuth')
+  //   localStorage.removeItem('name')
+  //   localStorage.removeItem('last_name')
+  //   localStorage.removeItem('tipo')
+  // }
   
-  return false
+  // return false
 }
-
 const initialState = {
   isAuth: UserAuthFromLocalStorage(),
 }

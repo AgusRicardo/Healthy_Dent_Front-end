@@ -4,8 +4,8 @@ import "../styles/agenda.css";
 import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
 import { url } from '../api/auth';
-import { selectUser } from "../redux/slices/userSlice";
-import { useSelector } from "react-redux";
+//import { selectUser } from "../redux/slices/userSlice";
+//import { useSelector } from "react-redux";
 import { Loading } from "../components/Loading";
 
 export const Agenda = () => {
@@ -17,7 +17,8 @@ export const Agenda = () => {
   const [noTurns, setNoTurns] = useState()
   const [popUpLoading, PopUpLoading] = useState(true)
   const [popUpSinTurnos, setPopUpSinTurnos] = useState()
-  const item = useSelector(selectUser);
+  //const item = useSelector(selectUser);
+  const prof_id = localStorage.getItem("prof_id");
   const today = date.getDate();
   const year = date.getFullYear();
 
@@ -34,7 +35,7 @@ export const Agenda = () => {
   }, [date]);
 
   useEffect(() => {
-    fetch(`${url}/calendar/${item[0].prof_id}`)
+    fetch(`${url}/calendar/${prof_id}`)
       .then((response) => response.json())
       .then((res) => {
         if (res.message) {
@@ -68,7 +69,7 @@ export const Agenda = () => {
   };
 
   const handleButtonClick = () => {
-    fetch(`${url}/allturnos/${item[0].prof_id}`)
+    fetch(`${url}/allturnos/${prof_id}`)
       .then((response) => response.json())
       .then((res) => {
         if (res.message) {

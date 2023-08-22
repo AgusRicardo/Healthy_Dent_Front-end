@@ -18,6 +18,7 @@ export const Login = () => {
   const [btnLogin, setBtnLogin] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
+
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -37,6 +38,7 @@ export const Login = () => {
       localStorage.setItem("name", `${data.payload.name}`);
       localStorage.setItem("last_name", `${data.payload.last_name}`);
       localStorage.setItem("tipo", `${data.payload.tipo}`);
+      localStorage.setItem("user_id", `${data.payload.id}`)
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
@@ -55,6 +57,8 @@ export const Login = () => {
       localStorage.setItem("name", `${data.payload.name}`);
       localStorage.setItem("last_name", `${data.payload.last_name}`);
       localStorage.setItem("tipo", `${data.payload.tipo}`);
+      localStorage.setItem("prof_id", `${data.payload.prof_id}`);
+      localStorage.setItem("user_id", `${data.payload.id}`)
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
