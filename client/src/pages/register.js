@@ -18,7 +18,8 @@ export const Register = () => {
   });
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [prepaid, setPrepaid] = useState(false);
+  const [inputError, setInputError] = useState(false);
+  const [prepaid, setPrepaid] = useState(false)
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -31,11 +32,16 @@ export const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    if ((values.name).trim() === "" || (values.last_name).trim() === "" || (values.address_user).trim() === "") {
+      setInputError(true);
+      return;
+    }
     if (values.prepaid_id === "DEFAULT" || values.prepaid_id === "" ) {
       setPrepaid(true);
       return;
     }
     try {
+      setInputError(false);
       setPrepaid(false);
       values.name = capitalizeFirstLetter(values.name);
       values.last_name = capitalizeFirstLetter(values.last_name);
@@ -200,7 +206,7 @@ export const Register = () => {
                     <label htmlFor="floatingSelectGrid">Obra social</label>
                   </div>
                   <span className="error-text">
-                    {prepaid && "Seleccione una opción válida"}
+                      {prepaid && "Seleccione una opción válida"}
                   </span>
                 </div>
               </div>
@@ -267,7 +273,9 @@ export const Register = () => {
               </div>
             </div>
             <br />
-
+            <span className="error-text">
+              {inputError && "Un campo ingresado es inválido"}
+            </span>
             {error && (
               <div
                 className="alert alert-danger"
