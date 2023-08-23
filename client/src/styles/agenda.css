@@ -8,9 +8,7 @@
   background-color: white;
   margin: 40px;
   min-width: 50vw;
-  max-width: 50vw;
   min-height: 40vh;
-  max-height: 40vh;
   display: flex;
   align-items: center;
   align-content: center;
@@ -65,8 +63,9 @@
   flex-basis: 25%;
   background-color: #00c1fc;
   color: white;
-  height: 100%;
-  width: 100%;
+  min-height: 400px;
+  flex-grow: 1;
+  flex-shrink: 0;
   display: flex;
   flex-flow: column;
   justify-content: center;
