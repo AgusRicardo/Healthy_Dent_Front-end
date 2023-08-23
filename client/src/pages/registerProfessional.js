@@ -4,7 +4,9 @@ import Layout from "../components/Layout";
 import "../styles/registerProfessional.css";
 import { Loading } from "../components/Loading";
 
+
 const RegisterProfessional = () => {
+  const [inputError, setInputError] = useState(false);
   const [id, setId] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -29,21 +31,34 @@ const RegisterProfessional = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  function validarLetras(texto) {
+    for (let i = 0; i < texto.length; i++) {
+      if (!isNaN(texto[i])) {
+          return true;
+      }
+  }
+  return false;
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { data } = await registerProfessional(values);
-      setError("");
-      setSuccess(data.message);
-      setValues({
-        user_id: `${id[0].user_id}`,
-        n_matric: "",
-        specialization: "",
-      });
-    } catch (error) {
-      setError(error.response.data.errors[0].msg);
-      setSuccess("");
-    }
+    if (validarLetras(values.specialization)) return setInputError(true)
+      try {
+        setInputError(false)
+        const { data } = await registerProfessional(values);
+        setError("");
+        setSuccess(data.message);
+        
+        setValues({
+          user_id: `${id[0].user_id}`,
+          n_matric: "",
+          specialization: "",
+        });
+        
+      } catch (error) {
+        setError(error.response.data.errors[0].msg);
+        setSuccess("");
+      }
   };
 
   return (
@@ -70,7 +85,7 @@ const RegisterProfessional = () => {
                       <input
                         onChange={(e) => onChange(e)}
                         type="number"
-                        value={values.email_user}
+                        value={values.n_matric}
                         className="form-control"
                         id="n_matric"
                         name="n_matric"
@@ -90,7 +105,7 @@ const RegisterProfessional = () => {
                       <input
                         onChange={(e) => onChange(e)}
                         type="text"
-                        value={values.password}
+                        value={values.specialization}
                         className="form-control"
                         id="specialization"
                         name="specialization"
@@ -103,6 +118,9 @@ const RegisterProfessional = () => {
                         Especializacion
                       </label>
                     </div>
+                      <span className="error-text">
+                        {inputError && "El campo ingresado es inválido"}
+                      </span>
                   </div>
                 </div>
                 <h5>Datos de ubicacion</h5>
