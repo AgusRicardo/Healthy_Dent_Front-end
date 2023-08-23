@@ -129,7 +129,6 @@ export const Search = () => {
           }  
           </div>
           </section>
-          <Footer/>
       </Layout>
   )
 }
