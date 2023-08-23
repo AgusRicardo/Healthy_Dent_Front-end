@@ -18,6 +18,7 @@ export const Register = () => {
   });
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [prepaid, setPrepaid] = useState(false);
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -29,7 +30,13 @@ export const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (values.prepaid_id === "DEFAULT" || values.prepaid_id === "" ) {
+      setPrepaid(true);
+      return;
+    }
     try {
+      setPrepaid(false);
       values.name = capitalizeFirstLetter(values.name);
       values.last_name = capitalizeFirstLetter(values.last_name);
       const { data } = await onRegistration(values);
@@ -174,6 +181,7 @@ export const Register = () => {
                       aria-label="Floating label select example"
                       name="prepaid_id"
                       onChange={(e) => onChange(e)}
+                      required
                     >
                       <option defaultValue value="DEFAULT" disabled>
                         Seleccione su obra social ...
@@ -191,6 +199,9 @@ export const Register = () => {
                     </select>
                     <label htmlFor="floatingSelectGrid">Obra social</label>
                   </div>
+                  <span className="error-text">
+                    {prepaid && "Seleccione una opción válida"}
+                  </span>
                 </div>
               </div>
 
