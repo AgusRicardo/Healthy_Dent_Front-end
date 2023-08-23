@@ -4,33 +4,36 @@ import { createTurn, url } from '../api/auth';
 import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
-import { selectUser } from '../redux/slices/userSlice';
 import "../styles/turno.css";
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export const Turno = () => {
-  const item = useSelector(selectUser)
   const turn = useSelector(selectTurn)
+  const user_id = localStorage.getItem("user_id");
   const dispatch = useDispatch();
-
   const [isLoadingPrepaid, setIsLoadingPrepaid] = useState(true);
   const [isLoadingPlace, setIsLoadingPlace] = useState(true)
   const [prepaid, setPrepaid] = useState()
   const [place, setPlace] = useState()
   const [success, setSuccess] = useState(false)
   const [values, setValues] = useState({
-    user_id: `${item[0].id}`,
+    user_id: `${user_id}`,
     prof_id: `${turn}`,
-    prepaid_id: `${item[0].prepaid}`,
+    prepaid_id: `${prepaid}`,
     place_id: "",
     hour: "",
     date: "",
     treatment: "",
   })
   const [error, setError] = useState(false)
+  const navigate = useNavigate()
 
+  if (!turn || prepaid === undefined) {
+    navigate('/search');
+  }
 
   useEffect(() => {
-    fetch(`${url}/user/prepaid/${item[0].id}`)
+    fetch(`${url}/user/prepaid/${user_id}`)
     .then((response) => response.json())
     .then((res) => {
       setPrepaid(res);
@@ -38,14 +41,14 @@ export const Turno = () => {
     });
   }, []);
 
-useEffect(() => {
-  fetch(`${url}/placeProfessional/${turn}`)
-  .then((response) => response.json())
-  .then((res) => {
-    setPlace(res)
-    setIsLoadingPlace(false)
-  })
-}, [])
+  useEffect(() => {
+    fetch(`${url}/placeProfessional/${turn}`)
+    .then((response) => response.json())
+    .then((res) => {
+      setPlace(res)
+      setIsLoadingPlace(false)
+    })
+  }, [])
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
@@ -58,9 +61,9 @@ useEffect(() => {
       setError("")
       setSuccess(data.message)
       setValues({
-        user_id: `${item[0].id}`,
+        user_id: `${user_id}`,
         prof_id: `${turn}`,
-        prepaid_id: `${item[0].prepaid}`,
+        prepaid_id: `${prepaid}`,
         place_id: "",
         hour: "",
         date: "",
@@ -72,6 +75,7 @@ useEffect(() => {
     }
   }
   
+  const maxCharacterCount = 50;
   return (
     <Layout>
       {isLoadingPrepaid && isLoadingPlace ? (
@@ -170,15 +174,18 @@ useEffect(() => {
                 className='form-control'
                 id='treatment'
                 name='treatment'
-                maxLength="45"
+                maxLength={maxCharacterCount}
                 placeholder='treatment'
                 autoComplete='off'
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>
-                Tratamiento
+                Motivo de consulta
               </label>
             </div>
+              <small className="text-muted">
+                {maxCharacterCount - values.treatment.length} caracteres restantes
+              </small>
           </div>
           <br></br>
         {
@@ -195,8 +202,6 @@ useEffect(() => {
       </form>
           </div>
         </div>
-
-      
       )}
     </Layout>
   )

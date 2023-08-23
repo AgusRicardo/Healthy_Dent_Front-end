@@ -17,3 +17,6 @@
   .divbuttonturn{
     padding: 0px 15px 0px 15px;
   }
+  .text-muted {
+    font-style: italic;
+  }
