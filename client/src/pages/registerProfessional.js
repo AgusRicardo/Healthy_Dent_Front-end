@@ -33,12 +33,12 @@ const RegisterProfessional = () => {
 
   function validarLetras(texto) {
     for (let i = 0; i < texto.length; i++) {
-      if (!isNaN(texto[i])) {
-          return true;
-      }
-  }
-  return false;
-  }
+        if (!isNaN(texto[i]) || texto[i] === " ") {
+            return true;
+        }
+    }
+    return false;
+}
 
   const onSubmit = async (e) => {
     e.preventDefault();
