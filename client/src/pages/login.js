@@ -145,7 +145,7 @@ export const Login = () => {
                     {error}
                   </div>
                 )}
-                <a className="a_icon">Olvidaste tu contraseña?</a>
+                <a className="a_icon">¿Olvidaste tu contraseña?</a>
                 <button className="button_signIn">Iniciar</button>
               </form>
             </div>
@@ -207,7 +207,7 @@ export const Login = () => {
                     {error}
                   </div>
                 )}
-                <a className="a_icon">Olvidaste tu contraseña?</a>
+                <a className="a_icon">¿Olvidaste tu contraseña?</a>
                 <button className="button_signIn">Iniciar</button>
               </form>
             </div>
