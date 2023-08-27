@@ -40,6 +40,10 @@ export const Register = () => {
       setPrepaid(true);
       return;
     }
+    if (values.dni.length < 7 || values.dni.length > 8 ) {
+      setInputError(true);
+      return;
+    }
     try {
       setInputError(false);
       setPrepaid(false);
