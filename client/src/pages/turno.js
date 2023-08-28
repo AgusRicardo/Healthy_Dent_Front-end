@@ -28,6 +28,7 @@ export const Turno = () => {
   })
   const [error, setError] = useState(false)
   const navigate = useNavigate()
+  const currentDate = new Date().toISOString().split('T')[0];
 
   if (!turn || prepaid === undefined) {
     navigate('/search');
@@ -148,8 +149,8 @@ export const Turno = () => {
                 name='date'
                 placeholder='Fecha'
                 autoComplete='off'
-                min="2022-11-07" 
-                max="2023-12-31"
+                min={currentDate} 
+                max="2024-12-31"
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>
