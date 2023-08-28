@@ -17,6 +17,8 @@ export const Turno = () => {
   const [place, setPlace] = useState()
   const [success, setSuccess] = useState(false)
   const [noHora, setNoHora] = useState(false)
+  const [noPlaceId, setNoPlaceId] = useState(false)
+
   const [values, setValues] = useState({
     user_id: `${user_id}`,
     prof_id: `${turn}`,
@@ -65,8 +67,14 @@ export const Turno = () => {
       setNoHora(true);
       return;
     }
+
+    if (values.place_id === "") {
+      setNoPlaceId(true);
+      return;
+    }
     try {
       values.prepaid_id = prepaid.prepaid_id
+      setNoPlaceId(false);
       setNoHora(false);
       const { data } = await createTurn(values)
       setError("")
@@ -135,6 +143,9 @@ export const Turno = () => {
               </select>
               <label htmlFor="floatingSelectGrid">Lugar de atención</label>
             </div>
+              <span className="error-text">
+                {noPlaceId && "El campo ingresado es inválido"}
+              </span>
           </div>
         </div>
         <div className='row g-2 mb-3'>

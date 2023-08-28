@@ -17,6 +17,7 @@ export const PerfilProfessional = () => {
   const [espeDisabled, setEspeDisabled] = useState(true);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [visibleButtons, setVisibleButtons] = useState(false);
   const [values, setValues] = useState({
     "user_id": user_id,
   });
@@ -39,24 +40,28 @@ export const PerfilProfessional = () => {
     switch (controlName) {
       case "Direccion":
         setdireccionDisabled(!direccionDisabled);
+        setVisibleButtons(true);
         settelefonoDisabled(true);
         setEmailDisabled(true);
         setEspeDisabled(true);
         break;
       case "Telefono":
         settelefonoDisabled(!telefonoDisabled);
+        setVisibleButtons(true);
         setdireccionDisabled(true);
         setEmailDisabled(true);
         setEspeDisabled(true);
         break;
       case "Email":
         setEmailDisabled(!emailDisabled);
+        setVisibleButtons(true);
         setdireccionDisabled(true);
         settelefonoDisabled(true);
         setEspeDisabled(true);
         break;
       case "Espe":
         setEspeDisabled(!espeDisabled);
+        setVisibleButtons(true);
         setdireccionDisabled(true);
         settelefonoDisabled(true);
         setEmailDisabled(true);
@@ -76,6 +81,7 @@ export const PerfilProfessional = () => {
       .then((res) => {
         setUser(res);
         setIsLoading(false);
+        setVisibleButtons(false);
       });
   }, [isLoading]);
 
@@ -90,6 +96,7 @@ export const PerfilProfessional = () => {
       setValues({
         "user_id": user_id,
       });
+      setVisibleButtons(false);
       setIsLoading(true);
       setdireccionDisabled(true);
       settelefonoDisabled(true);
@@ -285,10 +292,14 @@ export const PerfilProfessional = () => {
                 </div>
               </div>
             </div>
-            <div className="container_btns">
-              <button className="btn btn-danger Button-edit" onClick={toggleInputCancelar}>Cancelar</button>
-              <button className="btn btn-success Button-edit" type="submit">Guardar cambios</button>
-            </div>
+              {
+                visibleButtons && (
+                  <div className="container_btns">
+                    <button className="btn btn-danger Button-edit" onClick={toggleInputCancelar}>Cancelar</button>
+                    <button className="btn btn-success Button-edit" type="submit">Guardar</button>
+                  </div>
+                )
+              }
           </form>
           {error && (
               <div
