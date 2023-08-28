@@ -44,10 +44,11 @@ const RegisterProfessional = () => {
     e.preventDefault();
     if (validarLetras(values.specialization)) return setInputError(true)
       try {
+        console.log("Hola hanii")
         setInputError(false)
-        const { data } = await registerProfessional(values);
+        //const { data } = await registerProfessional(values);
         setError("");
-        setSuccess(data.message);
+        //setSuccess(data.message);
         
         setValues({
           user_id: `${id[0].user_id}`,
@@ -91,8 +92,15 @@ const RegisterProfessional = () => {
                         name="n_matric"
                         placeholder="n_matric"
                         autoComplete="off"
-                        maxLength="10"
+                        title="La longitud de la matricula debe ser entre 6 y 7 caracteres."
+                        max="9999999999"
+                        min="100000"
                         required
+                        onInvalid={(e) => {
+                          e.target.setCustomValidity(
+                            "La longitud de la matrícula debe ser entre 6 y 7 caracteres."
+                          );
+                        }}
                       />
                       <label className="form-label" htmlFor="floatingInputGrid">
                         Nro de matrícula
