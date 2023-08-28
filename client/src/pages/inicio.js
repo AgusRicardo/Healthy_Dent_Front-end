@@ -130,7 +130,7 @@ export const Inicio = () => {
                 <NavLink to='/list/turn' className='nav-text'>
                 <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
                   <i class="fa-solid fa-notes-medical size-font"></i>
-                  Turnos
+                  Próximos Turnos
                 </a>
                 </NavLink>
               </li>
