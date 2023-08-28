@@ -3,6 +3,7 @@ import { registerProfessional, url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/registerProfessional.css";
 import { Loading } from "../components/Loading";
+import { useNavigate } from "react-router-dom";
 
 
 const RegisterProfessional = () => {
@@ -11,6 +12,8 @@ const RegisterProfessional = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [matriculaSuccess, setMatriculaSuccess] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`${url}/lastUserId`)
@@ -42,19 +45,20 @@ const RegisterProfessional = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
+    if (values.n_matric.length < 6 || values.n_matric.length > 7 ) {
+      setMatriculaSuccess(true);
+      return;
+    }
+
     if (validarLetras(values.specialization)) return setInputError(true)
       try {
         setInputError(false)
+        setMatriculaSuccess(false)
         const { data } = await registerProfessional(values);
         setError("");
         setSuccess(data.message);
-        
-        setValues({
-          user_id: `${id[0].user_id}`,
-          n_matric: "",
-          specialization: "",
-        });
-        
+        navigate('/login')
       } catch (error) {
         setError(error.response.data.errors[0].msg);
         setSuccess("");
@@ -92,14 +96,7 @@ const RegisterProfessional = () => {
                         placeholder="n_matric"
                         autoComplete="off"
                         title="La longitud de la matricula debe ser entre 6 y 7 caracteres."
-                        max="9999999999"
-                        min="100000"
                         required
-                        onInvalid={(e) => {
-                          e.target.setCustomValidity(
-                            "La longitud de la matrícula debe ser entre 6 y 7 caracteres."
-                          );
-                        }}
                       />
                       <label className="form-label" htmlFor="floatingInputGrid">
                         Nro de matrícula
@@ -167,6 +164,9 @@ const RegisterProfessional = () => {
                   {success}
                 </div>
               )}
+              <span className="error-text">
+              {matriculaSuccess && "La longitud de la matrícula debe ser entre 6 y 7 caracteres."}
+              </span>
               <div className="containerbuttonregprof">
               <button type="submit" className="btn btn-primary regprofbutton">
                 Registrarse

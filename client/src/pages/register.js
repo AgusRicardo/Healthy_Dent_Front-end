@@ -20,6 +20,7 @@ export const Register = () => {
   const [success, setSuccess] = useState(false);
   const [inputError, setInputError] = useState(false);
   const [prepaid, setPrepaid] = useState(false)
+  const [telephoneSuccess, setTelephoneSuccess] = useState(false)
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -44,7 +45,13 @@ export const Register = () => {
       setInputError(true);
       return;
     }
+    if (values.telephone.length < 10 || values.telephone.length > 15 ) {
+      setTelephoneSuccess(true);
+      return;
+    }
+
     try {
+      setTelephoneSuccess(false);
       setInputError(false);
       setPrepaid(false);
       values.name = capitalizeFirstLetter(values.name);
@@ -267,14 +274,7 @@ export const Register = () => {
                       name="telephone"
                       placeholder="telephone"
                       autoComplete="off"
-                      max="9999999999999999"
-                      min="9999999999"
                       required
-                      onInvalid={(e) => {
-                        e.target.setCustomValidity(
-                          "La longitud del teléfono debe ser entre 10 y 15 caracteres."
-                        );
-                      }}
                     />
                     <label className="form-label" htmlFor="floatingSelectGrid">
                       Teléfono
@@ -287,6 +287,9 @@ export const Register = () => {
             <br />
             <span className="error-text">
               {inputError && "Un campo ingresado es inválido"}
+            </span>
+            <span className="error-text">
+              {telephoneSuccess && "La longitud del teléfono debe ser entre 10 y 15 caracteres."}
             </span>
             {error && (
               <div
