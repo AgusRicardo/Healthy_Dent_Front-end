@@ -267,7 +267,14 @@ export const Register = () => {
                       name="telephone"
                       placeholder="telephone"
                       autoComplete="off"
+                      max="9999999999999999"
+                      min="9999999999"
                       required
+                      onInvalid={(e) => {
+                        e.target.setCustomValidity(
+                          "La longitud del teléfono debe ser entre 10 y 15 caracteres."
+                        );
+                      }}
                     />
                     <label className="form-label" htmlFor="floatingSelectGrid">
                       Teléfono
