@@ -95,7 +95,7 @@ export const Search = () => {
                     <div className="col-md-8">
                       <div className="card-body" style={{display: "flex", justifyContent: "space-between" ,flexFlow: "row wrap", textAlign:"start"}}>
                         <div className='column_card'>
-                          <h4 className="card-title">Dr. {prof.name} {prof.last_name}</h4>
+                          <h4 className="card-title">Dr. {prof.name}</h4>
                           <p className="card-title">Mat. {prof.n_matric}</p>
                           <div>
                             <h5 className='h5_specialization'>Especialidad </h5>

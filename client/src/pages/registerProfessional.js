@@ -44,11 +44,10 @@ const RegisterProfessional = () => {
     e.preventDefault();
     if (validarLetras(values.specialization)) return setInputError(true)
       try {
-        console.log("Hola hanii")
         setInputError(false)
-        //const { data } = await registerProfessional(values);
+        const { data } = await registerProfessional(values);
         setError("");
-        //setSuccess(data.message);
+        setSuccess(data.message);
         
         setValues({
           user_id: `${id[0].user_id}`,
