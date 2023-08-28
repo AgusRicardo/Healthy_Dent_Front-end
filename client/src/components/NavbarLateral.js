@@ -59,8 +59,8 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                 <i className='fa-solid fa-user size-font'></i>
-                  <span className="ms-2 d-none d-sm-inline">Mi perfil</span>
+                  <i className='fa-solid fa-user size-font'></i>
+                  <span className="ms-2 d-none d-sm-inline">Mi Perfil</span>
                 </a>
               </NavLink>
             </li>
@@ -87,7 +87,7 @@ const NavbarLateral = () => {
                   aria-current="page"
                 >
                   <i className='fa-solid fa-users size-font'></i>
-                  <span className="ms-2 d-none d-sm-inline">Mis pacientes</span>
+                  <span className="ms-2 d-none d-sm-inline">Mis Pacientes</span>
                 </a>
               </NavLink>
             </li>
@@ -142,7 +142,7 @@ const NavbarLateral = () => {
                 >
                   <i class="fa-solid fa-magnifying-glass size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
-                    Buscar profesional
+                    Buscar Profesional
                   </span>
                 </a>
               </NavLink>
@@ -165,7 +165,7 @@ const NavbarLateral = () => {
                   aria-current="page"
                 >
                   <i class="fa-solid fa-notes-medical size-font"></i>
-                  <span className="ms-2 d-none d-sm-inline">Próximos turnos</span>
+                  <span className="ms-2 d-none d-sm-inline">Próximos Turnos</span>
                 </a>
               </NavLink>
             </li>
