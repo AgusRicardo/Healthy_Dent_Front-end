@@ -5,7 +5,7 @@ import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
 import "../styles/turno.css";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const Turno = () => {
   const turn = useSelector(selectTurn)
@@ -16,10 +16,11 @@ export const Turno = () => {
   const [prepaid, setPrepaid] = useState()
   const [place, setPlace] = useState()
   const [success, setSuccess] = useState(false)
+  const [noHora, setNoHora] = useState(false)
   const [values, setValues] = useState({
     user_id: `${user_id}`,
     prof_id: `${turn}`,
-    prepaid_id: `${prepaid}`,
+    prepaid_id: "",
     place_id: "",
     hour: "",
     date: "",
@@ -33,37 +34,46 @@ export const Turno = () => {
   }
 
   useEffect(() => {
-    fetch(`${url}/user/prepaid/${user_id}`)
-    .then((response) => response.json())
-    .then((res) => {
-      setPrepaid(res);
-      setIsLoadingPrepaid(false); 
-    });
+    const fetchData = async () => {
+      try {
+        const prepaidResponse = await fetch(`${url}/user/prepaid/${user_id}`);
+        const prepaidData = await prepaidResponse.json();
+  
+        const placeResponse = await fetch(`${url}/placeProfessional/${turn}`);
+        const placeData = await placeResponse.json();
+  
+        setPrepaid(prepaidData);
+        setPlace(placeData);
+        setIsLoadingPrepaid(false);
+        setIsLoadingPlace(false);
+      } catch (error) {
+        setError(error.response.data.errors[0].msg);
+      }
+    };
+  
+    fetchData();
   }, []);
-
-  useEffect(() => {
-    fetch(`${url}/placeProfessional/${turn}`)
-    .then((response) => response.json())
-    .then((res) => {
-      setPlace(res)
-      setIsLoadingPlace(false)
-    })
-  }, [])
-
+  
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
 
   const onSubmit = async (e) => {
     e.preventDefault()
+    if (values.hour === "") {
+      setNoHora(true);
+      return;
+    }
     try {
+      values.prepaid_id = prepaid.prepaid_id
+      setNoHora(false);
       const { data } = await createTurn(values)
       setError("")
       setSuccess(data.message)
       setValues({
         user_id: `${user_id}`,
         prof_id: `${turn}`,
-        prepaid_id: `${prepaid}`,
+        prepaid_id: `${prepaid.prepaid_id}`,
         place_id: "",
         hour: "",
         date: "",
@@ -163,6 +173,9 @@ export const Turno = () => {
               </select>
               <label htmlFor="floatingSelectGrid">Horario</label>
             </div>
+            <span className="error-text">
+              {noHora && "El campo ingresado es inválido"}
+            </span>
           </div>
         </div>
         <div className="col-md">
