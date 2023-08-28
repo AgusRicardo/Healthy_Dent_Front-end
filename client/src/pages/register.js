@@ -175,6 +175,7 @@ export const Register = () => {
                       pattern=".{7,8}"
                       title="El rango requerido es entre 7 y 8 caracteres"
                       required
+                      min="0"
                     />
                     <label htmlFor="floatingInputGrid" className="form-label">
                       DNI
