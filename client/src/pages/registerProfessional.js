@@ -95,7 +95,7 @@ const RegisterProfessional = () => {
                         required
                       />
                       <label className="form-label" htmlFor="floatingInputGrid">
-                        Nro de matricula
+                        Nro de matrícula
                       </label>
                     </div>
                   </div>
@@ -115,7 +115,7 @@ const RegisterProfessional = () => {
                         required
                       />
                       <label className="form-label" htmlFor="floatingInputGrid">
-                        Especializacion
+                        Especialización
                       </label>
                     </div>
                       <span className="error-text">
@@ -123,7 +123,7 @@ const RegisterProfessional = () => {
                       </span>
                   </div>
                 </div>
-                <h5>Datos de ubicacion</h5>
+                <h5>Datos de ubicación</h5>
                 <hr className="separador sepreg"></hr>
                 <div className="mb-3">
                   <div className="form-floating">
@@ -137,7 +137,7 @@ const RegisterProfessional = () => {
                         maxLength="45">
                     </input>
                     <label className="form-label" htmlFor="floatingInputGrid">
-                      Lugar de atencion
+                      Lugar de atención
                     </label>
                   </div>
                 </div>

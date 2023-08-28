@@ -71,7 +71,7 @@ const Navbar = () => {
                 <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                   <li>
                     <button className="dropdown-item" onClick={() => logout()}>
-                      Logout
+                      Cerrar sesión
                     </button>
                   </li>
                 </ul>
