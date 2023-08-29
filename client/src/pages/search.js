@@ -110,9 +110,7 @@ export const Search = () => {
                         <div className='column_card'>
                           <p className="card-text"><i className="fa-regular fa-clock color_items"></i>HORARIOS Lun/Vie</p>
                         </div>
-                        <div className='column_card'>
-                          <p className="card-text"><i className="fa-regular fa-calendar-check color_items"></i>Turnos presenciales</p>
-                        </div>
+
                       </div>
                         <div className='btn_turn'>
                           <NavLink to='/turn'>
