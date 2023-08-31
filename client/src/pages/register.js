@@ -302,11 +302,6 @@ export const Register = () => {
             )}
             {success && (
               <>
-              <div>
-                <NavLink to="/register/professional" className="registerBottom">
-                <a>Registrate como profesional</a>  
-                </NavLink>
-              </div>
               <div
                 className="alert alert-success"
                 role="alert"
