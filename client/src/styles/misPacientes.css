@@ -28,7 +28,7 @@
   box-shadow: none !important;
 }
 .row-title{
-  color: red;
+  color: #ed1a40;
   font-weight: bold;
   font-size: 18px;
 }
@@ -37,7 +37,7 @@
 }
 .fa-eye{
   cursor: pointer;
-  color: red;
+  color: #ed1a40;
 }
 .fa-eye:hover {
   transform: scale(1.1, 1.1);

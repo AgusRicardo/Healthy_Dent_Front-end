@@ -106,6 +106,6 @@ NavLink {
 
 /*En teoria este es el icono*/
 .iconnav-user {
-  color: red !important;
+  color: #ed1a40 !important;
   margin-right: 5px;
 }
