@@ -33,7 +33,7 @@ export const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if ((values.name).trim() === "" || (values.last_name).trim() === "" || (values.address_user).trim() === "") {
+    if ((values.name).trim() === "" || (values.last_name).trim() === "" || (values.address_user).trim() === "" || (values.password).trim() === "") {
       setInputError(true);
       return;
     }
