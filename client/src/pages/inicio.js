@@ -68,28 +68,28 @@ export const Inicio = () => {
                       <h6>Nuevo:</h6>
                       <ul class="fa-ul">
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Aplicación accesible para usuarios Profesionales
+                        Aplicación accesible para usuarios Profesionales.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Nuevo login
+                        Nuevo login.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Implementación del inicio
+                        Implementación del módulo Inicio.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Módulo Agenda junto con un calendario, panel para visualizar los proximos 5 turnos y la posibilidad de desplegar un pop up para ver todos los turnos de hoy
+                        Módulo Agenda, que incluye un calendario y un panel para visualizar los próximos 5 turnos, así como la posibilidad de desplegar un pop-up para ver todos los turnos de hoy.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Módulo Mi perfil compuesto por toda la información del profesional y la posibilidad de editar campos seleccionados
+                        Módulo Mi perfil, compuesto por toda la información del profesional y la posibilidad de editar campos seleccionados.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Módulo Mis pacientes, apartado orientado a la búsqueda de pacientes del profesional
+                        Módulo Mis pacientes, apartado orientado a la búsqueda de pacientes del profesional.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Módulo Estadísticas
+                        Módulo Estadísticas.
                         </li>
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
-                        Módulo Ayuda
+                        Módulo Ayuda.
                         </li>
                       </ul>
                     </div>

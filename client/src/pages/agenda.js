@@ -169,7 +169,9 @@ export const Agenda = () => {
               }
             </div>
             <div className="box-vtodos">
-            <button className="btn-vtodos" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleButtonClick}>Ver Todos</button>
+              {
+                fiveTurns.length >= 5 && <button className="btn-vtodos" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleButtonClick}>Ver todos</button>
+              }
             </div>
           </div>
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
