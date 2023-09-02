@@ -21,6 +21,7 @@ export const Register = () => {
   const [inputError, setInputError] = useState(false);
   const [prepaid, setPrepaid] = useState(false)
   const [telephoneSuccess, setTelephoneSuccess] = useState(false)
+  const [addressSuccess, setAddressSuccess] = useState(false)
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -49,8 +50,13 @@ export const Register = () => {
       setTelephoneSuccess(true);
       return;
     }
+    if (values.address_user.length < 3 || values.address_user.length > 50) {
+      setAddressSuccess(true)
+      return;
+    }
 
     try {
+      setAddressSuccess(false);
       setTelephoneSuccess(false);
       setInputError(false);
       setPrepaid(false);
@@ -261,6 +267,9 @@ export const Register = () => {
                       Dirección
                     </label>
                   </div>
+                  <span className="error-text">
+                    {addressSuccess && "La longitud debe ser entre 3 y 50 caracteres."}
+                  </span>
                 </div>
 
                 <div className="col-md">
@@ -274,6 +283,7 @@ export const Register = () => {
                       name="telephone"
                       placeholder="telephone"
                       autoComplete="off"
+                      min="0"
                       required
                     />
                     <label className="form-label" htmlFor="floatingSelectGrid">
