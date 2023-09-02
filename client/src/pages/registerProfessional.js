@@ -96,6 +96,7 @@ const RegisterProfessional = () => {
                         placeholder="n_matric"
                         autoComplete="off"
                         title="La longitud de la matricula debe ser entre 6 y 7 caracteres."
+                        min={0}
                         required
                       />
                       <label className="form-label" htmlFor="floatingInputGrid">
