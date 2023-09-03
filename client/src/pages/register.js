@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { onRegistration } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/register.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -22,6 +22,8 @@ export const Register = () => {
   const [prepaid, setPrepaid] = useState(false)
   const [telephoneSuccess, setTelephoneSuccess] = useState(false)
   const [addressSuccess, setAddressSuccess] = useState(false)
+  const navigate = useNavigate()
+
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -33,7 +35,7 @@ export const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    
     if ((values.name).trim() === "" || (values.last_name).trim() === "" || (values.address_user).trim() === "" || (values.password).trim() === "") {
       setInputError(true);
       return;
@@ -76,6 +78,7 @@ export const Register = () => {
         password: "",
         prepaid_id: "DEFAULT",
       });
+      navigate('/login')
     } catch (error) {
       setError(error.response.data.errors[0].msg);
       setSuccess("");
