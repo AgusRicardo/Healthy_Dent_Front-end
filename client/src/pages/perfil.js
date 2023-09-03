@@ -14,12 +14,14 @@ export const Perfil = () => {
   const [user, setUser] = useState();
   const [prepaid, setPrepaid] = useState();
 
+
+  
   useEffect(() => {
     fetch(`${url}/user/${user_id}`)
-      .then((response) => response.json())
-      .then((res) => {
-        setUser(res);
-        setIsLoadingUser(false);
+    .then((response) => response.json())
+    .then((res) => {
+      setUser(res);
+      setIsLoadingUser(false);
       });
     fetch(`${url}/user/prepaid/${user_id}`)
       .then((response) => response.json())
@@ -28,7 +30,6 @@ export const Perfil = () => {
         setIsLoadingPrepaid(false);
       });
   }, []);
-
   return (
     <Layout>
       {isLoadingUser || isLoadingPrepaid ? (
@@ -69,7 +70,7 @@ export const Perfil = () => {
                           <div className="col-6 mb-3">
                             <h6>Fecha de nacimiento</h6>
                             <p className="text-muted">
-                              {user.date_birth.slice(0, -14)}
+                              {new Date(user.date_birth).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}
                             </p>
                           </div>
                           <div className="col-6 mb-3">
