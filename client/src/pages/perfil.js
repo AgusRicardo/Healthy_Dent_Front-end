@@ -65,7 +65,7 @@ export const Perfil = () => {
                           </div>
                           <div className="col-6 mb-3">
                             <h6>DNI</h6>
-                            <p className="text-muted">{user.dni}</p>
+                            <p className="text-muted">{user.dni.replace(/^(\d{1,2})(\d{3})(\d{3})$/, '$1.$2.$3')}</p>
                           </div>
                           <div className="col-6 mb-3">
                             <h6>Fecha de nacimiento</h6>
