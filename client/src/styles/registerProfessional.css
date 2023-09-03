@@ -23,3 +23,19 @@
     align-items: center;
     padding: 15px 0px 15px 0px;
   }
+  .containerprof {
+    max-width: 100%;
+    height: 75vh;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .form-prof{
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+  .formfirst{
+    width: 60%;
+  }

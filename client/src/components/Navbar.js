@@ -30,7 +30,7 @@ const Navbar = () => {
   };
   const name = localStorage.getItem("name");
   const last_name = localStorage.getItem("last_name");
-
+  const tipo = localStorage.getItem("tipo");
 
   return (
     <>
@@ -69,6 +69,18 @@ const Navbar = () => {
                   {name} {last_name}
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                  {
+                    tipo === 'Paciente' &&
+                    <li>
+                      <NavLink to="/register/professional"
+                        className="regist-prof"
+                      >
+                        <button className="dropdown-item">
+                          Registro profesional
+                        </button>
+                      </NavLink>
+                    </li>
+                  }
                   <li>
                     <button className="dropdown-item" onClick={() => logout()}>
                       Cerrar sesión

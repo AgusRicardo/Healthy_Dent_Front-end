@@ -13,7 +13,6 @@ const RegisterProfessional = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [matriculaSuccess, setMatriculaSuccess] = useState(false)
-  const navigate = useNavigate()
 
   useEffect(() => {
     fetch(`${url}/lastUserId`)
@@ -58,7 +57,6 @@ const RegisterProfessional = () => {
         const { data } = await registerProfessional(values);
         setError("");
         setSuccess(data.message);
-        navigate('/login')
       } catch (error) {
         setError(error.response.data.errors[0].msg);
         setSuccess("");
@@ -71,8 +69,8 @@ const RegisterProfessional = () => {
         isLoading ? (
           <Loading/>
         ):(
-        <div className="container-login container  contairegprof" id="container">
-          <div className="">
+        <div className="container  containerprof" id="container">
+          <div className="form-prof">
             <form
               onSubmit={(e) => onSubmit(e)}
               className="container"

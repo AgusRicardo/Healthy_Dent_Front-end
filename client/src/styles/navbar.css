@@ -27,6 +27,9 @@ NavLink {
   margin-right: 10px;
   color: #ffffff;
 }
+.regist-prof{
+  text-decoration: none !important;
+}
 /*Logo*/
 .logonav {
   width: 100px;

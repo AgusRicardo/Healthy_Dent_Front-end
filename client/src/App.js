@@ -54,7 +54,6 @@ const App = () => {
           <Route path="/*" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register/professional" element={<RegisterProfessional />}/>
         </Route>
 
         {/* RUTAS DEL PACIENTE */}
@@ -65,6 +64,7 @@ const App = () => {
             <Route path="/profile" element={<Perfil />} />
             <Route path="/turn" element={<Turno />} />
             <Route path="/list/turn" element={<MyTurns />} />
+            <Route path="/register/professional" element={<RegisterProfessional />}/>
           </Route>
         ) : (
           <Route path="/" element={<Home />} />
