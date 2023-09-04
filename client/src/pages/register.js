@@ -96,7 +96,7 @@ export const Register = () => {
             <br />
             <h1 className="regtitle rounded-3">Registro</h1>
             <br />
-            <div className="formfirst">
+            <div className="formfirstreg">
               <h5 className="subtitleform">Información personal</h5>
               <hr className="separador"></hr>
               <div className="row g-2 mb-3">
