@@ -15,7 +15,7 @@
   max-width: 285px;
 }
 .menu-lateral{
-  min-height: 92.3vh !important;
+  min-height: 100% !important;
 }
 .nav-title{
   margin-top: 2rem !important;
