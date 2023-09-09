@@ -6,11 +6,25 @@ import { onLogout } from "../api/auth";
 import { deleteItem } from "../redux/slices/userSlice";
 import logonav from "../img/logoynombre.png";
 import "../styles/navbar.css";
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { isAuth } = useSelector((state) => state.authh);
-
+  const [visibleLogin, setVisibleLogin] = useState(true);
+  const [visibleRegister, setVisibleRegister] = useState(true);
+  const location = useLocation();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (location.pathname === "/login") {
+      setVisibleLogin(false);
+    }
+    if (location.pathname === "/register") {
+      setVisibleRegister(false);
+    }
+  }, [])
+  
   const logout = async () => {
     try {
       await onLogout();
@@ -91,17 +105,22 @@ const Navbar = () => {
             </div>
           ) : (
             <div>
-              <NavLink to="/login">
-                <button type="button" className="btn btn-primary bn logbutton">
-                  Iniciar sesión
-                </button>
-              </NavLink>
-
-              <NavLink to="/register">
-                <button type="button" className="btn btn-primary bn regbutton">
-                  Registrarse
-                </button>
-              </NavLink>
+              {
+                visibleLogin &&
+                <NavLink to="/login">
+                  <button type="button" className="btn btn-primary bn logbutton">
+                    Iniciar sesión
+                  </button>
+                </NavLink>
+              }
+              {
+                visibleRegister &&
+                <NavLink to="/register">
+                  <button type="button" className="btn btn-primary bn regbutton">
+                    Registrarse
+                  </button>
+                </NavLink>
+              }
             </div>
           )}
         </div>
