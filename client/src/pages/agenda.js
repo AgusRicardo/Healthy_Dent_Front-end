@@ -158,7 +158,7 @@ export const Agenda = () => {
                                   {turn.name}
                                 </td>
                                 <td>{turn.last_name}</td>
-                                <td>{turn.hour}hs</td>
+                                <td>{turn.hour.slice(0, -3)}hs</td>
                                 <td>{turn.treatment}</td>
                               </tr>
                           ))
@@ -212,7 +212,7 @@ export const Agenda = () => {
                                 {turn.name}, {turn.last_name}
                               </td>
                               <td>{turn.date.slice(0, -14)}</td>
-                              <td>{turn.hour}</td>
+                              <td>{turn.hour.slice(0, -3)}hs</td>
                               <td>{turn.treatment}</td>
                             </tr>
                             )))
