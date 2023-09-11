@@ -81,7 +81,7 @@ export const MyTurns = () => {
                                               </td>
                                               <td>{turn.treatment}</td>
                                               <td>{turn.date.slice(0, -14)}</td>
-                                              <td>{turn.hour}</td>
+                                              <td>{turn.hour.slice(0, -3)}hs</td>
                                             </tr>
                                           ))
                                         }
