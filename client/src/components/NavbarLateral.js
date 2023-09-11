@@ -18,11 +18,10 @@ const NavbarLateral = () => {
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
-            <li className="nav-item text-white my-1 py-2 py-sm-2 inicio-menu " >
+            <li className="nav-item text-white my-1 py-2 py-sm-2" >
               <NavLink
-
                 to="/inicio"
-                className="ms-2 d-none d-sm-inline bottonnav-item"
+                className="bottonnav-item"
               >
                 <a
                   className="nav-link text-center text-sm-start"
@@ -38,7 +37,7 @@ const NavbarLateral = () => {
             <li className="nav-item text-white my-1 py-2 py-sm-2 ">
               <NavLink
                 to="/calendar"
-                className="ms-2 d-none d-sm-inline bottonnav-item"
+                className="bottonnav-item"
               >
                 <a
                   className="nav-link text-center text-sm-start"
@@ -115,10 +114,10 @@ const NavbarLateral = () => {
           </div>
           <hr className="text-white d-none d-sm-block nav_line" />
           <ul className="nav nav-pills flex-column mt-2 mt-sm-0" id="parentM">
-            <li className="nav-item text-white my-1 py-2 py-sm-2 inicio-menu ">
+            <li className="nav-item text-white my-1 py-2 py-sm-2">
             <NavLink
                 to="/inicio"
-                className="ms-2 d-none d-sm-inline bottonnav-item"
+                className="bottonnav-item"
               >
                 <a
                   className="nav-link text-center text-sm-start"
@@ -134,7 +133,7 @@ const NavbarLateral = () => {
               <li className="nav-item text-white my-1 py-2 py-sm-2 "> 
               <NavLink
                 to="/search"
-                className="ms-2 d-none d-sm-inline bottonnav-item"
+                className="bottonnav-item"
               >
                 <a
                   className="nav-link text-center text-sm-start"
