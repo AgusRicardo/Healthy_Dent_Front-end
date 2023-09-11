@@ -211,7 +211,7 @@ export const Agenda = () => {
                               <td>
                                 {turn.name}, {turn.last_name}
                               </td>
-                              <td>{turn.date.slice(0, -14)}</td>
+                              <td>{new Date(turn.date).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}</td>
                               <td>{turn.hour.slice(0, -3)}hs</td>
                               <td>{turn.treatment}</td>
                             </tr>
