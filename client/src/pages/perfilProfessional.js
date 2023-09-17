@@ -4,6 +4,8 @@ import { editProfile, url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/perfilProfessional.css";
 import { Loading } from "../components/Loading";
+import { ToastError } from "../components/ToastError";
+import { ToastSuccess } from "../components/ToastSuccess";
 //import { selectUser } from "../redux/slices/userSlice";
 
 export const PerfilProfessional = () => {
@@ -97,22 +99,26 @@ export const PerfilProfessional = () => {
         "user_id": user_id,
       });
       setVisibleButtons(false);
-      setIsLoading(true);
       setdireccionDisabled(true);
       settelefonoDisabled(true);
       setEmailDisabled(true);
       setEspeDisabled(true);
+      setTimeout(() => {
+        setIsLoading(true);
+      }, 2100);
     } catch (error) {
       setValues({
         "user_id": user_id,
       });
-      setIsLoading(true);
       setError(error.response.data.error);
       setSuccess("");
       setdireccionDisabled(true);
       settelefonoDisabled(true);
       setEmailDisabled(true);
       setEspeDisabled(true);
+      setTimeout(() => {
+        setIsLoading(true);
+      }, 2100);
     }
   };
 
@@ -302,24 +308,10 @@ export const PerfilProfessional = () => {
               }
           </form>
           {error && (
-              <div
-                className="alert alert-danger"
-                role="alert"
-                style={{ color: "red", margin: "10px 0", fontSize: "18px" }}
-              >
-                {error}
-              </div>
+              <ToastError titulo='Hubo un error' descripcion={error}/>
             )}
             {success && (
-              <>
-              <div
-                className="alert alert-success"
-                role="alert"
-                style={{ color: "green", margin: "10px 0", fontSize: "18px" }}
-              >
-                {success}
-            </div>
-              </>
+              <ToastSuccess titulo='Perfil modificado exitosamente' descripcion={success} />
             )}
         </div>
       </section>

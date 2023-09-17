@@ -3,6 +3,9 @@ import { onRegistration } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/register.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Toaster, toast } from 'sonner';
+import { ToastSuccess } from "../components/ToastSuccess";
+import { ToastError } from "../components/ToastError";
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -66,7 +69,7 @@ export const Register = () => {
       values.last_name = capitalizeFirstLetter(values.last_name);
       const { data } = await onRegistration(values);
       setError("");
-      setSuccess(data.message);
+      setSuccess(data && true)
       setValues({
         dni: "",
         name: "",
@@ -78,7 +81,9 @@ export const Register = () => {
         password: "",
         prepaid_id: "DEFAULT",
       });
-      navigate('/login')
+      setTimeout(() => {
+        navigate('/login')
+      }, 2100);
     } catch (error) {
       setError(error.response.data.errors[0].msg);
       setSuccess("");
@@ -305,23 +310,11 @@ export const Register = () => {
               {telephoneSuccess && "La longitud del teléfono debe ser entre 10 y 15 caracteres."}
             </span>
             {error && (
-              <div
-                className="alert alert-danger"
-                role="alert"
-                style={{ color: "red", margin: "10px 0", fontSize: "18px" }}
-              >
-                {error}
-              </div>
+              <ToastError titulo='Hubo un error' descripcion={error}/>
             )}
             {success && (
               <>
-              <div
-                className="alert alert-success"
-                role="alert"
-                style={{ color: "green", margin: "10px 0", fontSize: "18px" }}
-              >
-                {success}
-            </div>
+                <ToastSuccess titulo='¡Se ha registrado con éxito!' />
               </>
             )}
             <div className="containerbutreg">

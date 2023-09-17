@@ -6,6 +6,8 @@ import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
 import "../styles/turno.css";
 import { useNavigate } from 'react-router-dom';
+import { ToastError } from '../components/ToastError';
+import { ToastSuccess } from '../components/ToastSuccess';
 
 export const Turno = () => {
   const turn = useSelector(selectTurn)
@@ -88,7 +90,9 @@ export const Turno = () => {
         date: "",
         treatment: "",
       })
-      dispatch(deleteTurn())
+      setTimeout(() => {
+        dispatch(deleteTurn())
+      }, 2100);
     } catch (error) {
       setError(error.response.data.errors[0].msg);
     }
@@ -214,10 +218,10 @@ export const Turno = () => {
           </div>
           <br></br>
         {
-          error && <div className="alert alert-danger" role="alert" style={{ color: 'red', margin: '8px 0', fontSize: '16px' }}>{error}</div>
+          error && <ToastError titulo='Hubo un error' descripcion={error}/>
         }
         {
-          success && <div className="alert alert-success" role="alert" style={{ color: 'green', margin: '10px 0', fontSize: '18px' }}>{success}</div>
+          success && <ToastSuccess titulo='Turno agendado con exito' descripcion={success}/>
         }
         <div className='containerbuttonregprof divbuttonturn'>
         <button type='submit' className='btn btn-primary soliturnbutton '>

@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import "../styles/registerProfessional.css";
 import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router-dom";
+import { ToastSuccess } from "../components/ToastSuccess";
 
 
 const RegisterProfessional = () => {
@@ -56,7 +57,7 @@ const RegisterProfessional = () => {
         setMatriculaSuccess(false)
         const { data } = await registerProfessional(values);
         setError("");
-        setSuccess(data.message);
+        setSuccess(data && true)
       } catch (error) {
         setError(error.response.data.errors[0].msg);
         setSuccess("");
@@ -155,13 +156,7 @@ const RegisterProfessional = () => {
                 </div>
               )}
               {success && (
-                <div
-                  className="alert alert-success"
-                  role="alert"
-                  style={{ color: "green", margin: "10px 0", fontSize: "18px" }}
-                >
-                  {success}
-                </div>
+                <ToastSuccess titulo='¡Registro exitoso!' descripcion='Se ha registrado como profesional'/>
               )}
               <span className="error-text">
               {matriculaSuccess && "La longitud de la matrícula debe ser entre 6 y 7 caracteres."}

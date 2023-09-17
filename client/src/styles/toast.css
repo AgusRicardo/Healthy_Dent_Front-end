@@ -1,0 +1,15 @@
+/* Toast Success */
+.toast_toastSuccess {
+  font-size: 16px !important;
+}
+.toast_toastSuccess_description {
+}
+.icon_toastSuccess {
+}
+/* Toast Error */
+.toast_toastError {
+  font-size: 16px !important;
+}
+.toast_toastError_description {
+  
+}
