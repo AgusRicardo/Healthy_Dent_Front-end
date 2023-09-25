@@ -161,6 +161,15 @@ const RegisterProfessional = () => {
               <span className="error-text">
               {matriculaSuccess && "La longitud de la matrícula debe ser entre 6 y 7 caracteres."}
               </span>
+              <div style={{}}>
+              <p>
+                Al registrarse, está aceptando nuestros{" "}
+                <a href="#" style={{ color: "#00c1fc" }}>
+                  Términos y Condiciones
+                </a>{" "}
+                
+              </p>
+            </div>
               <div className="containerbuttonregprof">
               <button type="submit" className="btn btn-primary regprofbutton">
                 Registrarse
