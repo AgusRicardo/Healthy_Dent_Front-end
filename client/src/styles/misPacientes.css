@@ -45,3 +45,31 @@
 .table>:not(:first-child) {
   border-top: 1px solid gray;
 }
+.info_paciente_header {
+  border-bottom: none !important;
+}
+.container_body_modal{
+  display: flex;
+  flex-flow: column;
+  width: 85%;
+  margin-top: 0px;
+}
+.container_historial_p{
+  display: flex;
+  justify-content: space-between;
+}
+.prox_modal{
+  margin-right: 5px;
+}
+.container_info_foto{
+  display: flex;
+}
+.cont_foto_pac{
+  display: flex;
+  justify-content: end !important;
+}
+.icono_modal_paciente{
+  color:#00c1fc;
+  font-size: 160px;
+  margin: 10px;
+}
