@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { registerProfessional, url } from "../api/auth";
+import { getSpecialization, registerProfessional, url } from "../api/auth";
 import Layout from "../components/Layout";
 import "../styles/registerProfessional.css";
 import { Loading } from "../components/Loading";
@@ -23,11 +23,16 @@ const RegisterProfessional = () => {
         setValues({ ...values, user_id: `${res[0].user_id}` });
         setIsLoading(false);
       });
-      fetch(`${url}/professional/specializations`)
-      .then((response) => response.json())
-      .then((res) => {
-        setSpecializations(res);
-      });
+      const fetchData = async () => {
+        try {
+          const { data } = await getSpecialization();
+          setSpecializations(data);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      };
+    
+      fetchData();
   }, [isLoading]);
   
   const postValueSpecialization = (e)=>{
