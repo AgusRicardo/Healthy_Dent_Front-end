@@ -41,4 +41,6 @@ export async function editProfile(editData) {
   return await axios.put(`${url}/editProfile`, editData)
 }
 
-
+export async function getAttachment(manualId){
+  return await axios.get(`${url}/getAttachment/${manualId}`)
+}

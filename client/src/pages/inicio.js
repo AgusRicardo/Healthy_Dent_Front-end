@@ -2,11 +2,39 @@ import React, { useEffect, useState } from 'react';
 import '../styles/inicio.css';
 import Navbar from '../components/Navbar';
 import { NavLink } from 'react-router-dom';
+import { getAttachment, url } from "../api/auth";
 
 export const Inicio = () => {
 
   const tipo = localStorage.getItem('tipo');
   const last_name = localStorage.getItem('last_name');
+
+  const [value, setValue] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (tipo === 'Paciente') {
+        const userManual = 2;
+        try {
+          const { data } = await getAttachment(userManual);
+          setValue(data[0].url);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      } else {
+        const professionalManual = 1; 
+        try {
+          const { data } = await getAttachment(professionalManual);
+          setValue(data[0].url);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      }
+    };
+  
+    fetchData();
+  
+  }, []);
 
   return (
     <>
@@ -56,7 +84,7 @@ export const Inicio = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <a href='https://collectednotes.com/' target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                    <a href={value} target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
                       <i className='fa-solid fa-circle-info size-font'></i>
                       Ayuda
                     </a>
@@ -135,7 +163,7 @@ export const Inicio = () => {
                 </NavLink>
               </li>
               <li>
-                <a href='https://collectednotes.com/' target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
+                <a href={value} target="_blank" rel="noreferrer" className='button-extra-one nav-link cursor active text1 nav-link-home'>
                   <i className='fa-solid fa-circle-info size-font'></i>
                   Ayuda
                 </a>
