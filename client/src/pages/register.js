@@ -317,7 +317,7 @@ export const Register = () => {
                 <ToastSuccess titulo='¡Se ha registrado con éxito!' />
               </>
             )}
-            <div style={{}}>
+            <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
                 <a href="#" style={{ color: "#00c1fc" }}>

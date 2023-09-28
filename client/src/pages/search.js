@@ -7,7 +7,7 @@ import { Loading } from '../components/Loading';
 import '../styles/search.css'
 import { Footer } from '../components/Footer';
 import dentist from  "../img/dentist.png"
-import { url } from '../api/auth';
+import { getSpecialization, url } from '../api/auth';
 
 
 
@@ -19,6 +19,7 @@ export const Search = () => {
   const [tablaUsuarios, setTablaUsuarios]= useState([]);
   const [searchName, setSearchName] = useState("")
   const [searchSpec, setSearchSpec] = useState("")
+  const [optionsSpec, setOptionsSpec] = useState()
   
 
   useEffect(() => {
@@ -29,6 +30,16 @@ export const Search = () => {
         setTablaUsuarios(res); 
         setIsLoading(false); 
       });
+      const fetchData = async () => {
+        try {
+          const { data } = await getSpecialization();
+          setOptionsSpec(data);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      };
+    
+      fetchData();
   }, [isLoading]);
   
   const onChangeName = (e) => {
@@ -37,8 +48,13 @@ export const Search = () => {
   }
 
   const onChangeSpec = (e) => {
-    setSearchSpec(e.target.value)
-    filtrarSpec(e.target.value)
+    if (e.target.value === 'DEFAULT') {
+      setSearchSpec("")
+      filtrarSpec("")
+    }else {
+      setSearchSpec(e.target.value)
+      filtrarSpec(e.target.value)
+    }
   }
   
   const filtrarName=(terminoBusqueda)=>{
@@ -73,13 +89,19 @@ export const Search = () => {
   return (
       <Layout className="container" style={{backgroundColor: '#fafafa'}}>
           <div style={{display: 'flex',marginLeft: '48vh' ,flexDirection: 'row', justifyContent: 'center', backgroundColor: '#fafafa'}} className="container">
-            <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
+            <div className="input-group input-group-md" style={{margin: '10px', padding: '10px'}}>
               <input type="search" className="form-control" placeholder="Nombre del profesional" aria-label="Recipient's username" value={searchName} onChange={(e) => onChangeName(e)}aria-describedby="button-addon2"/>
               <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass "></i></span>
             </div>
-            <div className="input-group input-group-lg" style={{margin: '10px', padding: '10px'}}>
-              <input type="search" className="form-control" placeholder="Especialidad" aria-label="Recipient's username" value={searchSpec} onChange={(e) => onChangeSpec(e)} aria-describedby="button-addon2"/>
-              <span className="input-group-text" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
+            <div className="input-group input-group-md" style={{margin: '10px', padding: '10px'}}>
+              <select defaultValue={"DEFAULT"} className="form-select" aria-label="Especialidad" onChange={(e) => onChangeSpec(e)}>
+                <option defaultValue value="DEFAULT">Selecciona una especialidad</option>
+                {
+                  optionsSpec.map(opt => (
+                    <option key={opt.spe_id} value={opt.spe_id}>{opt.description}</option>
+                  ))
+                }
+              </select>
             </div>
           </div>
         <section style={{display: "flex", flexDirection: 'row',  backgroundColor: '#fafafa'}} className="container">

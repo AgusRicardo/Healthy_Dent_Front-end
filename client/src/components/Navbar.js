@@ -26,17 +26,18 @@ const Navbar = () => {
     }
   }, [])
   
-  useEffect(() => {
-    if (isAuth) {
-      fetch(`${url}/professional/profile/${user_id}`)
-      .then((response) => response.json())
-      .then((res) => {
-        if (res.length > 0) {
-          setIsProfessional(true);
-        }
-      });
-    }
-  }, [isAuth])
+  // Se retira debido a que la base de datos gratuita no permite tantas conexiones
+  // useEffect(() => {
+  //   if (isAuth) {
+  //     fetch(`${url}/professional/profile/${user_id}`)
+  //     .then((response) => response.json())
+  //     .then((res) => {
+  //       if (res.length > 0) {
+  //         setIsProfessional(true);
+  //       }
+  //     });
+  //   }
+  // }, [isAuth])
   
   const logout = async () => {
     try {

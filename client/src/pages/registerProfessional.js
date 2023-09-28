@@ -161,7 +161,7 @@ const RegisterProfessional = () => {
               <span className="error-text">
               {matriculaSuccess && "La longitud de la matrícula debe ser entre 6 y 7 caracteres."}
               </span>
-              <div style={{}}>
+              <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
                 <a href="#" style={{ color: "#00c1fc" }}>

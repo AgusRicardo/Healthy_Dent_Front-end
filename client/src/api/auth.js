@@ -44,3 +44,7 @@ export async function editProfile(editData) {
 export async function getAttachment(manualId){
   return await axios.get(`${url}/getAttachment/${manualId}`)
 }
+
+export async function getSpecialization() {
+  return await axios.get(`${url}/specialization`)
+}
