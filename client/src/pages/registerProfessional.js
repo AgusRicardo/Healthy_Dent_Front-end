@@ -6,64 +6,62 @@ import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { ToastSuccess } from "../components/ToastSuccess";
 
-
 const RegisterProfessional = () => {
   const [inputError, setInputError] = useState(false);
   const [id, setId] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [matriculaSuccess, setMatriculaSuccess] = useState(false)
+  const [matriculaSuccess, setMatriculaSuccess] = useState(false);
+  const [specializations, setSpecializations] = useState([]);
 
   useEffect(() => {
     fetch(`${url}/lastUserId`)
       .then((response) => response.json())
       .then((res) => {
         setId(res[0].user_id);
-        setValues({ ...values, user_id: `${res[0].user_id}`})
-        setIsLoading(false); 
+        setValues({ ...values, user_id: `${res[0].user_id}` });
+        setIsLoading(false);
+      });
+      fetch(`${url}/professional/specializations`)
+      .then((response) => response.json())
+      .then((res) => {
+        setSpecializations(res);
       });
   }, [isLoading]);
+  
+  const postValueSpecialization = (e)=>{
+    const foundElement = specializations.find((element) => element.description === e);
+    return foundElement ? foundElement.spe_id : null;
+  }
 
-  const [values, setValues] = useState({  
+  const [values, setValues] = useState({
     n_matric: "",
     specialization: "",
-  });
 
+  });
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-  function validarLetras(texto) {
-    for (let i = 0; i < texto.length; i++) {
-        if (!isNaN(texto[i]) || texto[i] === " ") {
-            return true;
-        }
-    }
-    return false;
-}
-
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (values.n_matric.length < 6 || values.n_matric.length > 7 ) {
+    const selectSpeId =  postValueSpecialization(values.specialization)
+    values.specialization = selectSpeId
+    if (values.n_matric.length < 6 || values.n_matric.length > 7) {
       setMatriculaSuccess(true);
       return;
     }
-
-    if (validarLetras(values.specialization)) return setInputError(true)
-      try {
-        setInputError(false)
-        setMatriculaSuccess(false)
-        const { data } = await registerProfessional(values);
-        setError("");
-        setSuccess(data && true)
-      } catch (error) {
-        setError(error.response.data.errors[0].msg);
-        setSuccess("");
-      }
+    try {
+      setInputError(false);
+      setMatriculaSuccess(false);
+      const { data } = await registerProfessional(values);
+      setError("");
+      setSuccess(data && true);
+    } catch (error) {
+      setError(error.response.data.errors[0].msg);
+      setSuccess("");
+    }
   };
-
   return (
     <Layout>
       {
@@ -105,19 +103,25 @@ const RegisterProfessional = () => {
                   </div>
                   <br></br>
                   <div className="col-md">
-                    <div className="form-floating">
-                      <input
+                  <div className="form-floating">
+                      <select
                         onChange={(e) => onChange(e)}
-                        type="text"
-                        value={values.specialization}
-                        className="form-control"
+            
+                        value={values.specialization || "DEFAULT"}
+                        className="form-select"
                         id="specialization"
                         name="specialization"
-                        placeholder="specialization"
-                        autoComplete="off"
-                        maxLength="45"
                         required
-                      />
+                      >
+                        <option  value="DEFAULT" disabled>
+                        Seleccione su especialidad...
+                      </option>
+                        {specializations.map((specialization) => (
+                          <option value={specialization.description} key={specialization.spe_id}>
+                            {specialization.description}
+                          </option>
+                        ))}
+                      </select>
                       <label className="form-label" htmlFor="floatingInputGrid">
                         Especialización
                       </label>
