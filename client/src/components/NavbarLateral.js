@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { getAttachment, url } from "../api/auth";
 import "../styles/navbar_lateral.css";
 
 const NavbarLateral = () => {
   const tipo = localStorage.getItem("tipo");
+  
+  const [value, setValue] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (tipo === 'Paciente') {
+        const userManual = 2;
+        try {
+          const { data } = await getAttachment(userManual);
+          setValue(data[0].url);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      } else {
+        const professionalManual = 1; 
+        try {
+          const { data } = await getAttachment(professionalManual);
+          setValue(data[0].url);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      }
+    };
+  
+    fetchData();
+  
+  }, []);
 
   return (
     <>
@@ -94,7 +122,7 @@ const NavbarLateral = () => {
               <a
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
-                href="https://collectednotes.com/"
+                href={value}
                 target="_blank" rel="noreferrer"
               >
                 <i className='fa-solid fa-circle-info size-font'></i>
@@ -174,7 +202,7 @@ const NavbarLateral = () => {
               <a
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
-                href="https://collectednotes.com/"
+                href={value}
                 target="_blank" rel="noreferrer"
               >
                 <i className='fa-solid fa-circle-info size-font'></i>

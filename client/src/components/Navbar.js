@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { unauthenticateUser } from "../redux/slices/authSlice";
 import { useDispatch } from "react-redux";
-import { onLogout } from "../api/auth";
+import { onLogout, url } from "../api/auth";
 import { deleteItem } from "../redux/slices/userSlice";
 import logonav from "../img/logoynombre.png";
 import "../styles/navbar.css";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const { isAuth } = useSelector((state) => state.authh);
   const [visibleLogin, setVisibleLogin] = useState(true);
   const [visibleRegister, setVisibleRegister] = useState(true);
+  const [isProfessional, setIsProfessional] = useState(false);
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -24,6 +25,18 @@ const Navbar = () => {
       setVisibleRegister(false);
     }
   }, [])
+  
+  useEffect(() => {
+    if (isAuth) {
+      fetch(`${url}/professional/profile/${user_id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.length > 0) {
+          setIsProfessional(true);
+        }
+      });
+    }
+  }, [isAuth])
   
   const logout = async () => {
     try {
@@ -45,6 +58,7 @@ const Navbar = () => {
   const name = localStorage.getItem("name");
   const last_name = localStorage.getItem("last_name");
   const tipo = localStorage.getItem("tipo");
+  const user_id = localStorage.getItem("user_id");
 
   return (
     <>
@@ -74,7 +88,7 @@ const Navbar = () => {
             <div className="navbar">
               <div className="btn-group" role="group">
                 <a
-                  className="nav-link dropdown-toggle text_navbar"
+                  className="nav-link dropdown-toggle text_navbar btn_navbar"
                   role="button"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
@@ -84,7 +98,7 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="btnGroupDrop1">
                   {
-                    tipo === 'Paciente' &&
+                    tipo === 'Paciente' && isProfessional === false ? (
                     <li>
                       <NavLink to="/register/professional"
                         className="regist-prof"
@@ -94,6 +108,11 @@ const Navbar = () => {
                         </button>
                       </NavLink>
                     </li>
+                    )
+                    :
+                    (
+                      null
+                    )
                   }
                   <li>
                     <button className="dropdown-item" onClick={() => logout()}>

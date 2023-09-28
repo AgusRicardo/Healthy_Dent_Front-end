@@ -13,6 +13,9 @@
 NavLink {
   text-decoration: none !important;
 }
+.btn_navbar{
+  margin-right: 22px;
+}
 .text_navbar {
   text-decoration: none !important;
   font-size: 17px;

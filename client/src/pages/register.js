@@ -38,20 +38,20 @@ export const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    
+
     if ((values.name).trim() === "" || (values.last_name).trim() === "" || (values.address_user).trim() === "" || (values.password).trim() === "") {
       setInputError(true);
       return;
     }
-    if (values.prepaid_id === "DEFAULT" || values.prepaid_id === "" ) {
+    if (values.prepaid_id === "DEFAULT" || values.prepaid_id === "") {
       setPrepaid(true);
       return;
     }
-    if (values.dni.length < 7 || values.dni.length > 8 ) {
+    if (values.dni.length < 7 || values.dni.length > 8) {
       setInputError(true);
       return;
     }
-    if (values.telephone.length < 10 || values.telephone.length > 15 ) {
+    if (values.telephone.length < 10 || values.telephone.length > 15) {
       setTelephoneSuccess(true);
       return;
     }
@@ -232,7 +232,7 @@ export const Register = () => {
                     <label htmlFor="floatingSelectGrid">Obra social</label>
                   </div>
                   <span className="error-text">
-                      {prepaid && "Seleccione una opción válida"}
+                    {prepaid && "Seleccione una opción válida"}
                   </span>
                 </div>
               </div>
@@ -258,48 +258,48 @@ export const Register = () => {
                 </div>
 
                 <div className="row g-2 mb-3">
-                <div className="col-md">
-                  <div className="form-floating">
-                    <input
-                      onChange={(e) => onChange(e)}
-                      type="text"
-                      value={values.address_user}
-                      className="form-control inputreg"
-                      id="address_user"
-                      name="address_user"
-                      placeholder="address_user"
-                      autoComplete="off"
-                      required
-                    />
-                    <label className="form-label" htmlFor="floatingSelectGrid">
-                      Dirección
-                    </label>
+                  <div className="col-md">
+                    <div className="form-floating">
+                      <input
+                        onChange={(e) => onChange(e)}
+                        type="text"
+                        value={values.address_user}
+                        className="form-control inputreg"
+                        id="address_user"
+                        name="address_user"
+                        placeholder="address_user"
+                        autoComplete="off"
+                        required
+                      />
+                      <label className="form-label" htmlFor="floatingSelectGrid">
+                        Dirección
+                      </label>
+                    </div>
+                    <span className="error-text">
+                      {addressSuccess && "La longitud debe ser entre 3 y 50 caracteres."}
+                    </span>
                   </div>
-                  <span className="error-text">
-                    {addressSuccess && "La longitud debe ser entre 3 y 50 caracteres."}
-                  </span>
-                </div>
 
-                <div className="col-md">
-                  <div className="form-floating">
-                    <input
-                      onChange={(e) => onChange(e)}
-                      type="number"
-                      value={values.telephone}
-                      className="form-control inputreg"
-                      id="telephone"
-                      name="telephone"
-                      placeholder="telephone"
-                      autoComplete="off"
-                      min="0"
-                      required
-                    />
-                    <label className="form-label" htmlFor="floatingSelectGrid">
-                      Teléfono
-                    </label>
+                  <div className="col-md">
+                    <div className="form-floating">
+                      <input
+                        onChange={(e) => onChange(e)}
+                        type="number"
+                        value={values.telephone}
+                        className="form-control inputreg"
+                        id="telephone"
+                        name="telephone"
+                        placeholder="telephone"
+                        autoComplete="off"
+                        min="0"
+                        required
+                      />
+                      <label className="form-label" htmlFor="floatingSelectGrid">
+                        Teléfono
+                      </label>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
             <br />
@@ -310,17 +310,26 @@ export const Register = () => {
               {telephoneSuccess && "La longitud del teléfono debe ser entre 10 y 15 caracteres."}
             </span>
             {error && (
-              <ToastError titulo='Hubo un error' descripcion={error}/>
+              <ToastError titulo='Hubo un error' descripcion={error} />
             )}
             {success && (
               <>
                 <ToastSuccess titulo='¡Se ha registrado con éxito!' />
               </>
             )}
+            <div style={{}}>
+              <p>
+                Al registrarse, está aceptando nuestros{" "}
+                <a href="#" style={{ color: "#00c1fc" }}>
+                  Términos y Condiciones
+                </a>{" "}
+                
+              </p>
+            </div>
             <div className="containerbutreg">
-            <button type="submit" className="btn btn-primary regbutton">
-              Registrarse
-            </button>
+              <button type="submit" className="btn btn-primary regbutton">
+                Registrarse
+              </button>
             </div>
           </form>
         </div>
