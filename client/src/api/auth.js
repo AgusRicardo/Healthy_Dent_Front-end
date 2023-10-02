@@ -48,3 +48,6 @@ export async function getAttachment(manualId){
 export async function getSpecialization() {
   return await axios.get(`${url}/specialization`)
 }
+export async function getProfesionalUserId(user_id) {
+  return await axios.get(`${url}/professional/profile/${user_id}`)
+}
