@@ -3,6 +3,7 @@
   flex-flow: column;
   align-items: center;
   text-align: center;
+  margin-left: 16rem;
 }
 .calendario{
   background-color: white;
