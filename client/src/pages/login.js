@@ -146,7 +146,7 @@ export const Login = () => {
                   </div>
                 )}
                 <a className="a_icon">¿Olvidaste tu contraseña?</a>
-                <button className="button_signIn">Iniciar</button>
+                <button className="button_signIn">Iniciar sesion</button>
               </form>
             </div>
             <div className="overlay-container">
@@ -208,7 +208,7 @@ export const Login = () => {
                   </div>
                 )}
                 <a className="a_icon">¿Olvidaste tu contraseña?</a>
-                <button className="button_signIn">Iniciar</button>
+                <button className="button_signIn">Iniciar sesion</button>
               </form>
             </div>
             <div className="overlay-container-prof">

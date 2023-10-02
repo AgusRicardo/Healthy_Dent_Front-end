@@ -41,6 +41,13 @@
   transition: transform 80ms ease-in;
 }
 
+.button_signIn:hover {
+  background-color: #05c7f2;
+  opacity: 0.8;
+  border: 1px solid #05c7f2;
+}
+
+
 .button_signIn:active {
   transform: scale(0.95);
 }
