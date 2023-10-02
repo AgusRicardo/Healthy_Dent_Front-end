@@ -5,11 +5,8 @@ import Layout from '../components/Layout'
 import { addTurn } from '../redux/slices/turnSlice';
 import { Loading } from '../components/Loading';
 import '../styles/search.css'
-import { Footer } from '../components/Footer';
 import dentist from  "../img/dentist.png"
 import { getSpecialization, url } from '../api/auth';
-
-
 
 
 export const Search = () => {
@@ -19,8 +16,7 @@ export const Search = () => {
   const [tablaUsuarios, setTablaUsuarios]= useState([]);
   const [searchName, setSearchName] = useState("")
   const [searchSpec, setSearchSpec] = useState("")
-  const [optionsSpec, setOptionsSpec] = useState()
-  
+  const [especialidad, setEspecialidad] = useState([]);  
 
   useEffect(() => {
     fetch(`${url}/search`)
@@ -29,25 +25,38 @@ export const Search = () => {
         setState(res); 
         setTablaUsuarios(res); 
         setIsLoading(false); 
+        res.forEach((element) => {
+          setEspecialidad((prevEspecialidad) => [
+            ...prevEspecialidad,
+            {
+              "spe_id": element.spe_id,
+              "description": element.description
+            }
+          ]);
+        });
       });
-      const fetchData = async () => {
-        try {
-          const { data } = await getSpecialization();
-          setOptionsSpec(data);
-        } catch (error) {
-          console.error('Error al obtener los datos:', error);
+    }, []);
+    let espeNoDuplicidad = especialidad;
+
+    function eliminarDuplicadosPorPropiedad(array, propiedad) {
+      const uniqueMap = new Map();
+      const uniqueArray = [];
+      array.forEach((element) => {
+        if (!uniqueMap.has(element[propiedad])) {
+          uniqueMap.set(element[propiedad], true);
+          uniqueArray.push(element);
         }
-      };
-    
-      fetchData();
-  }, [isLoading]);
-  
+      });
+      return uniqueArray;
+    }
+    const resSinDuplicados = eliminarDuplicadosPorPropiedad(espeNoDuplicidad, 'spe_id');
+
   const onChangeName = (e) => {
     setSearchName(e.target.value)
     filtrarName(e.target.value)
   }
 
-  const onChangeSpec = (e) => {
+  const onChangeSpec = async (e) => {
     if (e.target.value === 'DEFAULT') {
       setSearchSpec("")
       filtrarSpec("")
@@ -66,16 +75,19 @@ export const Search = () => {
     setState(resultadosBusqueda);
   }
 
-  const filtrarSpec=(terminoBusqueda)=>{
-    var resultSpec=tablaUsuarios.filter((elemento) =>{
-      if (elemento.specialization.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
-        return elemento;
+  const filtrarSpec = (terminoBusqueda) => {
+    if (terminoBusqueda !== "") {
+      const resultSpec = tablaUsuarios.filter((elemento) => {
+        console.log(typeof elemento.spe_id);
+        return elemento.spe_id == terminoBusqueda
       }
-    });
-    setState(resultSpec);
-  }
+      );
+      setState(resultSpec);
+    }else {
+      setState(tablaUsuarios);
+    }
+  };
   
-
   if (isLoading) { 
     return (
       <Layout>
@@ -97,10 +109,13 @@ export const Search = () => {
               <select defaultValue={"DEFAULT"} className="form-select" aria-label="Especialidad" onChange={(e) => onChangeSpec(e)}>
                 <option defaultValue value="DEFAULT">Selecciona una especialidad</option>
                 {
-                  optionsSpec.map(opt => (
-                    <option key={opt.spe_id} value={opt.spe_id}>{opt.description}</option>
+                  resSinDuplicados != [] ?
+                  resSinDuplicados.map((opt, index) => (
+                    <option key={index} value={opt.spe_id}>{opt.description}</option>
                   ))
-                }
+                  :
+                  <p>Cargando...</p>
+                } 
               </select>
             </div>
           </div>
@@ -121,7 +136,7 @@ export const Search = () => {
                           <p className="card-title">Mat. {prof.n_matric}</p>
                           <div>
                             <h5 className='h5_specialization'>Especialidad </h5>
-                            <span className="card-title card_specialization">{prof.specialization}</span>
+                            <span className="card-title card_specialization">{prof.description}</span>
                           </div>
                           <div className='items_card'>
                             <i className="fa-solid fa-phone color_items items_pointer"></i>

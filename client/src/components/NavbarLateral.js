@@ -1,37 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { getAttachment, url } from "../api/auth";
+import { getAttachment } from "../api/auth";
 import "../styles/navbar_lateral.css";
 
 const NavbarLateral = () => {
   const tipo = localStorage.getItem("tipo");
-  
   const [value, setValue] = useState();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (tipo === 'Paciente') {
-        const userManual = 2;
-        try {
-          const { data } = await getAttachment(userManual);
-          setValue(data[0].url);
-        } catch (error) {
-          console.error('Error al obtener los datos:', error);
-        }
-      } else {
-        const professionalManual = 1; 
-        try {
-          const { data } = await getAttachment(professionalManual);
-          setValue(data[0].url);
-        } catch (error) {
-          console.error('Error al obtener los datos:', error);
-        }
+  const toggleClick = async () => {
+    if (tipo === 'Paciente') {
+      const userManual = 2;
+      try {
+        const { data } = await getAttachment(userManual);
+        setValue(data[0].url);
+        window.open(`${data[0].url}`, '_blank');
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
       }
-    };
-  
-    fetchData();
-  
-  }, []);
+    } else {
+      const professionalManual = 1; 
+      try {
+        const { data } = await getAttachment(professionalManual);
+        setValue(data[0].url);
+        window.open(`${data[0].url}`, '_blank');
+      } catch (error) {
+        console.error('Error al obtener los datos:', error);
+      }
+    }
+  }
 
   return (
     <>
@@ -121,9 +117,9 @@ const NavbarLateral = () => {
             <li className="nav-item text-white my-1 py-2 py-sm-2 bottonnav-item">
               <a
                 className="nav-link text-center text-sm-start"
-                aria-current="page"
-                href={value}
-                target="_blank" rel="noreferrer"
+                aria-current="page" 
+                rel="noreferrer"
+                onClick={toggleClick}
               >
                 <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
@@ -151,7 +147,7 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="fa-solid fa-house size-font"></i>
+                  <i className="fa-solid fa-house size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Inicio
                   </span>
@@ -167,7 +163,7 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="fa-solid fa-magnifying-glass size-font"></i>
+                  <i className="fa-solid fa-magnifying-glass size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">
                     Buscar Profesional
                   </span>
@@ -191,7 +187,7 @@ const NavbarLateral = () => {
                   className="nav-link text-center text-sm-start"
                   aria-current="page"
                 >
-                  <i class="fa-solid fa-notes-medical size-font"></i>
+                  <i className="fa-solid fa-notes-medical size-font"></i>
                   <span className="ms-2 d-none d-sm-inline">Próximos Turnos</span>
                 </a>
               </NavLink>
@@ -202,8 +198,8 @@ const NavbarLateral = () => {
               <a
                 className="nav-link text-center text-sm-start"
                 aria-current="page"
-                href={value}
-                target="_blank" rel="noreferrer"
+                rel="noreferrer"
+                onClick={toggleClick}
               >
                 <i className='fa-solid fa-circle-info size-font'></i>
                 <span className="ms-2 d-none d-sm-inline">Ayuda</span>
