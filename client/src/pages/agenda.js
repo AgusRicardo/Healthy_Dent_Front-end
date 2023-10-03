@@ -124,7 +124,7 @@ export const Agenda = () => {
     sevenDaysLater.setDate(startDateObj.getDate() + 7);
 
     if (endDateObj > sevenDaysLater) {
-      setError('Fecha Fin no puede ser más de 7 días posteriores a Fecha Inicio');
+      setError('El rango entre fechas no puede ser mayor a 7 días');
     } else {
       setError('');
     }
