@@ -1,12 +1,40 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../components/Layout'
 import "../styles/misPacientes.css"
+import { url } from '../api/auth';
+import { Loading } from "../components/Loading";
+import {  useState } from "react";
+
+
 
 export const MisPacientes = () => {
+  const prof_id = localStorage.getItem("prof_id");
+  const [isLoading, setIsLoading] = useState(true);
+  const [pacientes, setPaciente] = useState();
+
+  useEffect(() => {
+    fetch(`${url}/mypatient/${prof_id}`)
+      .then((response) => response.json())
+      .then((res) => {
+        setPaciente(res);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setIsLoading(false);
+      });
+      
+  }, [isLoading]);
+
+
+
 
   return (
-    <>
       <Layout>
+        {isLoading ? (
+        <Loading />
+      ) : (
+        <>
         <div className="container-misPacientes container">
           <div className="container-general">
             <div className="container-row">
@@ -25,28 +53,25 @@ export const MisPacientes = () => {
                 </thead>
                 <tbody>
                   {/* Todos los pacientes */}
-                  <tr>
-                    <td>apellido, nombre</td>
-                    <td>44.232.256</td>
-                    <td><i className="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
-                  </tr>
-                  <tr>
-                    <td>apellido2, nombre2</td>
-                    <td>4.552.268</td>
-                    <td><i className="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
-                  </tr>
+                  {pacientes && pacientes.map((paciente) => (
+                    <tr key={paciente.id}>
+                      <td>{paciente.last_name}, {paciente.name}</td>
+                      <td>{paciente.dni}</td>
+                      <td><i className="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content sin-padding">
-              <div class="modal-header info_paciente_header">
+          <div className="modal-dialog  modal-dialog-scrollable modal-dialog-centered">
+            <div className="modal-content  ">
+              <div className="modal-header info_paciente_header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body box-modal container_body_modal">
+              <div className="modal-body box-modal container_body_modal">
                 <div className="container_info_foto">
                   <div className="container_info_paciente">
                     <div className="container_nombre_paciente">
@@ -137,9 +162,9 @@ export const MisPacientes = () => {
             </div>
           </div>
         </div>
-
-
+        </>
+      )}
       </Layout>
-    </>
+    
   );
 };

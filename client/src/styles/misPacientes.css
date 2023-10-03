@@ -67,9 +67,11 @@
 .cont_foto_pac{
   display: flex;
   justify-content: end !important;
+  margin-left: 6rem;
 }
 .icono_modal_paciente{
   color:#00c1fc;
-  font-size: 160px;
+  font-size: 5rem;
   margin: 10px;
+  
 }
