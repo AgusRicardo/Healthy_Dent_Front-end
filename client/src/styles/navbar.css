@@ -115,3 +115,6 @@ NavLink {
   color: #ed1a40 !important;
   margin-right: 5px;
 }
+.icon-bell{
+  margin-right: -1rem;
+}

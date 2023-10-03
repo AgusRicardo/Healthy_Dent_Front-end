@@ -88,6 +88,9 @@ const Navbar = () => {
           {isAuth ? (
             <div className="navbar">
               <div className="btn-group" role="group">
+                <a  className="nav-link  text_navbar ">
+                <i class="fa-solid fa-bell iconnav-user icon-bell"></i>
+                </a>
                 <a
                   className="nav-link dropdown-toggle text_navbar btn_navbar"
                   role="button"
@@ -95,6 +98,7 @@ const Navbar = () => {
                   aria-expanded="false"
                   onClick={toggleDropdown}
                 >
+              
                   <i className="fa-solid fa-circle-user  iconnav-user"></i>
                   {name} {last_name}
                 </a>
