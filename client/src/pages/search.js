@@ -145,7 +145,7 @@ export const Search = () => {
                           </div>
                         </div>
                         <div className='column_card'>
-                          <p className="card-text"><i className="fa-regular fa-clock color_items"></i>HORARIOS Lun/Vie</p>
+                          <p className="card-text"><i className="fa-regular fa-clock color_items"></i>Horarios</p>
                         </div>
 
                       </div>
