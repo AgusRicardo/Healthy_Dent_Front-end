@@ -252,3 +252,28 @@ abbr[title] {
   width: max-content;
   margin: 0.2rem;
 }
+.container_btn_mis_horarios {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  padding: 7px;
+}
+.btn_mis_horarios{
+  padding: 3px;
+  font-size: 22px;
+  border-radius: 30px;
+  color: red;
+  cursor: pointer;
+}
+.btn_mis_horarios:hover{
+  transform: scale(1.15, 1.15);
+}
+.container_modal_fecha {
+  text-align: start;
+  padding: 5px;
+  margin: 5px;
+}
+.jornada_descipcion {
+  font-size: 12px;
+  text-align: start;
+}

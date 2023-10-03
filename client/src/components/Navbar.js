@@ -34,10 +34,8 @@ const Navbar = () => {
   const toggleDropdown = async () => {
     if (isAuth) {
       const { data } = await getProfesionalUserId(user_id);
-      console.log(data);
       if (data.length > 0) {
         setIsProfessional(true);
-        console.log(data);
       }
     }
     setIsDropdownOpen(!isDropdownOpen);
@@ -89,7 +87,7 @@ const Navbar = () => {
             <div className="navbar">
               <div className="btn-group" role="group">
                 <a  className="nav-link  text_navbar ">
-                <i class="fa-solid fa-bell iconnav-user icon-bell"></i>
+                <i className="fa-solid fa-bell iconnav-user icon-bell"></i>
                 </a>
                 <a
                   className="nav-link dropdown-toggle text_navbar btn_navbar"

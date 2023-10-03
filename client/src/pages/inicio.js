@@ -89,7 +89,7 @@ export const Inicio = () => {
                     <div className="novedades">
                       <p>Update v1.2.0</p>
                       <h6>Nuevo:</h6>
-                      <ul class="fa-ul">
+                      <ul className="fa-ul">
                         <li className='item-list'><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>
                         Aplicación accesible para usuarios Profesionales.
                         </li>
@@ -152,7 +152,7 @@ export const Inicio = () => {
               <li>
                 <NavLink to='/list/turn' className='nav-text'>
                 <a className='button-extra-one nav-link cursor active text1 nav-link-home'>
-                  <i class="fa-solid fa-notes-medical size-font"></i>
+                  <i className="fa-solid fa-notes-medical size-font"></i>
                   Próximos Turnos
                 </a>
                 </NavLink>

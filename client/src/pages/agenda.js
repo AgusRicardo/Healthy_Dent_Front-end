@@ -17,6 +17,12 @@ export const Agenda = () => {
   const [noTurns, setNoTurns] = useState()
   const [popUpLoading, PopUpLoading] = useState(true)
   const [popUpSinTurnos, setPopUpSinTurnos] = useState()
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [error, setError] = useState('');
   //const item = useSelector(selectUser);
   const prof_id = localStorage.getItem("prof_id");
   const today = date.getDate();
@@ -50,7 +56,16 @@ export const Agenda = () => {
         console.error("Error fetching data:", error);
         setIsLoading(false);
       });
+      getCurrentDate()
   }, [isLoading]);
+
+  function getCurrentDate() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); 
+    const day = String(today.getDate()).padStart(2, '0'); 
+    setFecha(`${year}-${month}-${day}`)
+  }
 
   const handlePrevMonth = () => {
     setDate((prevDate) => {
@@ -85,6 +100,44 @@ export const Agenda = () => {
         PopUpLoading(false);
       });
   };
+
+  const handleStartTimeChange = (e) => {
+    const newStartTime = e.target.value;
+    setStartTime(e.target.value);
+
+    const startHour = parseInt(newStartTime.substring(0, 2), 10);
+    const endHour = startHour + 8;
+    
+    setEndTime(`${endHour.toString().padStart(2, '0')}:${newStartTime.substring(3)}`);
+  };
+
+  const handleStartDate = (e) => {
+    setStartDate(e.target.value);
+  };
+  const handleEndDate = (e) => {
+    const selectedEndDate = e.target.value;
+    setEndDate(selectedEndDate);
+
+    const startDateObj = new Date(startDate);
+    const endDateObj = new Date(selectedEndDate);
+    const sevenDaysLater = new Date(startDateObj);
+    sevenDaysLater.setDate(startDateObj.getDate() + 7);
+
+    if (endDateObj > sevenDaysLater) {
+      setError('Fecha Fin no puede ser más de 7 días posteriores a Fecha Inicio');
+    } else {
+      setError('');
+    }
+  };
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (error) {
+      console.log('error en las fechas');
+    }else {
+      console.log('submiteado');
+    }
+  }
 
   return (
     <Layout>
@@ -130,6 +183,9 @@ export const Agenda = () => {
                   tileClassName="custom-tile"
                   calendarClassName="custom-calendar"
                   />
+                  <div className="container_btn_mis_horarios">
+                    <i className="fa-solid fa-gear btn_mis_horarios" data-bs-toggle="modal" data-bs-target="#detalleHorario"></i>
+                  </div>
               </div>
           </div>
           <div className="ult_turnos style_container">
@@ -174,14 +230,14 @@ export const Agenda = () => {
               }
             </div>
           </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content sin-padding">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Todos los turnos</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
+            <div className="modal-content sin-padding">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalLabel">Todos los turnos</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body box-modal">
+                <div className="modal-body box-modal">
                 <table className="table table-striped mb-0">
                   <thead className="marcosuo">
                     <tr>
@@ -205,9 +261,6 @@ export const Agenda = () => {
                           ): (
                             turns.map((turn, index) => (
                             <tr key={index}>
-                            {/* <th scope="row" key={turn.turn_id}>
-                              {index + 1}
-                                </th> */}
                               <td>
                                 {turn.name}, {turn.last_name}
                               </td>
@@ -224,6 +277,63 @@ export const Agenda = () => {
                 </div>
             </div>
           </div>
+          </div>
+          {/* Pop Up Detalles horarios */}
+          <div className="modal fade" id="detalleHorario" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h1 className="modal-title fs-5" id="exampleModalLabel">Detalle Horario</h1>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form onSubmit={(e) => onSubmit(e)}>
+                  <div className="modal-body">
+                  <p className="jornada_descipcion">(*) Solución para gestión de jornada laboral</p>
+                  <div className="row g-2 container_modal_fecha">
+                    <h6>Fecha:</h6>
+                    <div className="col-md">
+                      <div className="form-floating">
+                        <input type="date" className="form-control" id="floatingInputGrid" min={fecha} max="2024-10-02" value={startDate} onChange={handleStartDate} required/>
+                        <label htmlFor="floatingInputGrid">Fecha Inicio</label>
+                      </div>
+                    </div>
+                    <div className="col-md">
+                      <div className="form-floating">
+                        <input type="date" className="form-control" id="floatingInputGrid" value={endDate} min={startDate} max="2024-10-02" onChange={handleEndDate} required/>
+                        <label htmlFor="floatingInputGrid">Fecha Fin</label>
+                      </div>
+                    </div>
+                    {endDate < startDate && (
+                    <p className="text-danger">Fecha Fin debe ser posterior a Fecha Inicio</p>
+                      )}
+                    {error && <p className="text-danger">{error}</p>}
+                  </div>
+                  <div className="row g-2 container_modal_fecha">
+                    <h6>Hora:</h6>
+                    <div className="col-md">
+                      <div className="form-floating">
+                        <input type="time" className="form-control" id="floatingInputGrid" list="" min="06:00" max="18:00" value={startTime} onChange={handleStartTimeChange} required/>
+                        <label htmlFor="floatingInputGrid">Hora Inicio</label>
+                      </div>
+                    </div>
+                    <div className="col-md">
+                      <div className="form-floating">
+                        <input type="time" className="form-control" id="floatingInputGrid" value={endTime} disabled />
+                        <label htmlFor="floatingInputGrid">Hora Fin</label>
+                      </div>
+                    </div>
+                  </div>
+                  {endTime < startTime && (
+                    <p className="text-danger">Hora Fin debe ser mayor que Hora Inicio</p>
+                  )}
+                  </div>
+                  <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">hola</button>
+                    <button type="submit" className="btn btn-primary">hola de nuevo</button>
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </section>
         )
