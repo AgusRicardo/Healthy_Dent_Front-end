@@ -10,13 +10,16 @@ import {  useState } from "react";
 export const MisPacientes = () => {
   const prof_id = localStorage.getItem("prof_id");
   const [isLoading, setIsLoading] = useState(true);
+  const [state, setState] = useState()
   const [pacientes, setPaciente] = useState();
+  const [searchName, setSearchName] = useState("") 
 
   useEffect(() => {
     fetch(`${url}/mypatient/${prof_id}`)
       .then((response) => response.json())
       .then((res) => {
         setPaciente(res);
+        setState(res);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -26,8 +29,21 @@ export const MisPacientes = () => {
       
   }, [isLoading]);
 
+  const onChangeName = (e) => {
+    setSearchName(e.target.value)
+    filtrarName(e.target.value)
+  };
 
-
+  const filtrarName=(terminoBusqueda)=>{
+    var resultadosBusqueda=state.filter((elemento) =>{
+      if (elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())) {
+        return elemento;
+      }else if (elemento.dni.includes(terminoBusqueda)) {
+        return elemento;
+      }
+    });
+    setPaciente(resultadosBusqueda);
+  };
 
   return (
       <Layout>
@@ -45,7 +61,7 @@ export const MisPacientes = () => {
                     <th scope="col" className='row-title'>DNI</th>
                     <th scope="col" className='col-4'>
                       <div className="input-search input-group-sm">
-                        <input type="search" className="form-control search-paciente" placeholder="Buscar paciente" aria-describedby="button-addon2" />
+                        <input type="search" className="form-control search-paciente" placeholder="Buscar paciente" aria-describedby="button-addon2" value={searchName} onChange={(e) => onChangeName(e)} />
                         <span className="input-group-text search-paciente" id="basic-addon2"><i className="fa-solid fa-magnifying-glass"></i></span>
                       </div>
                     </th>
@@ -55,7 +71,7 @@ export const MisPacientes = () => {
                   {/* Todos los pacientes */}
                   {pacientes && pacientes.map((paciente) => (
                     <tr key={paciente.id}>
-                      <td>{paciente.last_name}, {paciente.name}</td>
+                      <td>{paciente.name}</td>
                       <td>{paciente.dni}</td>
                       <td><i className="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
                     </tr>
