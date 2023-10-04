@@ -213,7 +213,7 @@ export const PerfilProfessional = () => {
                     <label className="form-label" htmlFor="floatingInputGrid">
                       Dirección
                     </label>
-                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Direccion")}></i>
+                      <i className="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Direccion")}></i>
                   </div>
                 </div>
                 <div className="col-md fields">
@@ -253,7 +253,7 @@ export const PerfilProfessional = () => {
                     <label className="form-label" htmlFor="floatingInputGrid">
                       Email
                     </label>
-                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Email")}></i>
+                      <i className="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Email")}></i>
                   </div>
                 </div>
                 <div className="col-md fields">
@@ -273,7 +273,7 @@ export const PerfilProfessional = () => {
                     <label className="form-label" htmlFor="floatingInputGrid">
                       Especialización
                     </label>
-                      <i class="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Espe")}></i>
+                      <i className="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Espe")}></i>
                   </div>
                 </div>
                 <div className="col-md fields">
@@ -293,7 +293,7 @@ export const PerfilProfessional = () => {
                     <label className="form-label" htmlFor="floatingInputGrid">
                       Nro matrícula
                     </label>
-                      <i class="fa-solid fa-pen-to-square icon_matricula"></i>
+                      <i className="fa-solid fa-pen-to-square icon_matricula"></i>
                   </div>
                 </div>
               </div>
