@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createTurn, url } from '../api/auth';
+import { createTurn, getAllDates, url } from '../api/auth';
 import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
@@ -20,6 +20,7 @@ export const Turno = () => {
   const [success, setSuccess] = useState(false)
   const [noHora, setNoHora] = useState(false)
   const [noPlaceId, setNoPlaceId] = useState(false)
+  const [hourProf, setHourProf] = useState("")
 
   const [values, setValues] = useState({
     user_id: `${user_id}`,
@@ -47,6 +48,12 @@ export const Turno = () => {
         const placeResponse = await fetch(`${url}/placeProfessional/${turn}`);
         const placeData = await placeResponse.json();
   
+        const hourTurn = await getAllDates(turn);
+
+        if (!hourTurn.data.message) {
+          setHourProf(hourTurn.data);
+        }
+
         setPrepaid(prepaidData);
         setPlace(placeData);
         setIsLoadingPrepaid(false);
@@ -177,15 +184,14 @@ export const Turno = () => {
             <div className="form-floating">
               <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" onChange={(e) => onChange(e)} required>
                 <option selected value="DEFAULT" disabled>Seleccione un horario...</option>
-                <option value="08:00">08:00</option>
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
+                {
+                  hourProf == "" ? <p>No se encontraron horarios disponibles</p>
+                  :
+                  hourProf.map ((hour, index) => (
+                    <option key={index} value={hour.hour}>{hour.hour}</option>
+                    ) 
+                  )
+                }
               </select>
               <label htmlFor="floatingSelectGrid">Horario</label>
             </div>
