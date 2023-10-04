@@ -13,6 +13,7 @@ export async function onRegistration(registrationData) {
     registrationData
   )
 }
+
 export async function onLogin(loginData) {
   return await axios.post(`${url}/login`, loginData)
 }
@@ -48,6 +49,15 @@ export async function getAttachment(manualId){
 export async function getSpecialization() {
   return await axios.get(`${url}/specialization`)
 }
+
 export async function getProfesionalUserId(user_id) {
   return await axios.get(`${url}/professional/profile/${user_id}`)
+}
+
+export async function getAllDates(prof_id) {
+  return await axios.get(`${url}/profdates/${prof_id}`)
+}
+
+export async function assignTurn(editTurnData) {
+  return await axios.put(`${url}/assignTurn`, editTurnData)
 }
