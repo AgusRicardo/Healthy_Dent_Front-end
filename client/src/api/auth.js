@@ -53,6 +53,7 @@ export async function getSpecialization() {
 export async function getProfesionalUserId(user_id) {
   return await axios.get(`${url}/professional/profile/${user_id}`)
 }
+<<<<<<< HEAD
 
 export async function getAllDates(prof_id) {
   return await axios.get(`${url}/profdates/${prof_id}`)
@@ -60,4 +61,11 @@ export async function getAllDates(prof_id) {
 
 export async function assignTurn(editTurnData) {
   return await axios.put(`${url}/assignTurn`, editTurnData)
+=======
+export async function getAllTurn(prof_id) {
+  return await axios.get(`${url}/professional/totalTurn/${prof_id}`)
+}
+export async function getAllPatient(prof_id) {
+  return await axios.get(`${url}/professional/totalPatient/${prof_id}`)
+>>>>>>> 9e2e2b4f16ab24f0076faf6fe4ae3c5dd987c1bd
 }

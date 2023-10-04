@@ -27,4 +27,23 @@
     max-width: 50vw;
     max-height: 35vh;
     min-height: 35vh;
+    display: flex;
+    align-items: center;
 }
+.numero-grande {
+    font-size: 100px; /* Cambia el tamaño de fuente de los números */
+    font-weight: bold; /* Hace que los números estén en negrita */
+    color: #00c1fc;
+  }
+  
+  /* Estilo personalizado para los títulos */
+  .titulo {
+    font-size: 18px; /* Cambia el tamaño de fuente de los títulos */
+    color: #00c1fc;
+    font-weight: bold;
+  }
+.vertical-line {
+    border-left: 4px solid #00c1fc; /* Estilo de la línea vertical */
+    height: 100%; /* Altura de la línea vertical igual a la del contenedor */
+    margin: 0 auto; /* Centra la línea vertical horizontalmente */
+  }

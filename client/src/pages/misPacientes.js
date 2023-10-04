@@ -81,7 +81,7 @@ export const MisPacientes = () => {
             </div>
           </div>
         </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog  modal-dialog-scrollable modal-dialog-centered">
             <div className="modal-content  ">
               <div className="modal-header info_paciente_header">
@@ -131,31 +131,31 @@ export const MisPacientes = () => {
           </div>
         </div>
 
-        <div class="modal fade" id="motivoVisita" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
-            <div class="modal-content sin-padding">
-              <div class="modal-header info_paciente_header">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div className="modal fade" id="motivoVisita" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog sin-padding modal-dialog-scrollable modal-dialog-centered">
+            <div className="modal-content sin-padding">
+              <div className="modal-header info_paciente_header">
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body box-modal container_body_modal">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-sm-6">
+              <div className="modal-body box-modal container_body_modal">
+                <div className="container">
+                  <div className="row">
+                    <div className="col-sm-6">
                     <p className='row-title'>Paciente</p>
                       <p>nombre apellido</p>
                     </div>
-                    <div class="col-sm-3">
+                    <div className="col-sm-3">
                     <p className='row-title'>DNI</p>
                       <p>14494926</p>
                     </div>
-                    <div class="col-sm-3">
+                    <div className="col-sm-3">
                     <p className='row-title'>Fecha</p>
                       <p>27/09/2023</p>
                     </div>
                   </div>
                 </div>
-                <div class="container">
-                  <div class="row">
+                <div className="container">
+                  <div className="row">
                   <p className='row-title'>Motivo de visita</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel metus sit amet nulla tincidunt posuere in eget quam. Fusce eu metus sed turpis suscipit bibendum. Vivamus id ultrices nulla, quis iaculis eros. Nullam id magna vel purus elementum facilisis. Sed feugiat erat eu justo tincidunt, sed mattis nunc condimentum. Nullam quis dictum lectus, eu bibendum metus. Sed id est euismod, viverra orci at, tempor felis. Curabitur ac tincidunt ligula. Pellentesque efficitur odio in est dictum, quis fringilla orci dictum. Vivamus volut
 
@@ -163,11 +163,11 @@ export const MisPacientes = () => {
                   </div>
                 </div>
                 
-                  <div clas="row" >
+                  <div className="row" >
                   <input type="text" id="comentario" name="comentario" placeholder="Agregar comentario ..." style={{ border: 'none' , textAlign: 'left' }} ></input>
                   </div>
-                 
-                  <div class="row">
+                
+                  <div className="row">
                   <p className='row-title'>Adjuntos</p>
                   <a href='#' style={{ color: "#00c1fc" }} >Orden.png</a>
                   </div>
