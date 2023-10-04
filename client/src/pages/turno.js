@@ -108,11 +108,11 @@ export const Turno = () => {
           <div>
           <form onSubmit={(e) => onSubmit(e)} className='container'>
         <br />
-        <h1 style={{ textAlign: 'center' }} >Sacá tu turno</h1>
+        <h1 style={{ textAlign: 'center' }} >Solicitar Turno</h1>
         <br />
         <h5 className='subtitleform'>Datos del turno</h5>
           <hr className='separador sepreg'></hr>
-        <div className='row g-2 mb-3'>
+        <div className='row g-2 mb-3 w-100'>
         <div className="col-md">
             <div className="form-floating">
               <input
@@ -152,7 +152,7 @@ export const Turno = () => {
               </span>
           </div>
         </div>
-        <div className='row g-2 mb-3'>
+        <div className='row g-2 mb-3 w-100'>
           <div className="col-md">
             <div className="form-floating">
               <input
@@ -194,9 +194,10 @@ export const Turno = () => {
             </span>
           </div>
         </div>
-        <div className="col-md">
+        <hr />
+        <div className="col-md w-100">
             <div className="form-floating">
-              <input
+              <textarea
                 onChange={(e) => onChange(e)}
                 type='text'
                 value={values.treatment}
