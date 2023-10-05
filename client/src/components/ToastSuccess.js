@@ -6,7 +6,7 @@ export const ToastSuccess = ({titulo, descripcion}) => {
 
   useEffect(() => {
     toast.success(`${titulo}`, {
-      description: `${descripcion !== undefined ? descripcion : " "}`,
+      description: `${descripcion !== undefined && descripcion !== false ? descripcion : " "}`,
     });
   }, []);
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { createTurn, getAllDates, url } from '../api/auth';
+import { assignTurn, createTurn, getAllDates, getAllHours, url } from '../api/auth';
 import Layout from '../components/Layout';
 import { Loading } from '../components/Loading';
 import { deleteTurn, selectTurn } from '../redux/slices/turnSlice';
@@ -20,8 +20,13 @@ export const Turno = () => {
   const [success, setSuccess] = useState(false)
   const [noHora, setNoHora] = useState(false)
   const [noPlaceId, setNoPlaceId] = useState(false)
-  const [hourProf, setHourProf] = useState("")
-
+  const [infoProf, setInfoProf] = useState("")
+  const [isSelectDisabled, setIsSelectDisabled] = useState(true);
+  const [getHours, setGetHours] = useState({
+    prof_id: `${turn}`,
+    date: ""
+  });
+  const [hours, setHours] = useState()
   const [values, setValues] = useState({
     user_id: `${user_id}`,
     prof_id: `${turn}`,
@@ -32,8 +37,8 @@ export const Turno = () => {
     treatment: "",
   })
   const [error, setError] = useState(false)
+  const [sinDisponibilidad, setSinDisponibilidad] = useState(false)
   const navigate = useNavigate()
-  const currentDate = new Date().toISOString().split('T')[0];
 
   if (!turn || prepaid === undefined) {
     navigate('/search');
@@ -44,14 +49,14 @@ export const Turno = () => {
       try {
         const prepaidResponse = await fetch(`${url}/user/prepaid/${user_id}`);
         const prepaidData = await prepaidResponse.json();
-  
         const placeResponse = await fetch(`${url}/placeProfessional/${turn}`);
         const placeData = await placeResponse.json();
-  
         const hourTurn = await getAllDates(turn);
 
         if (!hourTurn.data.message) {
-          setHourProf(hourTurn.data);
+          setInfoProf(hourTurn.data);
+        }else {
+          setSinDisponibilidad(true)
         }
 
         setPrepaid(prepaidData);
@@ -66,9 +71,31 @@ export const Turno = () => {
     fetchData();
   }, []);
   
+  useEffect(() => {
+    if (values.date !== "") {
+      setIsSelectDisabled(false);
+    }else{
+      setIsSelectDisabled(true);
+    }
+    fetchData()
+  }, [values.date])
+
   const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
+    setValues({ ...values, [e.target.name]: e.target.value });
+    if (e.target.name === "date") {
+      setGetHours({ ...getHours, [e.target.name]: e.target.value });
+      fetchData();
+    }
   }
+  
+  const fetchData = async (e) => {
+    try {
+      const getHoursAvailable = await getAllHours(getHours);
+      setHours(getHoursAvailable.data);
+    } catch (error) {
+      setError(error.response.data.errors[0].msg);
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -81,11 +108,12 @@ export const Turno = () => {
       setNoPlaceId(true);
       return;
     }
+    
     try {
       values.prepaid_id = prepaid.prepaid_id
       setNoPlaceId(false);
       setNoHora(false);
-      const { data } = await createTurn(values)
+      const { data } = await assignTurn(values)
       setError("")
       setSuccess(data.message)
       setValues({
@@ -141,7 +169,7 @@ export const Turno = () => {
           </div>
           <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="place_id" onChange={(e) => onChange(e)}>
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="place_id" onChange={(e) => onChange(e)} required>
                 <option selected value="DEFAULT" disabled>Seleccione un lugar de atención...</option>
                 {
                   !place || place.message ?
@@ -160,35 +188,31 @@ export const Turno = () => {
           </div>
         </div>
         <div className='row g-2 mb-3 w-100'>
-          <div className="col-md">
+        <div className="col-md">
             <div className="form-floating">
-              <input
-                onChange={(e) => onChange(e)}
-                type='date'
-                value={values.date}
-                className='form-control'
-                id='date'
-                name='date'
-                placeholder='Fecha'
-                autoComplete='off'
-                min={currentDate} 
-                max="2024-12-31"
-                required
-              />
-              <label htmlFor="floatingInputGrid" className='form-label'>
-                Fecha
-              </label>
+              <select defaultValue={'DEFAULT'} className="form-select" disabled={sinDisponibilidad} id="floatingSelectGrid" aria-label="Floating label select example" name="date" onChange={(e) => onChange(e)} required>
+                <option selected value="DEFAULT" disabled>Seleccione un día...</option>
+                {
+                  infoProf == "" ? <p>No se encontraron horarios disponibles</p>
+                  :
+                  infoProf.map ((date, index) => (
+                    <option key={index} value={(new Date(date.date)).toISOString().split('T')[0]}>{new Date(date.date).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}</option>
+                    ) 
+                  )
+                }
+              </select>
+              <label htmlFor="floatingSelectGrid">Fecha</label>
             </div>
           </div>
           <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" onChange={(e) => onChange(e)} required>
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="hour" disabled={isSelectDisabled} onChange={(e) => onChange(e)} required>
                 <option selected value="DEFAULT" disabled>Seleccione un horario...</option>
                 {
-                  hourProf == "" ? <p>No se encontraron horarios disponibles</p>
+                  hours == undefined || hours == [] ? <p>No se encontraron horarios disponibles</p>
                   :
-                  hourProf.map ((hour, index) => (
-                    <option key={index} value={hour.hour}>{hour.hour}</option>
+                  hours.map ((hour, index) => (
+                    <option key={index} value={hour.hour}>{hour.hour.slice(0, -3)}hs</option>
                     ) 
                   )
                 }
@@ -230,8 +254,14 @@ export const Turno = () => {
         {
           success && <ToastSuccess titulo='Turno agendado con exito' descripcion={success}/>
         }
+        {
+          sinDisponibilidad && <ToastError titulo='Sin turnos disponibles!' descripcion={error}/>
+        }
+        {
+          sinDisponibilidad && <div class="alert alert-danger" role="alert">Sin turnos disponibles!</div>
+        }
         <div className='containerbuttonregprof divbuttonturn'>
-        <button type='submit' className='btn btn-primary soliturnbutton '>
+        <button type='submit' className='btn btn-primary soliturnbutton' disabled={sinDisponibilidad}>
           Solicitar turno
         </button>
         </div>

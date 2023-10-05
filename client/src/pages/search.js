@@ -78,7 +78,6 @@ export const Search = () => {
   const filtrarSpec = (terminoBusqueda) => {
     if (terminoBusqueda !== "") {
       const resultSpec = tablaUsuarios.filter((elemento) => {
-        console.log(typeof elemento.spe_id);
         return elemento.spe_id == terminoBusqueda
       }
       );

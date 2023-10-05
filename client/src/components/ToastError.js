@@ -5,8 +5,9 @@ export const ToastError = ({titulo, descripcion}) => {
 
   useEffect(() => {
     toast.error(`${titulo}`, {
-      description: `${descripcion !== undefined ? descripcion : " "}`,
+      description: `${descripcion !== undefined && descripcion !== false ? descripcion : " "}`,
     });
+
   }, []);
 
   return <Toaster 
