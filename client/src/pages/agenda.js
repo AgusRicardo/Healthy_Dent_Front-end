@@ -23,6 +23,7 @@ export const Agenda = () => {
   const [endDate, setEndDate] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState('');
+  const [isSelectDisabled, setIsSelectDisabled] = useState(true);
   //const item = useSelector(selectUser);
   const prof_id = localStorage.getItem("prof_id");
   const today = date.getDate();
@@ -109,10 +110,14 @@ export const Agenda = () => {
     const endHour = startHour + 8;
     
     setEndTime(`${endHour.toString().padStart(2, '0')}:${newStartTime.substring(3)}`);
+    console.log("hola1")
+    habilitarGuardar();
   };
 
   const handleStartDate = (e) => {
     setStartDate(e.target.value);
+    console.log("hola2")
+    habilitarGuardar();
   };
   const handleEndDate = (e) => {
     const selectedEndDate = e.target.value;
@@ -121,6 +126,7 @@ export const Agenda = () => {
     const startDateObj = new Date(startDate);
     const endDateObj = new Date(selectedEndDate);
     const sevenDaysLater = new Date(startDateObj);
+   
     sevenDaysLater.setDate(startDateObj.getDate() + 7);
 
     if (endDateObj > sevenDaysLater) {
@@ -128,6 +134,8 @@ export const Agenda = () => {
     } else {
       setError('');
     }
+    console.log("hola3")
+    habilitarGuardar();
   };
 
   const onSubmit = async (e) => {
@@ -137,6 +145,19 @@ export const Agenda = () => {
     }else {
       console.log('submiteado');
     }
+  }
+  const onGuardar = async (e) => {
+    e.preventDefault();
+    console.log(startDate,endDate)
+    console.log(startTime,endTime)
+  }
+  const habilitarGuardar =  () => {
+    console.log(startDate,endDate,startTime,endTime)
+    if(startDate&&endDate&&startTime){
+      setIsSelectDisabled(false)
+
+    }
+  
   }
 
   return (
@@ -328,7 +349,7 @@ export const Agenda = () => {
                   )}
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">hola</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" disabled={isSelectDisabled} onClick={onGuardar}>Guardar</button>
                     <button type="submit" className="btn btn-primary">hola de nuevo</button>
                   </div>
                 </form>
