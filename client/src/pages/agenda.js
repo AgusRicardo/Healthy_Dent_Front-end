@@ -3,9 +3,7 @@ import Layout from "../components/Layout";
 import "../styles/agenda.css";
 import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
-import { url } from '../api/auth';
-//import { selectUser } from "../redux/slices/userSlice";
-//import { useSelector } from "react-redux";
+import { postDateProf, postHoursProf, url } from '../api/auth';
 import { Loading } from "../components/Loading";
 
 export const Agenda = () => {
@@ -23,8 +21,8 @@ export const Agenda = () => {
   const [endDate, setEndDate] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState('');
-  const [isSelectDisabled, setIsSelectDisabled] = useState(true);
-  //const item = useSelector(selectUser);
+  const [isConfirmationVisible, setConfirmationVisible] = useState(true);
+  const [saveBtnVisible, setSaveBtnVisible] = useState(false)
   const prof_id = localStorage.getItem("prof_id");
   const today = date.getDate();
   const year = date.getFullYear();
@@ -57,7 +55,7 @@ export const Agenda = () => {
         console.error("Error fetching data:", error);
         setIsLoading(false);
       });
-      getCurrentDate()
+      getCurrentDate();
   }, [isLoading]);
 
   function getCurrentDate() {
@@ -67,7 +65,6 @@ export const Agenda = () => {
     const day = String(today.getDate()).padStart(2, '0'); 
     setFecha(`${year}-${month}-${day}`)
   }
-
   const handlePrevMonth = () => {
     setDate((prevDate) => {
       const prevMonth = prevDate.getMonth() - 1;
@@ -83,7 +80,6 @@ export const Agenda = () => {
   const handleReset = () => {
     setDate(new Date());
   };
-
   const handleButtonClick = () => {
     fetch(`${url}/allturnos/${prof_id}`)
       .then((response) => response.json())
@@ -105,28 +101,21 @@ export const Agenda = () => {
   const handleStartTimeChange = (e) => {
     const newStartTime = e.target.value;
     setStartTime(e.target.value);
-
     const startHour = parseInt(newStartTime.substring(0, 2), 10);
     const endHour = startHour + 8;
     
     setEndTime(`${endHour.toString().padStart(2, '0')}:${newStartTime.substring(3)}`);
-    console.log("hola1")
-    habilitarGuardar();
   };
 
   const handleStartDate = (e) => {
     setStartDate(e.target.value);
-    console.log("hola2")
-    habilitarGuardar();
   };
   const handleEndDate = (e) => {
     const selectedEndDate = e.target.value;
     setEndDate(selectedEndDate);
-
     const startDateObj = new Date(startDate);
     const endDateObj = new Date(selectedEndDate);
     const sevenDaysLater = new Date(startDateObj);
-   
     sevenDaysLater.setDate(startDateObj.getDate() + 7);
 
     if (endDateObj > sevenDaysLater) {
@@ -134,32 +123,46 @@ export const Agenda = () => {
     } else {
       setError('');
     }
-    console.log("hola3")
-    habilitarGuardar();
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (error) {
-      console.log('error en las fechas');
-    }else {
-      console.log('submiteado');
+    const dataDateProf = {
+      "day_start": startDate,
+      "day_end": endDate,
+      "prof_id": prof_id
+    }
+    const dataHourProf = {
+      "hour_start": startTime,
+      "hour_end": endTime,
+      "prof_id": prof_id
+    }
+    try {
+      const resHour = await postHoursProf(dataHourProf);
+      const resDate = await postDateProf(dataDateProf);
+      if ((resHour.status) == 201 && (resDate.status) == 201) {
+        setConfirmationVisible(false);
+        setSaveBtnVisible(true)
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
-  const onGuardar = async (e) => {
-    e.preventDefault();
-    console.log(startDate,endDate)
-    console.log(startTime,endTime)
-  }
-  const habilitarGuardar =  () => {
-    console.log(startDate,endDate,startTime,endTime)
-    if(startDate&&endDate&&startTime){
-      setIsSelectDisabled(false)
 
+  const handleModalConfirm = async (e) => {
+    try {
+      console.log('se ejecuta el sp y se cierra el modal');
+    } catch (error) {
+      console.log(error);
     }
-  
   }
-
+  const openModal = () => {
+    setConfirmationVisible(true);
+    setStartDate('');
+    setEndDate('');
+    setStartTime('');
+    setEndTime('');
+  }
   return (
     <Layout>
       {
@@ -205,7 +208,7 @@ export const Agenda = () => {
                   calendarClassName="custom-calendar"
                   />
                   <div className="container_btn_mis_horarios">
-                    <i className="fa-solid fa-gear btn_mis_horarios" data-bs-toggle="modal" data-bs-target="#detalleHorario"></i>
+                    <i className="fa-solid fa-gear btn_mis_horarios" data-bs-toggle="modal" data-bs-target="#detalleHorario" onClick={openModal}></i>
                   </div>
               </div>
           </div>
@@ -349,8 +352,8 @@ export const Agenda = () => {
                   )}
                   </div>
                   <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" disabled={isSelectDisabled} onClick={onGuardar}>Guardar</button>
-                    <button type="submit" className="btn btn-primary">hola de nuevo</button>
+                    <button type="submit" className="btn btn-primary" /*data-bs-dismiss="modal"*/ disabled={saveBtnVisible}>Guardar</button>
+                    <button type="button" className="btn btn-success" disabled={isConfirmationVisible} onClick={handleModalConfirm}>Confirmar</button>
                   </div>
                 </form>
               </div>

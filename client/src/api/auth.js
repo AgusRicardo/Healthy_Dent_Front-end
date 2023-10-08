@@ -73,3 +73,9 @@ export async function getAllPatient(prof_id) {
 export async function getAllHours(data) {
   return await axios.post(`${url}/profhours`, data)
 }
+export async function postHoursProf(dataHourProf) {
+  return await axios.post(`${url}/professional/createHours`, dataHourProf)
+}
+export async function postDateProf(dataDateProf) {
+  return await axios.post(`${url}/professional/createDay`, dataDateProf)
+}
