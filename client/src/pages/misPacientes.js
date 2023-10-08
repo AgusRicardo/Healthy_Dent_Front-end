@@ -13,11 +13,15 @@ export const MisPacientes = () => {
   const [state, setState] = useState()
   const [pacientes, setPaciente] = useState();
   const [searchName, setSearchName] = useState("") 
+  const [noPaciente, setNoPaciente] = useState(false)
 
   useEffect(() => {
     fetch(`${url}/mypatient/${prof_id}`)
       .then((response) => response.json())
       .then((res) => {
+        if (res.message) {
+          setNoPaciente(true);
+        }
         setPaciente(res);
         setState(res);
         setIsLoading(false);
@@ -69,13 +73,17 @@ export const MisPacientes = () => {
                 </thead>
                 <tbody>
                   {/* Todos los pacientes */}
-                  {pacientes && pacientes.map((paciente) => (
+                  {
+                  pacientes && noPaciente == false ? (pacientes.map((paciente) => (
                     <tr key={paciente.id}>
                       <td>{paciente.name}</td>
                       <td>{paciente.dni}</td>
                       <td><i className="fa-solid fa-eye" data-bs-toggle="modal" data-bs-target="#exampleModal"></i></td>
                     </tr>
-                  ))}
+                  ))) : (
+                    <p>No posee pacientes</p>
+                  )
+                }
                 </tbody>
               </table>
             </div>
