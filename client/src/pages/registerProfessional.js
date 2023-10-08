@@ -5,6 +5,7 @@ import "../styles/registerProfessional.css";
 import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router-dom";
 import { ToastSuccess } from "../components/ToastSuccess";
+import { getAttachment } from "../api/auth";
 
 const RegisterProfessional = () => {
   const [inputError, setInputError] = useState(false);
@@ -14,7 +15,7 @@ const RegisterProfessional = () => {
   const [success, setSuccess] = useState(false);
   const [matriculaSuccess, setMatriculaSuccess] = useState(false);
   const [specializations, setSpecializations] = useState([]);
-
+  const [value, setValue] = useState();
   useEffect(() => {
     fetch(`${url}/lastUserId`)
       .then((response) => response.json())
@@ -35,6 +36,16 @@ const RegisterProfessional = () => {
       fetchData();
   }, [isLoading]);
   
+  const toggleClick = async () =>{
+    const manual=3;
+    try {
+      const { data } = await getAttachment(manual);
+      setValue(data[0].url);
+      window.open(`${data[0].url}`, '_blank');
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+    }
+  }
   const postValueSpecialization = (e)=>{
     const foundElement = specializations.find((element) => element.description === e);
     return foundElement ? foundElement.spe_id : null;
@@ -173,7 +184,7 @@ const RegisterProfessional = () => {
               <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
-                <a href="#" style={{ color: "#00c1fc" }}>
+                <a onClick={toggleClick} style={{ color: "#00c1fc" }}>
                   Términos y Condiciones
                 </a>{" "}
                 
