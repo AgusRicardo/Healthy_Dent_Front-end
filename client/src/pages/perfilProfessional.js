@@ -16,7 +16,6 @@ export const PerfilProfessional = () => {
   const [direccionDisabled, setdireccionDisabled] = useState(true);
   const [telefonoDisabled, settelefonoDisabled] = useState(true);
   const [emailDisabled, setEmailDisabled] = useState(true);
-  const [espeDisabled, setEspeDisabled] = useState(true);
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [visibleButtons, setVisibleButtons] = useState(false);
@@ -28,7 +27,6 @@ export const PerfilProfessional = () => {
     setdireccionDisabled(true);
     settelefonoDisabled(true);
     setEmailDisabled(true);
-    setEspeDisabled(true);
     setIsLoading(true);
     setSuccess(false);
     setError(false);
@@ -45,28 +43,18 @@ export const PerfilProfessional = () => {
         setVisibleButtons(true);
         settelefonoDisabled(true);
         setEmailDisabled(true);
-        setEspeDisabled(true);
         break;
       case "Telefono":
         settelefonoDisabled(!telefonoDisabled);
         setVisibleButtons(true);
         setdireccionDisabled(true);
         setEmailDisabled(true);
-        setEspeDisabled(true);
         break;
       case "Email":
         setEmailDisabled(!emailDisabled);
         setVisibleButtons(true);
         setdireccionDisabled(true);
         settelefonoDisabled(true);
-        setEspeDisabled(true);
-        break;
-      case "Espe":
-        setEspeDisabled(!espeDisabled);
-        setVisibleButtons(true);
-        setdireccionDisabled(true);
-        settelefonoDisabled(true);
-        setEmailDisabled(true);
         break;
       default:
         break;
@@ -83,6 +71,7 @@ export const PerfilProfessional = () => {
       .then((res) => {
         setUser(res);
         setIsLoading(false);
+        console.log(res);
         setVisibleButtons(false);
       });
   }, [isLoading]);
@@ -102,7 +91,6 @@ export const PerfilProfessional = () => {
       setdireccionDisabled(true);
       settelefonoDisabled(true);
       setEmailDisabled(true);
-      setEspeDisabled(true);
       setTimeout(() => {
         setIsLoading(true);
       }, 2100);
@@ -115,7 +103,6 @@ export const PerfilProfessional = () => {
       setdireccionDisabled(true);
       settelefonoDisabled(true);
       setEmailDisabled(true);
-      setEspeDisabled(true);
       setTimeout(() => {
         setIsLoading(true);
       }, 2100);
@@ -261,19 +248,17 @@ export const PerfilProfessional = () => {
                     <input
                       onChange={(e) => onChange(e)}
                       type="text"
-                      className={`form-control inputreg-prof ${!espeDisabled ? 'btn_active': ''}`}
+                      className={`form-control inputreg-prof`}
                       id="especializacion"
                       name="specialization"
                       placeholder="especializacion"
                       autoComplete="off"
                       required
                       defaultValue={user[0].specialization}
-                      disabled={espeDisabled}
                     />
                     <label className="form-label" htmlFor="floatingInputGrid">
                       Especialización
                     </label>
-                      <i className="fa-solid fa-pen-to-square icon_edit" onClick={() => toggleEdit("Espe")}></i>
                   </div>
                 </div>
                 <div className="col-md fields">
