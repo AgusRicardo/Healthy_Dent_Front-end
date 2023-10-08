@@ -71,7 +71,6 @@ export const PerfilProfessional = () => {
       .then((res) => {
         setUser(res);
         setIsLoading(false);
-        console.log(res);
         setVisibleButtons(false);
       });
   }, [isLoading]);
