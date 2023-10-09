@@ -5,6 +5,8 @@ import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
 import { executeSP, postDateProf, postHoursProf, url } from '../api/auth';
 import { Loading } from "../components/Loading";
+import { ToastSuccess } from "../components/ToastSuccess";
+import { useNavigate } from "react-router-dom";
 
 export const Agenda = () => {
   const [date, setDate] = useState(new Date());
@@ -21,11 +23,13 @@ export const Agenda = () => {
   const [endDate, setEndDate] = useState('');
   const [fecha, setFecha] = useState('');
   const [error, setError] = useState('');
+  const [succesToast, setSuccesToast] = useState(false)
   const [isConfirmationVisible, setConfirmationVisible] = useState(true);
   const [saveBtnVisible, setSaveBtnVisible] = useState(false)
   const prof_id = localStorage.getItem("prof_id");
   const today = date.getDate();
   const year = date.getFullYear();
+  const navigate = useNavigate()
 
   useEffect(() => {
     const months = [
@@ -144,8 +148,6 @@ export const Agenda = () => {
         setConfirmationVisible(false);
         setSaveBtnVisible(true)
       }
-      console.log(dataDateProf, 'dataDateProf');
-      console.log(dataHourProf, 'dataHourProf');
     } catch (error) {
       console.log(error);
     }
@@ -154,13 +156,19 @@ export const Agenda = () => {
   const handleModalConfirm = async (e) => {
     try {
       const resSP = await executeSP(prof_id);
-      console.log(resSP);
+      if (resSP.status == 200) {
+        setSuccesToast(true)
+        setTimeout(() => {
+          window.location.reload();
+        }, 1100);
+      }
     } catch (error) {
       console.log(error);
     }
   }
   const openModal = () => {
     setConfirmationVisible(true);
+    setSaveBtnVisible(false)
     setStartDate('');
     setEndDate('');
     setStartTime('');
@@ -202,10 +210,8 @@ export const Agenda = () => {
                   navegaciónAriaLive={null}
                   navigationLabel={({ label }) => <div>{label}</div>}
                   locale={"es"}
-                  //returnValue={"start"}
                   showNeighboringMonth={false}
                   minDetalle={"year"}
-                  // onClickDay={handleDayClick}
                   tileDisabled={() => true}
                   tileClassName="custom-tile"
                   calendarClassName="custom-calendar"
@@ -362,6 +368,9 @@ export const Agenda = () => {
               </div>
             </div>
           </div>
+          {
+          succesToast && <ToastSuccess titulo='Fecha y Hora cargada exitosamente!'/>
+          }
         </section>
         )
       }

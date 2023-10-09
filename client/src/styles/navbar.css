@@ -118,3 +118,6 @@ NavLink {
 .icon-bell{
   margin-right: -1rem;
 }
+.icon_notification{
+  cursor: pointer;
+}

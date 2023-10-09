@@ -169,7 +169,7 @@ export const Turno = () => {
           </div>
           <div className="col-md">
             <div className="form-floating">
-              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" name="place_id" onChange={(e) => onChange(e)} required>
+              <select defaultValue={'DEFAULT'} className="form-select" id="floatingSelectGrid" aria-label="Floating label select example" disabled={sinDisponibilidad} name="place_id" onChange={(e) => onChange(e)} required>
                 <option selected value="DEFAULT" disabled>Seleccione un lugar de atención...</option>
                 {
                   !place || place.message ?
@@ -237,6 +237,7 @@ export const Turno = () => {
                 maxLength={maxCharacterCount}
                 placeholder='treatment'
                 autoComplete='off'
+                disabled={sinDisponibilidad}
                 required
               />
               <label htmlFor="floatingInputGrid" className='form-label'>

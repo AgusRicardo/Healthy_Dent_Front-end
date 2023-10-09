@@ -258,7 +258,7 @@ export const Register = () => {
                     placeholder="date_birth"
                     autoComplete="off"
                     min="1920-01-01"
-                    max="2004-01-01"
+                    max="2005-01-01"
                     required
                   />
                   <label className="form-label" htmlFor="floatingSelectGrid">
@@ -329,7 +329,7 @@ export const Register = () => {
             <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
-                <a onClick={toggleClick} style={{ color: "#00c1fc" }}>
+                <a onClick={toggleClick} style={{ color: "#00c1fc", cursor: "pointer" }}>
                   Términos y Condiciones
                 </a>{" "}
                 

@@ -184,7 +184,7 @@ const RegisterProfessional = () => {
               <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
-                <a onClick={toggleClick} style={{ color: "#00c1fc" }}>
+                <a onClick={toggleClick} style={{ color: "#00c1fc", cursor: "pointer"  }}>
                   Términos y Condiciones
                 </a>{" "}
                 
@@ -195,7 +195,6 @@ const RegisterProfessional = () => {
                 Registrarse
               </button>
               </div>
-              
             </form>
           </div>
         </div>

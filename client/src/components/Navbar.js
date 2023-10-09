@@ -87,7 +87,7 @@ const Navbar = () => {
             <div className="navbar">
               <div className="btn-group" role="group">
                 <a  className="nav-link  text_navbar ">
-                <i className="fa-solid fa-bell iconnav-user icon-bell"></i>
+                <i className="fa-solid fa-bell iconnav-user icon-bell icon_notification"></i>
                 </a>
                 <a
                   className="nav-link dropdown-toggle text_navbar btn_navbar"
