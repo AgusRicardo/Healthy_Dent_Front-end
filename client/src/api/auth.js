@@ -79,3 +79,7 @@ export async function postHoursProf(dataHourProf) {
 export async function postDateProf(dataDateProf) {
   return await axios.post(`${url}/professional/createDay`, dataDateProf)
 }
+
+export async function executeSP(prof_id) {
+  return await axios.post(`${url}/executesp/${prof_id}`)
+}

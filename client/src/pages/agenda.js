@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import "../styles/agenda.css";
 import "react-calendar/dist/Calendar.css"
 import { useEffect, useState } from "react";
-import { postDateProf, postHoursProf, url } from '../api/auth';
+import { executeSP, postDateProf, postHoursProf, url } from '../api/auth';
 import { Loading } from "../components/Loading";
 
 export const Agenda = () => {
@@ -144,6 +144,8 @@ export const Agenda = () => {
         setConfirmationVisible(false);
         setSaveBtnVisible(true)
       }
+      console.log(dataDateProf, 'dataDateProf');
+      console.log(dataHourProf, 'dataHourProf');
     } catch (error) {
       console.log(error);
     }
@@ -151,7 +153,8 @@ export const Agenda = () => {
 
   const handleModalConfirm = async (e) => {
     try {
-      console.log('se ejecuta el sp y se cierra el modal');
+      const resSP = await executeSP(prof_id);
+      console.log(resSP);
     } catch (error) {
       console.log(error);
     }
