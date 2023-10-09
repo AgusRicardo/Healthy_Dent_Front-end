@@ -6,7 +6,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Toaster, toast } from 'sonner';
 import { ToastSuccess } from "../components/ToastSuccess";
 import { ToastError } from "../components/ToastError";
-
+import { getAttachment } from "../api/auth";
 export const Register = () => {
   const [values, setValues] = useState({
     dni: "",
@@ -26,8 +26,17 @@ export const Register = () => {
   const [telephoneSuccess, setTelephoneSuccess] = useState(false)
   const [addressSuccess, setAddressSuccess] = useState(false)
   const navigate = useNavigate()
-
-
+  const [value, setValue] = useState();
+  const toggleClick = async () =>{
+    const manual=3;
+    try {
+      const { data } = await getAttachment(manual);
+      setValue(data[0].url);
+      window.open(`${data[0].url}`, '_blank');
+    } catch (error) {
+      console.error('Error al obtener los datos:', error);
+    }
+  }
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
@@ -320,7 +329,7 @@ export const Register = () => {
             <div>
               <p>
                 Al registrarse, está aceptando nuestros{" "}
-                <a href="#" style={{ color: "#00c1fc" }}>
+                <a onClick={toggleClick} style={{ color: "#00c1fc" }}>
                   Términos y Condiciones
                 </a>{" "}
                 
