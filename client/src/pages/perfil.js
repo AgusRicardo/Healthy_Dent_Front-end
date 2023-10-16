@@ -12,15 +12,25 @@ export const Perfil = () => {
   const [isLoadingUser, setIsLoadingUser] = useState(true);
   const [isLoadingPrepaid, setIsLoadingPrepaid] = useState(true);
   const [user, setUser] = useState();
+  const [date_birth, setDate_birth] = useState();
   const [prepaid, setPrepaid] = useState();
-
-
   
+  function formatearFecha(fechaOriginal) {
+    const fecha = new Date(fechaOriginal);
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1; 
+    const anio = fecha.getFullYear();
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+    return fechaFormateada;
+  }
+
   useEffect(() => {
     fetch(`${url}/user/${user_id}`)
     .then((response) => response.json())
     .then((res) => {
       setUser(res);
+      setDate_birth(formatearFecha(res.date_birth));
       setIsLoadingUser(false);
       });
     fetch(`${url}/user/prepaid/${user_id}`)
@@ -29,7 +39,10 @@ export const Perfil = () => {
         setPrepaid(res);
         setIsLoadingPrepaid(false);
       });
-  }, []);
+  }
+  
+  
+  , []);
   return (
     <Layout>
       {isLoadingUser || isLoadingPrepaid ? (
@@ -70,7 +83,8 @@ export const Perfil = () => {
                           <div className="col-6 mb-3">
                             <h6>Fecha de nacimiento</h6>
                             <p className="text-muted">
-                              {new Date(user.date_birth).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}
+                              {date_birth}
+                              
                             </p>
                           </div>
                           <div className="col-6 mb-3">
