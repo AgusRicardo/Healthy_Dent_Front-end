@@ -19,6 +19,7 @@ export const PerfilProfessional = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [visibleButtons, setVisibleButtons] = useState(false);
+  const [send, setSend] = useState(true);
   const [values, setValues] = useState({
     "user_id": user_id,
   });
@@ -77,12 +78,17 @@ export const PerfilProfessional = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    try {
-      if (Object.keys(values).length > 1) {
-        const { data } = await editProfile(values);
-        setError("");
-        setSuccess(data.message);
+    if (Object.keys(values).length > 1) {
+      for (const key in values) {
+        if (values[key] === " ") {
+          return setError('Hay campos inválidos');
+        }
       }
+    }
+    try {
+      const { data } = await editProfile(values);
+      setError("");
+      setSuccess(data.message);
       setValues({
         "user_id": user_id,
       });
@@ -213,6 +219,7 @@ export const PerfilProfessional = () => {
                       placeholder="telefono"
                       autoComplete="off"
                       required
+                      min="0"
                       defaultValue={user[0].telephone}
                       disabled={telefonoDisabled}
                     />
