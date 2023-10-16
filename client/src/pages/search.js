@@ -145,7 +145,9 @@ export const Search = () => {
                         </div>
                         <div className='column_card'>
                           <p className="card-text"><i className="fa-regular fa-clock color_items"></i>Horarios</p>
+                          <p className="card-text"><i className="fa-solid fa-location-dot color_items"></i> Turnos presenciales</p>
                         </div>
+                        
 
                       </div>
                         <div className='btn_turn'>
