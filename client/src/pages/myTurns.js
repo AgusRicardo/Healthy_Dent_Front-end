@@ -13,6 +13,16 @@ export const MyTurns = () => {
   const [sinTurnos, setSinTurnos] = useState()
   const [isLoading, setIsLoading] = useState(true);
 
+  function formatearFecha(fechaOriginal) {
+    const fecha = new Date(fechaOriginal);
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1; 
+    const anio = fecha.getFullYear();
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+    return fechaFormateada;
+  }
+
   useEffect(() => {
     fetch(`${url}/list/turn/${user_id}`)
       .then((response) => response.json())
@@ -79,8 +89,8 @@ export const MyTurns = () => {
                                               <td>
                                                 {turn.name} {turn.last_name}
                                               </td>
-                                              <td>{turn.treatment}</td>
-                                              <td>{new Date(turn.date).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}</td>
+                                              <td>{turn.treatment}</td>      
+                                              <td>{formatearFecha(turn.date)}</td>
                                               <td>{turn.hour.slice(0, -3)}hs</td>
                                             </tr>
                                           ))
