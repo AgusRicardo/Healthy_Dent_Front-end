@@ -30,7 +30,6 @@ export const Agenda = () => {
   const today = date.getDate();
   const year = date.getFullYear();
   const navigate = useNavigate()
-
   useEffect(() => {
     const months = [
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
@@ -64,9 +63,11 @@ export const Agenda = () => {
 
   function getCurrentDate() {
     const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
     const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); 
-    const day = String(today.getDate()).padStart(2, '0'); 
+    const month = String(tomorrow.getMonth() + 1).padStart(2, '0'); 
+    let day = String(tomorrow.getDate()).padStart(2, '0'); 
     setFecha(`${year}-${month}-${day}`)
   }
   const handlePrevMonth = () => {
@@ -101,7 +102,6 @@ export const Agenda = () => {
         PopUpLoading(false);
       });
   };
-
   const handleStartTimeChange = (e) => {
     const newStartTime = e.target.value;
     setStartTime(e.target.value);
@@ -128,7 +128,6 @@ export const Agenda = () => {
       setError('');
     }
   };
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const dataDateProf = {
