@@ -105,10 +105,10 @@ export const Perfil = () => {
                           </div>
                         </div>
                         <div className="d-grid gap-2 d-md-block">
-                          <button className="btn btn-warning me-md-2 btn_edit_profile" type="button">
+                          <button className="btn  me-md-2 btn_edit_profile" type="button" disabled>
                             Editar
                           </button>
-                          <button className="btn btn-outline-danger" type="button">
+                          <button className="btn btn-outline-danger" type="button" disabled>
                             Eliminar cuenta
                           </button>
                         </div>

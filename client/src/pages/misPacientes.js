@@ -165,8 +165,7 @@ export const MisPacientes = () => {
                 <div className="container">
                   <div className="row">
                   <p className='row-title'>Motivo de visita</p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel metus sit amet nulla tincidunt posuere in eget quam. Fusce eu metus sed turpis suscipit bibendum. Vivamus id ultrices nulla, quis iaculis eros. Nullam id magna vel purus elementum facilisis. Sed feugiat erat eu justo tincidunt, sed mattis nunc condimentum. Nullam quis dictum lectus, eu bibendum metus. Sed id est euismod, viverra orci at, tempor felis. Curabitur ac tincidunt ligula. Pellentesque efficitur odio in est dictum, quis fringilla orci dictum. Vivamus volut
-
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel metus sit amet nulla tincidunt posuere in eget quam
                       </p>
                   </div>
                 </div>
