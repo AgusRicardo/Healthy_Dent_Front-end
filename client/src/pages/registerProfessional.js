@@ -14,6 +14,7 @@ const RegisterProfessional = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [matriculaSuccess, setMatriculaSuccess] = useState(false);
+  const [noSpecialization, setNoSpecialization] = useState(false)
   const [specializations, setSpecializations] = useState([]);
   const [value, setValue] = useState();
   useEffect(() => {
@@ -67,9 +68,16 @@ const RegisterProfessional = () => {
       setMatriculaSuccess(true);
       return;
     }
+
+    if (!values.specialization) {
+      setNoSpecialization(true);
+      return;
+    }
+
     try {
       setInputError(false);
       setMatriculaSuccess(false);
+      setNoSpecialization(false);
       const { data } = await registerProfessional(values);
       setError("");
       setSuccess(data && true);
@@ -123,13 +131,13 @@ const RegisterProfessional = () => {
                       <select
                         onChange={(e) => onChange(e)}
             
-                        value={values.specialization || "DEFAULT"}
+                        value={values.specialization || ""}
                         className="form-select"
                         id="specialization"
                         name="specialization"
                         required
                       >
-                        <option  value="DEFAULT" disabled>
+                        <option  value="" disabled>
                         Seleccione su especialidad...
                       </option>
                         {specializations.map((specialization) => (
