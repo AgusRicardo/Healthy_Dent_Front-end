@@ -132,7 +132,7 @@ export const Turno = () => {
       setError(error.response.data.errors[0].msg);
     }
   }
-  
+
   const maxCharacterCount = 50;
   return (
     <Layout>
