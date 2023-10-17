@@ -43,6 +43,16 @@ export const Turno = () => {
   if (!turn || prepaid === undefined) {
     navigate('/search');
   }
+  function formatearFecha(fechaOriginal) {
+    const fecha = new Date(fechaOriginal);
+    const dia = fecha.getDate();
+    const mes = fecha.getMonth() + 1; 
+    const anio = fecha.getFullYear();
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+    return fechaFormateada;
+  }
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -196,7 +206,7 @@ export const Turno = () => {
                   infoProf == "" ? <p>No se encontraron horarios disponibles</p>
                   :
                   infoProf.map ((date, index) => (
-                    <option key={index} value={(new Date(date.date)).toISOString().split('T')[0]}>{new Date(date.date).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}</option>
+                    <option key={index} value={(new Date(date.date)).toISOString().split('T')[0]}>{formatearFecha(date.date)}</option>
                     ) 
                   )
                 }
