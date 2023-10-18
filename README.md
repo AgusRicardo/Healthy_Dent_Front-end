@@ -17,4 +17,4 @@ Proyecto del 2do año de "Desarrollo de Software". El mismo consta de una aplica
 <li> Hosting App: <a href="https://vercel.com/">Vercel</a></li>
 <br/>
 </ul>
-<b>Integrantes: Agustín Ricardo, Nehuen Bovyn, Ariadna Garcia, Marcos Aguero</b>
+<b>Integrantes: Agustín Ricardo, Nehuen Bovyn, Ariadna Garcia, Gisela Dieguez, Franco Lescano</b>
