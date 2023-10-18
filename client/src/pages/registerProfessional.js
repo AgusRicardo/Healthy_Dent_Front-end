@@ -17,6 +17,7 @@ const RegisterProfessional = () => {
   const [noSpecialization, setNoSpecialization] = useState(false)
   const [specializations, setSpecializations] = useState([]);
   const [value, setValue] = useState();
+  const navigate = useNavigate()
   useEffect(() => {
     fetch(`${url}/lastUserId`)
       .then((response) => response.json())
@@ -81,6 +82,13 @@ const RegisterProfessional = () => {
       const { data } = await registerProfessional(values);
       setError("");
       setSuccess(data && true);
+      setValues({
+        n_matric: "",
+        specialization: "",
+      })
+      setTimeout(() => {
+        navigate('/inicio')
+      }, 2100);
     } catch (error) {
       setError(error.response.data.errors[0].msg);
       setSuccess("");
